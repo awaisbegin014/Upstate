@@ -23,8 +23,10 @@ export class SettingsService {
     private readonly stripe: StripeService,
   ) {}
 
-  /** The settings row, created with defaults on first use. */
-  get(): Promise<StoreSettings> {
+  /** The settings row, created with defaults on first use. Read-only once it exists. */
+  async get(): Promise<StoreSettings> {
+    const existing = await this.prisma.storeSettings.findUnique({ where: { id: SETTINGS_ID } });
+    if (existing) return existing;
     return this.prisma.storeSettings.upsert({
       where: { id: SETTINGS_ID },
       create: { id: SETTINGS_ID },

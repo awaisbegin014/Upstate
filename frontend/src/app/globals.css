@@ -1,4 +1,9 @@
-@import "tailwindcss";
+/*
+ * Scan only src/ for class names. Without source(), Tailwind scans (and the
+ * dev server watches) the whole folder `next dev` was started from, so writes
+ * elsewhere can trigger CSS rebuilds and endless HMR page refreshes.
+ */
+@import "tailwindcss" source("..");
 
 /*
  * Upstate Equipment theme — taken from the upstate-iron-showcase redesign:
