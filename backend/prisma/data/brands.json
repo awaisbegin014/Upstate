@@ -1,0 +1,1940 @@
+[
+  {
+    "name": "Action Industries",
+    "description": "Industrial Weatherstripping",
+    "website": "https://www.action-ind.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Action Pump",
+    "description": "Drum and Chemical Pumps",
+    "website": "https://www.actionpump.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Advance Lift",
+    "description": "Dock Lifts",
+    "website": "https://www.advancelifts.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Advance Tabco",
+    "description": "Stainless Steel Benches, Cabinets and Sinks",
+    "website": "https://www.advancetabco.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Advanced Gloves",
+    "description": "Cut Resistant, Electronic Assembly and General Purpose Gloves",
+    "website": "https://www.advancedgloves.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "AGF Material Handling",
+    "description": "R olling Warehouse Ladders",
+    "website": "https://www.agfequip.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Aigner Index, Inc.",
+    "description": "Label Holders for Rack and Shelving",
+    "website": "https://www.holdex.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Akro-Mils",
+    "description": "Plastic Bins and Tote Boxes",
+    "website": "https://www.akro-mils.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Albion Casters",
+    "description": "Heavy Duty Industrial Casters and Wheels",
+    "website": "https://www.albioninc.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": true
+  },
+  {
+    "name": "All Metal Designs, Inc.",
+    "description": "Ergonomic Industrial Workbenches and Workstations",
+    "website": "https://www.allmetal.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "All-states Equipment, Inc.",
+    "description": "Steel Stacking Racks",
+    "website": "https://www.all-states.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Amarr Industries",
+    "description": "Sectional Overhead Doors",
+    "website": "https://www.amarr.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "American Moving Supplies",
+    "description": "Dollies, Moving Blankets and Moving Supplies",
+    "website": "https://www.americanmovingsupplies.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "American Scale",
+    "description": "Digital Scales from Parcel to Pallet",
+    "website": "https://www.amscale.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "American Wire Products (AWP)",
+    "description": "Wire Decks for Pallet Rack and Shelving, Wire Containers",
+    "website": "https://www.awpind.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Anvers Corp.",
+    "description": "Ergonomic Vacuum Lifters, Suction Cups, and Vacuum Pumps",
+    "website": "https://www.anver.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Apex",
+    "description": "Self Dumping Hoppers",
+    "website": "https://www.apex-bulkhandlers.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Atlas Lift Truck",
+    "description": "Pallet Jacks and Work Positioners",
+    "website": "https://www.atlaslift.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Automated Conveyor Systems, Inc (ACSI)",
+    "description": "Belt and Roller Conveyor Systems",
+    "website": "https://www.automatedconveyors.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Autoquip Corporation",
+    "description": "Scissors Lifts and Vertical Reciprocating Conveyors",
+    "website": "https://www.autoquip.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "B T",
+    "description": "Pallet Jacks and Stackers",
+    "website": "https://www.bt-forklifts.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ballymore Company",
+    "description": "Rolling Ladders and Mobile Work Platforms",
+    "website": "https://www.ballymore.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Barefoot",
+    "description": "Anti-fatigue Mats",
+    "website": "https://www.barefoot-flooring.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Barrel Accessories and Supply Co. (BASCO)",
+    "description": "Drum and Barrel Handling Equipment",
+    "website": "https://www.bascousa.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Barricks Mfg.",
+    "description": "High Quality Folding T ables and Office Furniture",
+    "website": "https://www.barricks.net",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Bayhead Products Corp.",
+    "description": "Polyethylene Tilt Truck and Large Specialty Containers",
+    "website": "https://www.bayheadproducts.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Beech Engineering & Mfg",
+    "description": "Lifters, Stackers, Engine Hoists and Vertical Reciprocating Conveyors",
+    "website": "https://www.beechengineering.com",
+    "categories": [
+      "hand-equipment",
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Best Diversified Products, Inc.",
+    "description": "Flexible and Expandable Conveyors",
+    "website": "https://www.bestconveyors.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Biofit Engineered Seating",
+    "description": "Ergonomic Production and Lab Seating",
+    "website": "https://www.biofit.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Bobrick Washroom Equipment, Inc.",
+    "description": "Toilet Partitions",
+    "website": "https://www.bobrick.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Bonar Plastics",
+    "description": "Large Rotational Molded Containers",
+    "website": "https://www.bonarplastics.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Bradley Corp",
+    "description": "Industrial Washroom Products",
+    "website": "https://www.bradleycorp.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Buckhorn",
+    "description": "Industrial and Commercial Plastic Totes and Bulk Containers",
+    "website": "https://www.buckhorninc.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Bulldog Rack Co.",
+    "description": "Roll Formed and Structural Pallet Rack",
+    "website": "https://www.bulldograck.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Bulman Products Inc.",
+    "description": "Roll Dispensers",
+    "website": "https://www.bulmanproducts.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "C R Daniels, Inc",
+    "description": ". Fabric and Polyethylene Laundry Hampers and Material Handling Products",
+    "website": "https://www.dandux.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Campus Crafts",
+    "description": "Safety and Security Mirrors",
+    "website": "https://www.campuscrafts.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Cannon Equipment",
+    "description": "Chrome Wire Dunnage Carts",
+    "website": "https://www.cannonequipment.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Capital Safety",
+    "description": "Fall Protection, Rack Guards",
+    "website": "https://www.capitalsafety.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Cargotainer",
+    "description": "Welded Wire Shipping Containers",
+    "website": "https://www.cargotainer.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Chantland-PVS Co.",
+    "description": "Conveyor Pulleys and Rollers",
+    "website": "https://www.chantlandpulley.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Checkers Industrial Safety Products",
+    "description": "Plastic Wheel Chocks, Speed Bumps, Cable and Hose Bridges",
+    "website": "https://www.checkersindustrial.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Chem-tainer",
+    "description": "All shapes and sizes of Polyethylene Containers and Tanks",
+    "website": "https://www.chemtainer.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Cogan",
+    "description": "Mezzanines and Wire Partitioning",
+    "website": "https://www.ecogan.com",
+    "categories": [],
+    "featured": true
+  },
+  {
+    "name": "Colson Casters",
+    "description": "Heavy Duty Industrial Casters and Wheels",
+    "website": "https://www.colsoncaster.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Cotterman Company",
+    "description": "Rolling Steel Ladders and Work Platforms",
+    "website": "https://www.cotterman.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Coxreels",
+    "description": "Hose and Cable Reels",
+    "website": "https://www.coxreels.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Creative Storage Systems",
+    "description": "Pallet Flow Systems, Pushback Systems",
+    "website": "https://www.creativestorage.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Crown Mats and Matting",
+    "description": "Entry and Anti-Fatigue Matting",
+    "website": "https://www.crown-mats.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Cubic Design",
+    "description": "Mezzanines and industrial guards",
+    "website": "https://www.cubicdesigns.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Custom Industrial Products Inc.",
+    "description": "Vertical Reciprocating Conveyors, Four Post Lifts",
+    "website": "https://www.customindprod.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Deflecto Corp",
+    "description": "Tilt out Storage Bins",
+    "website": "https://www.deflecto.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Dehnco",
+    "description": "Industrial Custom Packing Stations",
+    "website": "https://www.dehnco.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Dixie Poly Drum Corp.",
+    "description": "Polyethylene Drums, Tanks, Steps, Barricades",
+    "website": "https://www.dixiepolydrum.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Durable Corporation",
+    "description": "Loading Dock Bumpers, Wheel Chocks, Industrial Matting",
+    "website": "https://www.durablecorp.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Durand Products",
+    "description": "Steel Shelving and Shop Equipment",
+    "website": "https://www.durandproducts.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Durham Manufacturing Company",
+    "description": "Steel Bin Units, Rotabins, Workbenches",
+    "website": "https://www.durhammfg.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Eagle Group",
+    "description": "Industrial Wire Shelving",
+    "website": "https://www.eaglegrp.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Eagle Pneumatic",
+    "description": "Pneumatic Tube Dispatch System",
+    "website": "https://www.eaglepneumatic.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Easy Lift Equipment Co., Inc.",
+    "description": "Drum Handling Equipment",
+    "website": "https://www.easylifteqpt.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "ECOA",
+    "description": "Hydraulic Scissors Lifts, Upenders and Pallet Rotators",
+    "website": "https://www.ecoalifts.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Edsal Manufacturing",
+    "description": "Steel Shelving, Shop Equipment, Cabinets",
+    "website": "https://www.edsal.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Eirez Magnetics",
+    "description": "Magnetic Separation Equipemtn",
+    "website": "https://www.eirez.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Endura-Veyor, Inc.",
+    "description": "High Quality Hinged Steel Belt Conveyors",
+    "website": "https://www.endura-veyor.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Enpac Corporation",
+    "description": "Spill Prevention and Containment Products",
+    "website": "https://www.enpac.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ergomat LLC",
+    "description": "Industry Specific Ergonomic Matting",
+    "website": "https://www.ergomat.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ergotech",
+    "description": "Ergonomic Positioners",
+    "website": "https://www.ergotechinc.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Faberkin, Inc.",
+    "description": "Custom Accordian Scissor Lift Table Guards",
+    "website": "https://www.faberkin.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Fabri-Form Company",
+    "description": "Plastic Material Handling Containers",
+    "website": "https://www.fabri-form.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Fairbanks Casters",
+    "description": "Heavy Duty Industrial Casters and Wheels",
+    "website": "https://www.fairbankscasters.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Fairbanks Company",
+    "description": "Casters, Platform Trucks Heavy Duty Hand Trucks",
+    "website": "https://www.fairbankcasters.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Fairborn",
+    "description": "Dock Seals and Shelters",
+    "website": "https://www.fairbornusa.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Faultless Casters",
+    "description": "Heavy Duty Industrial Casters and Wheels",
+    "website": "https://www.faultlesscaster.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Genie Industries",
+    "description": "Aluminum Material and Personnel Lifts",
+    "website": "https://www.genieindustries.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Gillis Associated Industries",
+    "description": "Wire Shelving and Carts, Enclosed Carts, Platform Truck",
+    "website": "https://www.gillisindustries.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Goff's Enterprises",
+    "description": "Industrial Curtain Wall Dividers",
+    "website": "https://www.goffscurtainwalls.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Gopher Signs",
+    "description": "Parking Lot and Road Signs and Mounting Systems",
+    "website": null,
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Guardian Equipment",
+    "description": "Industrial Eye Wash and Emergency Showers",
+    "website": "https://www.gesafety.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "H. Wilson Company",
+    "description": "Specialty Carts",
+    "website": "https://www.hwilson.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Hallowell",
+    "description": "Industrial Shelving",
+    "website": "https://www.hallowell-list.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Handle-it",
+    "description": "Hydraulic and Pneumatic Lifters, Tilters, Dumpers and Work Positioners",
+    "website": "https://www.miiequipment.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Harrington Hoists",
+    "description": "Hoists and Cranes",
+    "website": "https://www.harringtonhoists.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "High-Lites",
+    "description": "Emergency Lighting",
+    "website": "https://www.highliteslighting.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Hillman Rollers",
+    "description": "Machinery Movers",
+    "website": "https://www.hillmanrollers.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Homak Mfg Co., Inc.",
+    "description": "Tool Chests",
+    "website": "https://www.homakmfg.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ideal Shield",
+    "description": "Steel and Plastic Railings and Bollards",
+    "website": "https://www.idealshield.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "IFH Group",
+    "description": "Fluid Storage and Dispensing Systems",
+    "website": "https://www.ihfgroup.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "InPlant Office, Inc.",
+    "description": "Prefabricated Modular Offices",
+    "website": "https://www.inplant.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Interlake",
+    "description": "Roll Formed and Structural, Welded and Bolted Pallet Racking",
+    "website": "https://www.interlake.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Intermetro Industries Corp.",
+    "description": "Wire Shelving and Carts, Modular Work Stations",
+    "website": "https://www.metro.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Interthor",
+    "description": "Pallet Jacks, Lifters and Stackers",
+    "website": "https://www.interthor.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "J H Industries",
+    "description": "Yard Ramps, Truck Ramps, Portable Ramps and Dock Plates",
+    "website": "https://www.copperloy.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Jaken Co., Inc.",
+    "description": "Pallet Rack, Boltless Shelving",
+    "website": "https://www.jaken.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Jamco Products, Inc.",
+    "description": "Shelf Carts, Safety Cabinets, Security Cabinets ( ww.jamcoproducts.com ) w",
+    "website": "https://www.jamcoproducts.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Jarke Corporation",
+    "description": "Bar Racks, Cantilever Racks",
+    "website": "https://www.jarke.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Jarvis and Jarvis Casters",
+    "description": "Industrial and Commercial Casters and Wheels",
+    "website": "https://www.jarviscaster.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Jesco Industries",
+    "description": "Steel Self Dumping Hoppers",
+    "website": "https://www.jescoonline.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Jet Equipment",
+    "description": "Hoists, Chain Falls, Hydraulic Pallet Jacks",
+    "website": "https://www.jettools.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Justrite Manufacturing Company",
+    "description": "Safety Cabinets",
+    "website": "https://www.justritemfg.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Kee Industrial Products",
+    "description": "Kee Klamp Pipe Fittings",
+    "website": "https://www.keeklamp.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Keneco, Inc.",
+    "description": "Carton Flow Racks and Rails",
+    "website": "https://www.kenecoinc.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Kinedyne",
+    "description": "Logistic Straps, Load Restraints, Cargo Control",
+    "website": "https://www.kinedyne.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Konstant Products",
+    "description": "Pallet Racks, Push Back Racks, Engineered Mezzanines",
+    "website": "https://www.konstant.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Lapryre Stair, Inc.",
+    "description": "Prefab Metal Stairs, Alternating Tread Stairs",
+    "website": "https://www.lapeyrestair.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "LewisBins+",
+    "description": "Plastic Bins and Trays",
+    "website": "https://www.lewisbins.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Liftex Corp",
+    "description": "Fabric Lifting Slings",
+    "website": "https://www.liftex.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "LiftRite",
+    "description": "Pallet Jacks, Lifters and Stackers",
+    "website": "https://http:",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Litco International, Inc.",
+    "description": "Plastic Pallets",
+    "website": null,
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Little Giant Products",
+    "description": "Steel Shop Equipment and Carts",
+    "website": "https://www.little-giant-carts.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Louisville Ladder Corp.",
+    "description": "Rolling Steel Ladders",
+    "website": "https://www.louisvilleladder.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Lynn Ladder",
+    "description": "Ladders",
+    "website": "https://www.lynnladder.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Lyon Workspace Products",
+    "description": "Steel Shelving, Storage Cabinets, Modular Drawer Cabinets, Lockers",
+    "website": "https://www.lyonworkspace.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Magline",
+    "description": "Aluminum Hand Trucks, Platform trucks, Truck Ramps, and Delivery Equipment",
+    "website": "https://www.magliner.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Mallard Mfg. Corp.",
+    "description": "Pallet Flow and CArton Flow Rails",
+    "website": "https://www.mallardmfg.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Marathon Industries",
+    "description": "Flat Free Industrial Tires",
+    "website": "https://www.marathonind.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Mars Air Doors",
+    "description": "Heated and Unheated Air Doors",
+    "website": "https://www.marsair.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "McGuire",
+    "description": "Dock Levelers, Truck Restraints and Dock Seals",
+    "website": "https://www.wbmcguire.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Meese Orbitron Dunne Co.",
+    "description": "Poly Self Dumping Hoppers, Large Poly Enclosed Carts",
+    "website": "https://www.meeseinc.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Metalware Corp",
+    "description": "Boltless Steel Shelving",
+    "website": "https://www.metalwareonline.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Milwaukee Truck",
+    "description": "Steel Hand Trucks",
+    "website": null,
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Modern Equipment Co. MECO",
+    "description": "Bar Racks, Cantilever Racks, Steel Warehouse Equipment",
+    "website": "https://www.meco-omaha.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Molded Fiberglass Tray Co.",
+    "description": "Molded Fiberglass Trays Standard Sizes and Custom",
+    "website": "https://www.mfgtray.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Morse Manufacturing Co., Inc.",
+    "description": "Drum Handling Equipment",
+    "website": "https://www.morsemfgco.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Motivation Industrial Equip, LTD.",
+    "description": "Cranes and Lifting Equipment",
+    "website": "https://www.motivation-industrial.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Mulhern Belting",
+    "description": "Conveyor Belting",
+    "website": "https://www.mulhernbelting.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Nansin Casters",
+    "description": "Casters, Wheels, and Dollies",
+    "website": "https://www.nansincasters.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Nasco Industries, Inc.",
+    "description": "Screw Feeders, Torque Tools, Tool Balancers",
+    "website": "https://www.nascoindust.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Nashville Wire Products",
+    "description": "Welded Wire Containers",
+    "website": "https://www.nashvillewire.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "National Partitions",
+    "description": "Modular Wall and Building Systems",
+    "website": "https://www.n-p.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Nexel",
+    "description": "Industrial, Commercial, and Food Service Wire Shelving",
+    "website": "https://www.nexelwire.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Nutting Industrial Trucks",
+    "description": "Heavy Duty Industrial Trucks and Casters",
+    "website": "https://www.acconutting.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Omni Metalcraft Corp",
+    "description": "Belt, Roller and Chain Conveyors and Transfers",
+    "website": "https://www.omni.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Orbis",
+    "description": "Plastic Totes, Pallets, and Bulk Containers",
+    "website": "https://www.orbiscorporation",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Orion Packaging Systems, Inc.",
+    "description": "Automatic and Semi-Automatic Stretch Wrapping Machines",
+    "website": "https://www.orionpackaging.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Parent Metal Products",
+    "description": "Steel Industrial Furniture, Shelving, and Storage Cabinets",
+    "website": "https://www.parentmetal.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Pawling Corporation",
+    "description": "Mats, Strip Curtains, Dock Bumpers, Parking Blocks",
+    "website": "https://www.pawling.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Payson Casters",
+    "description": "Heavy Duty Industrial Casters and Wheels",
+    "website": "https://www.paysoncasters.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Penco Products",
+    "description": "Steel Shelving, Lockers, Work Benches, Pallet Rack",
+    "website": "https://www.pencoproducts.com",
+    "categories": [
+      "industrial-furniture",
+      "racks",
+      "shelving"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Pentalift Equipment Corp.",
+    "description": "Loading Dock Equipment and Custom Lift Tables",
+    "website": "https://www.pentalift.com",
+    "categories": [
+      "dock-equipment",
+      "lifting-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Phillocraft",
+    "description": "Industrial Tables, Air Tables, Hi Tech Work Stations",
+    "website": "https://www.phillocraft.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Pollard Brothers Manufacturing Co., Inc.",
+    "description": "Steel Factory Equipment",
+    "website": "https://www.pollardbros.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Porta-King Building Systems",
+    "description": "Modular In Plant Offices, Mezzanines, Bus and Smoking Shelters",
+    "website": "https://www.portaking.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Power Storage Products",
+    "description": "Steel Lockers, Cabinets, Shelving",
+    "website": "https://www.powerstorage.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Poweramp",
+    "description": "Mechanical and Hydraulic Dock Levelers, Truck Restraints",
+    "website": "https://www.docksystemsinc.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Powers Industrial Equipment",
+    "description": "Albion and Faultless Casters",
+    "website": "https://www.powersind.net",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Pramac Industries",
+    "description": "Pallet Jacks and Stackers",
+    "website": "https://www.pramac.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Premier Plastics",
+    "description": "Polyethylene Work Stands",
+    "website": "https://www.durablebydesign.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Presto Lifts",
+    "description": "Lift Tables, Stackers, Die Handling Tables, Work Positioner",
+    "website": "https://www.prestolifts.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Pro-Line",
+    "description": "Modular Ergonomic Workstations",
+    "website": "https://www.1proline.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Protectoseal",
+    "description": "Safety Storage Cabinets, Safety Cans, Secondary Containment",
+    "website": "https://www.protectoseal.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Pucel Enterprises",
+    "description": "Grizzly Brand Cabinets, Welding Stations, Work Benches and Stands",
+    "website": "https://www.pucel-grizzly.com",
+    "categories": [
+      "hand-equipment",
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Quantum Storage Systems",
+    "description": "Plastic Bins and Bin Storage Systems",
+    "website": "https://www.quantumstorage.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "R & K Industrial Products",
+    "description": "All Kinds of Industrial Wheels",
+    "website": "https://www.rkwheels.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "R & M Materials Handling",
+    "description": "Chain Hoists and Trolleys",
+    "website": "https://www.rmhoists.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "R C Musson Rubber Co",
+    "description": "Mats and Matting, Replacement Stair Treads",
+    "website": "https://www.mussonrubber.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Rack Engineering",
+    "description": "Modular Cabinets, Custom Racks, Work Stations",
+    "website": "https://www.rack-eng.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Randolph Industrial Storage System",
+    "description": "Steel Bins Parts Storage",
+    "website": "https://www.randolphind.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Rapid Rack Industries",
+    "description": "Boltless Steel Shelving and Storage Systems",
+    "website": "https://www.rapidrack.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Raymond Products Co., Inc.",
+    "description": "Desk Movers, Panel Carts, Specialty Carts",
+    "website": "https://www.raymondproducts.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Reelcraft Industries",
+    "description": "Hose and Cable Reels",
+    "website": "https://www.reelcraft.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Regal Plastic Company",
+    "description": "Plastic Material Handling Containers",
+    "website": "https://www.regplas.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Rehrig International",
+    "description": "Plastic Platform and General Purpose Trucks",
+    "website": "https://www.rehrig.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Republic Storage Systems Company",
+    "description": "Steel Shelving, Pallet Rack and Lockers",
+    "website": "https://www.republicstorage.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Revvo Caster Co., Inc.",
+    "description": "Heavy Duty Industrial Casters",
+    "website": "https://www.revvocaster.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Richard Wilcox",
+    "description": "Overhead Rail Conveyor",
+    "website": "https://www.richardswilcox.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ridg-u-Rak",
+    "description": "Pallet Rack and bulk storage rack",
+    "website": "https://www.ridgurak.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Rol-A-Lift",
+    "description": "Machinery Mover",
+    "website": "https://www.rolalift.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Roll Stair – Liberty Manufacturing",
+    "description": "Rolling Ladders and Stepstools",
+    "website": "https://www.rollstair.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Roll-Away Conveyors",
+    "description": "Gravity Roller and Skatewheel Conveyors, Powered Roller and Belt Conveyors",
+    "website": "https://www.roll-away.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Roll-Master Corporation",
+    "description": "Casters and Wheels",
+    "website": "https://www.roll-master.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Rousseau Metal Products, Inc.",
+    "description": "Steel Shelving, Modular Drawer Units, Drawers for Shelving",
+    "website": "https://www.rousseaumetal.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Rubbermaid Commercial Products, LLC.",
+    "description": "Rubbermaid Containers and Janitorial Products",
+    "website": "https://www.rubbermaidcommercial.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ruger Equipment Co., Inc.",
+    "description": "Hydraulic Boom Lifts",
+    "website": "https://www.rugerequipment.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Safco Products Co.",
+    "description": "Office Ergonomic Equipment",
+    "website": "https://www.safcoproducts.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Safety Flag Co.",
+    "description": "Traffic Cones, Safety Products",
+    "website": "https://www.safetyflag.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Sandusky – Lee Corporation",
+    "description": "Steel Cabinets, Bookshelves, Flat Files, Utility Carts",
+    "website": "https://www.sanduskylee.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Save-A-Load",
+    "description": "Hydraulic Load Bars",
+    "website": "https://www.saveaload.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Save-ty Yellow Products",
+    "description": "Guard Rails, Bollards, Rack Guards, Column Protectors",
+    "website": "https://www.save-ty.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Schaefer Systems International, Inc.",
+    "description": "Steel and Plastic Storage Systems",
+    "website": "https://www.ssi.schaefer-us.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Scotland Rack",
+    "description": "Boltless Steel Shelving and Bulk Storage Rack",
+    "website": "https://www.scotlandrack.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Securall Safety Storage Equipment",
+    "description": "Cabinets for Flammable Storage, Acid, Paint, Hazardous Materials",
+    "website": "https://www.securallproducts.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Sethco",
+    "description": "Drum Pump",
+    "website": "https://www.sethco.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Shop-Vac Corporation",
+    "description": "Commercial and Industrial Vacuums",
+    "website": "https://www.shopvac.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Simplex Isolations Systems",
+    "description": "Strip Doors and Isolation Curtains",
+    "website": "https://www.simplexstripdoors.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Singer Safety Company",
+    "description": "Vinyl Strip Curtains and Welding Curtains, Industrial Barriers",
+    "website": "https://www.singersafety.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Skolnik Industries, Inc.",
+    "description": "Steel and Stainless Steel Drums",
+    "website": "https://www.skolnik.com",
+    "categories": [
+      "drum-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Smart Move",
+    "description": "Modular Conveyor Systems",
+    "website": "https://www.4smartmove.com",
+    "categories": [
+      "conveyors"
+    ],
+    "featured": false
+  },
+  {
+    "name": "SMO Packaging Products",
+    "description": "Steel and Plastic Strapping, Bubble Wrap, Carton Sealers",
+    "website": "https://www.smocatalog.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Southworth",
+    "description": "lift tables, turntables, pallet positioners",
+    "website": "https://www.southworthproducts.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Sovella, Inc.",
+    "description": "Ergonomic Workstations",
+    "website": "https://www.sovella.us",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Spanco",
+    "description": "Bridge Cranes, Jib Cranes",
+    "website": "https://www.spanco.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Speedrack Products Group",
+    "description": "Pallet Rack, Drive In/Thru Rack, Cantilever Rack",
+    "website": "https://www.speedrack.net",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Stackbin Corporation",
+    "description": "Steel Packing Stations and Workbenches",
+    "website": "https://www.stackbin.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Steel King Industries, Inc.",
+    "description": "Guard Rails, Machinery Guards, Pallet Rack",
+    "website": "https://www.steelking.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Steele Canvas Basket Co.",
+    "description": "Fabric and Polyethylene Bulk Trucks",
+    "website": "https://www.steele-canvas.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Steiner Industries",
+    "description": "Protective Clothing, Screens, Blankets, Curtains",
+    "website": "https://www.steinservicesupply.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Strong Hold Products",
+    "description": "Heavy Duty Storage Cabinets",
+    "website": "https://www.strong-hold.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Structural Plastics Corporation",
+    "description": "Structural Plastic Work Platforms and Elevated Flooring",
+    "website": "https://www.spcindustrial.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Superior Manufacturing Group",
+    "description": "Industrial and Ergonomic Matting",
+    "website": "https://www.notrax.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "SuperSeal Mfg. Ltd.",
+    "description": "High Speed Roll Up Doors, Dock Seals and Shelters",
+    "website": "https://www.supersealmfg.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Tennsco Corp",
+    "description": "Industrial Storage Products and Office Furniture",
+    "website": "https://www.tennsco.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "The Wise Company",
+    "description": "Industrial Seating, Fork Truck Seats",
+    "website": "https://www.wiseseats.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "TMI",
+    "description": "Air Doors, Air Curtains, Strip Doors, and Industrial Screens",
+    "website": "https://www.tmi-pvc.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Toter, Inc.",
+    "description": "Heavy Duty Plastic Tilt Trucks and Large Containers",
+    "website": "https://www.toter.com",
+    "categories": [
+      "poly-containers"
+    ],
+    "featured": false
+  },
+  {
+    "name": "TPI Corporation",
+    "description": "Industrial Fans, Electric Heaters, Work Lights",
+    "website": "https://www.tpicorp.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Tri-Arc",
+    "description": "Steel and Aluminum Rolling Ladders and Work Platforms",
+    "website": "https://www.tri-arc.com",
+    "categories": [
+      "ladders"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Tri-Boro Shelving",
+    "description": "Steel Shelving",
+    "website": "https://www.triboroshelving.com",
+    "categories": [
+      "shelving"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Tri-Lite Inc.",
+    "description": "Dock Lights, Warning Lights",
+    "website": "https://www.triliteinc.com",
+    "categories": [
+      "dock-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Triopines USA, Inc.",
+    "description": "Casters and Wheels",
+    "website": "https://www.triopines.com",
+    "categories": [
+      "casters-and-wheels"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Trynex International",
+    "description": "Fork Truck Mounted Warehouse Brooms",
+    "website": "https://www.sweepexproducts",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Turtle Plastics",
+    "description": "Industrial Plastic Floor Tile",
+    "website": "https://www.turtleplastics.com",
+    "categories": [
+      "matting"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Ultra Lift Corporation",
+    "description": "Stair Climbing Hand Truck Loads to 1500 # Capacity",
+    "website": "https://www.ultralift.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Unarco",
+    "description": "Pallet Rack, Flow Racks",
+    "website": "https://www.unarcorack.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Unex Mfg., Inc.",
+    "description": "Span Track Carton Flow Products",
+    "website": "https://www.unex.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "United Recepticles",
+    "description": "Commercial and Industrial Waste Receptacles",
+    "website": "https://www.unitedrecept.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Upright Inc.",
+    "description": "Spill Containment Products",
+    "website": "https://www.uprightinc.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Valley Craft Inc.",
+    "description": "Drum Handling Equipment, Fork Truck Attachments",
+    "website": "https://www.valleycraft.com",
+    "categories": [
+      "drum-equipment",
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Vestil Mfg., Inc.",
+    "description": "Ergonomic Products, Loading Dock Equipment, Material Handling Equipment, Drum Handling Equipment, Packaging Equipment",
+    "website": "https://www.vestilmfg.com",
+    "categories": [
+      "drum-equipment",
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "W. C. Cardinal Co",
+    "description": "Pushback, Drive-in, Drive-thru and Selective Roll Formed and Structural Pallet Racks",
+    "website": "https://www.wccardinal.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Wesco Manufacturing",
+    "description": "Drum Equipment, Hand Trucks, Pallet Jacks",
+    "website": "https://www.wescomfg.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Wesley International",
+    "description": "Pallet Mule Brand Pallet Jacks",
+    "website": "https://www.wesleyinternational.com",
+    "categories": [
+      "hand-equipment"
+    ],
+    "featured": false
+  },
+  {
+    "name": "Wildeck",
+    "description": "mezzanines and Vertical reciprocating conveyors",
+    "website": "https://www.wildeck.com",
+    "categories": [
+      "lifting-equipment"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Wirecrafters, Inc.",
+    "description": "Wire Partitioning",
+    "website": "https://www.wirecrafters.com",
+    "categories": [],
+    "featured": false
+  },
+  {
+    "name": "Wireway/Husky",
+    "description": "Pallet Rack and Wire Partitions",
+    "website": "https://www.wirewayhusky.com",
+    "categories": [
+      "racks"
+    ],
+    "featured": true
+  },
+  {
+    "name": "Wisconsin Bench",
+    "description": "All Kinds of Bench Tops",
+    "website": "https://www.wisconsinbench.com",
+    "categories": [
+      "industrial-furniture"
+    ],
+    "featured": false
+  }
+]

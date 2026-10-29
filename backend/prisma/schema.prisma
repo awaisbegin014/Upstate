@@ -1,0 +1,293 @@
+// Upstate Equipment Co. — store database.
+// Money is stored as integer cents everywhere to avoid floating point drift.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
+}
+
+// Prisma 7: the connection URL lives in prisma.config.ts (for the CLI) and is
+// supplied to PrismaClient through a driver adapter at runtime.
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT // card checkout started, waiting on Stripe
+  PLACED // received, not yet worked on
+  PROCESSING
+  READY_FOR_PICKUP
+  SHIPPED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CARD // Stripe Checkout
+  INVOICE // pay by invoice / check / at pickup
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUNDED
+}
+
+enum Fulfillment {
+  SHIPPING
+  PICKUP
+}
+
+enum InquiryKind {
+  QUOTE
+  CONTACT
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  CLOSED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  firstName    String
+  lastName     String
+  phone        String?
+  company      String?
+  role         Role     @default(CUSTOMER)
+  isActive     Boolean  @default(true)
+  /// Bumped on logout / password change to revoke outstanding tokens.
+  tokenVersion Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  cart   Cart?
+  orders Order[]
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  /// One-line summary shown on category cards.
+  tagline     String
+  description String
+  /// lucide icon key, see frontend/src/lib/category-icons.ts
+  icon        String   @default("package")
+  imageUrl    String?
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products Product[]
+  brands   Brand[]
+}
+
+/// A manufacturer / supplier Upstate sources from.
+model Brand {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String   @default("")
+  website     String?
+  /// Shown in the "Brands we carry" marquee.
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  categories Category[]
+  products   Product[]
+}
+
+model Product {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  sku              String   @unique
+  name             String
+  shortDescription String   @default("")
+  description      String   @default("")
+  priceCents       Int      @default(0)
+  /// Optional "was" price for showing a markdown.
+  compareAtCents   Int?
+  stock            Int      @default(0)
+  /// Engineered / installed items are priced per job: no cart, quote form instead.
+  isQuoteOnly      Boolean  @default(false)
+  isActive         Boolean  @default(true)
+  isFeatured       Boolean  @default(false)
+  /// e.g. "Ships same day", "Ships in 2–3 weeks"
+  leadTime         String?
+  weightLbs        Float?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  brandId    String?
+  brand      Brand?   @relation(fields: [brandId], references: [id], onDelete: SetNull)
+
+  images     ProductImage[]
+  specs      ProductSpec[]
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  @@index([categoryId])
+  @@index([brandId])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String  @default("")
+  sortOrder Int     @default(0)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+model ProductSpec {
+  id        String  @id @default(cuid())
+  label     String
+  value     String
+  sortOrder Int     @default(0)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+}
+
+/// A signed-in user's cart, or a guest cart identified by an httpOnly cookie.
+/// Guest carts are merged into the user's cart on sign-in.
+model Cart {
+  id         String     @id @default(cuid())
+  userId     String?    @unique
+  user       User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guestToken String?    @unique
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  items      CartItem[]
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  createdAt DateTime @default(now())
+  cartId    String
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, productId])
+}
+
+model Order {
+  id            String        @id @default(cuid())
+  /// Human-facing number, e.g. UE-100001.
+  number        String        @unique
+  status        OrderStatus   @default(PLACED)
+  paymentMethod PaymentMethod
+  paymentStatus PaymentStatus @default(UNPAID)
+  fulfillment   Fulfillment
+
+  email       String
+  phone       String
+  contactName String
+  company     String?
+  /// Customer purchase-order number, common for B2B buyers.
+  poNumber    String?
+  notes       String?
+  adminNote   String?
+
+  // Shipping address (empty for pickup orders).
+  shipLine1      String?
+  shipLine2      String?
+  shipCity       String?
+  shipState      String?
+  shipPostalCode String?
+
+  subtotalCents Int
+  shippingCents Int
+  taxCents      Int
+  totalCents    Int
+  /// Tax rate applied, in basis points (800 = 8%).
+  taxRateBps    Int
+
+  stripeSessionId       String? @unique
+  stripePaymentIntentId String?
+  paidAt                DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  userId String
+  user   User        @relation(fields: [userId], references: [id], onDelete: Restrict)
+  items  OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+/// A snapshot of the product at purchase time, so later catalog edits never
+/// change what an old order says.
+model OrderItem {
+  id             String   @id @default(cuid())
+  name           String
+  sku            String
+  imageUrl       String?
+  unitPriceCents Int
+  quantity       Int
+  lineTotalCents Int
+  orderId        String
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId      String?
+  product        Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+}
+
+/// Quote requests and contact-form messages.
+model Inquiry {
+  id          String        @id @default(cuid())
+  kind        InquiryKind   @default(CONTACT)
+  status      InquiryStatus @default(NEW)
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  subject     String?
+  message     String
+  /// Set when the quote was requested from a product page.
+  productSlug String?
+  productName String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status])
+}
+
+/// Single-row table (id = "store") holding admin-editable checkout settings.
+model StoreSettings {
+  id                         String   @id @default("store")
+  /// Basis points: 800 = 8.00%.
+  taxRateBps                 Int      @default(800)
+  flatShippingCents          Int      @default(4900)
+  /// 0 disables free shipping.
+  freeShippingThresholdCents Int      @default(100000)
+  pickupEnabled              Boolean  @default(true)
+  invoiceEnabled             Boolean  @default(true)
+  updatedAt                  DateTime @updatedAt
+}
+
+/// Monotonic counters (order numbers).
+model Counter {
+  id    String @id
+  value Int
+}

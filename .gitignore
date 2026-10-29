@@ -1,0 +1,31 @@
+# Dependencies & builds
+node_modules/
+dist/
+.next/
+out/
+*.tsbuildinfo
+coverage/
+
+# Environment (commit only the .example files)
+.env
+.env.*
+!.env.example
+
+# Backend runtime data
+backend/dev.db
+backend/dev.db-journal
+backend/*.db
+backend/uploads/*
+!backend/uploads/products/
+backend/uploads/products/*
+!backend/uploads/products/.gitkeep
+
+# Prisma client is generated on `npm install` (postinstall)
+backend/src/generated/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
