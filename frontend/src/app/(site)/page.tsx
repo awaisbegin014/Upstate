@@ -18,6 +18,7 @@ import {
 } from "@/components/site/blocks";
 import { ProductGridSkeleton } from "@/components/site/product-card";
 import { Reveal } from "@/components/site/reveal";
+import { SectionBoundary } from "@/components/site/section-boundary";
 import { Container, Eyebrow, SectionHeading } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
 import {
@@ -169,9 +170,11 @@ export default function HomePage() {
             />
           </Reveal>
           <div className="mt-14">
-            <Suspense fallback={<CategoryGridSkeleton />}>
-              <CategoryGrid />
-            </Suspense>
+            <SectionBoundary>
+              <Suspense fallback={<CategoryGridSkeleton />}>
+                <CategoryGrid />
+              </Suspense>
+            </SectionBoundary>
           </div>
         </Container>
       </section>
@@ -188,9 +191,11 @@ export default function HomePage() {
             </ButtonLink>
           </div>
           <div className="mt-12">
-            <Suspense fallback={<ProductGridSkeleton count={4} />}>
-              <FeaturedProducts />
-            </Suspense>
+            <SectionBoundary>
+              <Suspense fallback={<ProductGridSkeleton count={4} />}>
+                <FeaturedProducts />
+              </Suspense>
+            </SectionBoundary>
           </div>
         </Container>
       </section>
@@ -290,9 +295,11 @@ export default function HomePage() {
             </div>
           </Reveal>
         </Container>
-        <Suspense fallback={<BrandMarqueeFallback />}>
-          <BrandMarquee />
-        </Suspense>
+        <SectionBoundary fallback={<BrandMarqueeFallback />}>
+          <Suspense fallback={<BrandMarqueeFallback />}>
+            <BrandMarquee />
+          </Suspense>
+        </SectionBoundary>
         <div className="mt-10 text-center">
           <Link href="/brands" className="inline-flex items-center gap-2 font-semibold text-primary hover:text-white">
             See the full supplier directory <ArrowRight className="h-4 w-4" />

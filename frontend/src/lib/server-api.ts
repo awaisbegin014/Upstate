@@ -7,7 +7,17 @@ const API_URL = process.env.API_URL ?? "http://localhost:3001";
 
 /** One fetch per path per request, however many components ask for it. */
 const fetchJson = cache(async (path: string) => {
-  const res = await fetch(`${API_URL}/api${path}`, { cache: "no-store" });
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}/api${path}`, { cache: "no-store" });
+  } catch (e) {
+    // Connection refused / DNS failure: the API process isn't reachable.
+    console.error(
+      `[server-api] Could not reach the API at ${API_URL}. Is the backend running? (cd backend && npm run start:dev)`,
+      e,
+    );
+    throw new ApiError("The store is temporarily unavailable. Please try again shortly.", 503);
+  }
   if (!res.ok) {
     let message = `API request failed (${res.status})`;
     try {
