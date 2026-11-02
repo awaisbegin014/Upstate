@@ -3,16 +3,20 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import type { User } from "@/lib/types";
+import { useHydrated } from "./use-hydrated";
 
 export const SESSION_KEY = ["session"] as const;
 
-export function useSession() {
+/** The signed-in user. Reports "pending" until hydration so markup matches the server. */
+export function useSession(): { user: User | null; isPending: boolean } {
+  const hydrated = useHydrated();
   const query = useQuery({
     queryKey: SESSION_KEY,
     queryFn: () => api<{ user: User | null }>("/auth/session"),
     staleTime: 60_000,
   });
-  return { ...query, user: query.data?.user ?? null };
+  if (!hydrated) return { user: null, isPending: true };
+  return { user: query.data?.user ?? null, isPending: query.isPending };
 }
 
 /** Sign-in / sign-up / sign-out. Each refreshes the session and the cart (guest carts merge on sign-in). */

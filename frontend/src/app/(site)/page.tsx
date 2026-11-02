@@ -17,6 +17,7 @@ import {
   SameDayBand,
 } from "@/components/site/blocks";
 import { ProductGridSkeleton } from "@/components/site/product-card";
+import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
 import { SectionBoundary } from "@/components/site/section-boundary";
 import { Container, Eyebrow, SectionHeading } from "@/components/site/section";
@@ -36,7 +37,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-steel-950 pt-16">
+      <section className="relative flex min-h-svh items-center overflow-hidden bg-steel-950 pt-16">
         <Image
           src={heroImage}
           alt="Forklift moving pallets inside a fully racked warehouse"
@@ -49,7 +50,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-steel-950 via-steel-950/85 to-steel-950/30" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-steel-950 to-transparent" />
-        <Container className="relative py-24 text-left">
+        <Container className="relative py-16 text-left sm:py-24">
           <div className="max-w-2xl">
             <p
               className="hero-rise flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary"
@@ -59,7 +60,7 @@ export default function HomePage() {
               Schenectady, NY · Since 1990
             </p>
             <h1
-              className="hero-rise mt-6 font-display text-6xl leading-[0.95] tracking-wide text-white sm:text-7xl lg:text-8xl"
+              className="hero-rise mt-6 font-display text-[3.25rem] leading-[0.95] tracking-wide text-white sm:text-7xl lg:text-8xl"
               style={{ animationDelay: "250ms" }}
             >
               Everything that
@@ -69,7 +70,7 @@ export default function HomePage() {
               <span className="text-primary">facility.</span>
             </h1>
             <p
-              className="hero-rise mt-6 max-w-xl text-lg leading-relaxed text-white/80"
+              className="hero-rise mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
               style={{ animationDelay: "400ms" }}
             >
               Pallet rack, shelving, conveyors, dock equipment and more — designed, sourced, installed
@@ -101,7 +102,7 @@ export default function HomePage() {
         <a
           href="#about"
           aria-label="Scroll to content"
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-cue text-white/60 transition-colors hover:text-primary"
+          className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-cue text-white/60 transition-colors hover:text-primary sm:block"
         >
           <ChevronDown className="h-8 w-8" />
         </a>
@@ -348,6 +349,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <ProjectsTeaser />
 
       {/* Service area */}
       <section className="bg-background py-24">

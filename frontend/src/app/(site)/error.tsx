@@ -13,8 +13,8 @@ export default function SiteError({ error, retry }: { error: unknown; retry: () 
   }, [error]);
 
   return (
-    <section className="bg-steel-950 pt-16 text-white">
-      <Container className="py-28 text-center">
+    <section className="flex min-h-svh items-center bg-steel-950 pt-16 text-white">
+      <Container className="py-20 text-center">
         <p className="font-display text-7xl tracking-wide text-primary">Hold up.</p>
         <h1 className="mt-4 font-display text-4xl tracking-wide sm:text-5xl">This page couldn&apos;t load.</h1>
         <p className="mx-auto mt-4 max-w-md text-white/70">

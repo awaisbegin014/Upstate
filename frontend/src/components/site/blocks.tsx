@@ -1,10 +1,22 @@
-import { ArrowRight, ArrowUpRight, ChevronDown, CircleCheck, MapPin, Phone, Printer } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
+  CircleCheck,
+  MapPin,
+  Phone,
+  Printer,
+  Receipt,
+  Store,
+  Truck,
+} from "lucide-react";
 import Link from "next/link";
 import { Icon } from "@/components/icon";
 import { ButtonLink } from "@/components/ui/button";
+import { money } from "@/lib/format";
 import { serverApi } from "@/lib/server-api";
 import { faqs, site } from "@/lib/site";
-import type { Brand, Category, Page, ProductCard } from "@/lib/types";
+import type { Brand, Category, Page, ProductCard, StoreSettings } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ProductGrid } from "./product-card";
 import { Reveal } from "./reveal";
@@ -92,7 +104,92 @@ export function BrandMarqueeFallback() {
   return <BrandMarqueeTrack names={FALLBACK_BRANDS} />;
 }
 
+/** Category chips for heroes — jump straight to a department. */
+export async function HeroCategoryLinks() {
+  const categories = await serverApi<Category[]>("/categories");
+  return (
+    // Hidden on phones, where the shop's own category chip row sits right below the hero.
+    <div className="mt-8 hidden max-w-3xl flex-wrap gap-2 sm:flex">
+      {categories.map((c) => (
+        <Link
+          key={c.id}
+          href={`/shop/${c.slug}`}
+          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-sm font-medium text-white/85 backdrop-blur transition-colors hover:border-primary hover:text-primary"
+        >
+          <Icon name={c.icon} className="h-4 w-4" />
+          {c.name}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Shipping, pickup, payment and help — read from the live store settings so
+ * it always matches what checkout actually offers.
+ */
+export async function OrderingInfo({ className }: { className?: string }) {
+  const s = await serverApi<StoreSettings>("/store/settings");
+  const shipping =
+    s.freeShippingThresholdCents > 0
+      ? `Flat ${money(s.flatShippingCents)} per order, free on orders over ${money(s.freeShippingThresholdCents)}.`
+      : `Flat ${money(s.flatShippingCents)} per order to your facility.`;
+  const payment =
+    s.paymentMethods.card && s.paymentMethods.invoice
+      ? "Pay securely by card, or choose pay on invoice and add your PO number."
+      : s.paymentMethods.invoice
+        ? "Order now and pay on invoice — add your PO number at checkout."
+        : "Pay securely by credit or debit card at checkout.";
+  const cards = [
+    { icon: Truck, title: "Shipping", body: shipping },
+    ...(s.pickupEnabled
+      ? [{ icon: Store, title: "Local pickup", body: `Free pickup at ${site.address.street}, ${site.address.city}. We call when it's ready.` }]
+      : []),
+    { icon: Receipt, title: "Payment", body: payment },
+    { icon: Phone, title: "Real help", body: `Not sure what fits? Call ${site.phone.display} and talk to someone who knows warehouses.` },
+  ];
+  return (
+    <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-4", className)}>
+      {cards.map((c) => (
+        <div key={c.title} className="rounded-xl border bg-card p-5">
+          <c.icon className="h-6 w-6 text-foreground/70" />
+          <h3 className="mt-3 font-bold">{c.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ---------------------------------------------------------- static sections
+
+/** "We sell far more than we list" call-out for shop and brand pages. */
+export function SourcingBand() {
+  return (
+    <section className="bg-steel-950 py-16 text-white">
+      <Container className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+        <div className="max-w-2xl">
+          <Eyebrow tone="primary">Can&apos;t find it?</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl leading-none tracking-wide sm:text-5xl">
+            We carry far more than we list online.
+          </h2>
+          <p className="mt-4 text-white/70">
+            We source from 200+ manufacturers. Send us a part number, a photo or just a description and
+            we&apos;ll track it down — or design a complete system around it.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <ButtonLink href="/contact?type=quote" size="lg">
+            Request a quote <ArrowRight className="h-5 w-5" />
+          </ButtonLink>
+          <ButtonLink href="/brands" variant="outline-light" size="lg">
+            Browse brands
+          </ButtonLink>
+        </div>
+      </Container>
+    </section>
+  );
+}
 
 export function CheckList({ items, className }: { items: readonly string[]; className?: string }) {
   return (

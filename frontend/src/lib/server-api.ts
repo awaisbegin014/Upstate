@@ -11,7 +11,10 @@ const fetchJson = cache(async (path: string) => {
   try {
     res = await fetch(`${API_URL}/api${path}`, { cache: "no-store" });
   } catch (e) {
-    // Connection refused / DNS failure: the API process isn't reachable.
+    // Only translate real network failures (undici reports them as
+    // `TypeError: fetch failed`). Anything else — notably the rejection Next
+    // uses to end a prerender — must propagate untouched.
+    if (!(e instanceof TypeError && e.message === "fetch failed")) throw e;
     console.error(
       `[server-api] Could not reach the API at ${API_URL}. Is the backend running? (cd backend && npm run start:dev)`,
       e,

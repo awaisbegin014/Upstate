@@ -166,6 +166,66 @@ export const faqs = [
   },
 ];
 
+/** From the original site's description of what Upstate distributes and installs. */
+export const equipmentWeSupply = [
+  "Hand trucks",
+  "Pallet jacks",
+  "Cargo restraints",
+  "Lift tables",
+  "Shelving",
+  "Pallet rack",
+  "Lockers",
+  "Cabinets",
+  "Carts",
+  "Work tables",
+  "Conveyors",
+  "Dock equipment",
+  "Industrial doors",
+  "Mezzanines",
+  "Storage systems",
+  "Ergonomic equipment",
+];
+
+/** Company milestones drawn from upstateeq.com. */
+export const milestones = [
+  {
+    label: "June 1990",
+    title: "Founded in Schenectady",
+    body: "Upstate Equipment Company opens on Crane Street to serve the material handling needs of Upstate New York businesses.",
+  },
+  {
+    label: "Magliner",
+    title: "Hand truck specialists",
+    body: "We build the largest inventory of Magliner hand trucks and parts north of New York City — and the 800.7.MAGLINE line to go with it.",
+  },
+  {
+    label: "Catalog",
+    title: "An online catalog",
+    body: "We add an online product catalog so customers can browse equipment from the manufacturers we represent.",
+  },
+  {
+    label: "Today",
+    title: "Order online",
+    body: "Stocked equipment can be ordered online, while engineered systems are still designed, quoted and installed by our team.",
+  },
+];
+
+/** What happens after someone sends the contact / quote form. */
+export const nextSteps = [
+  {
+    title: "We read every request",
+    body: "Your message goes straight to our sales team — not a call center or a chatbot.",
+  },
+  {
+    title: "We call or visit",
+    body: "For bigger projects we'll walk your floor, measure and talk through how your operation runs.",
+  },
+  {
+    title: "You get a clear quote",
+    body: "A layout where it helps, and an itemized proposal with lead times and installation.",
+  },
+];
+
 /** Service lines from the original Services page, with the suppliers named there. */
 export const serviceLines = [
   {

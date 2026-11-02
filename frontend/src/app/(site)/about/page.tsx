@@ -1,11 +1,12 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowDown, ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { Icon } from "@/components/icon";
 import { CheckList, CtaBand, FaqSection } from "@/components/site/blocks";
+import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
-import { Container, Eyebrow, PageHero, SectionHeading } from "@/components/site/section";
+import { Container, Eyebrow, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
-import { aboutPoints, serviceAreas, stats, whyUpstate } from "@/lib/site";
+import { aboutPoints, milestones, serviceAreas, site, stats, whyUpstate } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -21,7 +22,17 @@ export default function AboutPage() {
         title="Keeping Upstate New York moving since 1990."
         intro="Upstate Equipment Company has been serving the material handling equipment needs of Upstate New York businesses since its founding in June of 1990."
         image="/images/hand-trucks.jpg"
-      />
+        highlights={["Family-run since 1990", "Based on Crane Street, Schenectady", "Design · Install · Service"]}
+      >
+        <HeroActions>
+          <ButtonLink href="#after-hero" size="lg">
+            Our story <ArrowDown className="h-5 w-5" />
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="outline-light" size="lg">
+            Talk to our team <ArrowRight className="h-5 w-5" />
+          </ButtonLink>
+        </HeroActions>
+      </PageHero>
 
       <section className="border-b border-white/10 bg-steel-900 py-10 text-white">
         <Container className="grid grid-cols-2 gap-8 lg:grid-cols-4">
@@ -62,6 +73,28 @@ export default function AboutPage() {
               <div className="absolute inset-x-0 bottom-0 h-1.5 bg-primary" />
             </div>
           </Reveal>
+        </Container>
+      </section>
+
+      {/* Story */}
+      <section className="bg-steel-950 py-24 text-white">
+        <Container>
+          <Reveal>
+            <SectionHeading dark eyebrow="Our story" title="Three decades on Crane Street." />
+          </Reveal>
+          <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {milestones.map((m, i) => (
+              <li key={m.title}>
+                <Reveal delay={i * 100} className="h-full">
+                  <div className="h-full rounded-xl border border-white/10 bg-steel-900 p-6">
+                    <div className="font-display text-3xl tracking-wide text-primary">{m.label}</div>
+                    <h3 className="mt-3 text-lg font-bold">{m.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/65">{m.body}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
         </Container>
       </section>
 
@@ -112,6 +145,47 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Team */}
+      <section className="bg-secondary py-24">
+        <Container className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Talk to our team"
+              title="Real people, direct lines."
+              intro="Email us directly or call the main line — you'll reach people who know warehouses, not a call center."
+            />
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {site.contacts.map((c, i) => (
+              <Reveal key={c.email} delay={i * 100}>
+                <div className="h-full rounded-xl border bg-card p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-steel-950 font-display text-xl tracking-wide text-primary">
+                    {c.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                  <h3 className="mt-4 text-lg font-bold">{c.name}</h3>
+                  <a
+                    href={`mailto:${c.email}`}
+                    className="mt-1 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+                  >
+                    <Mail className="h-4 w-4" /> {c.email}
+                  </a>
+                  <a
+                    href={site.phone.href}
+                    className="mt-1 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+                  >
+                    <Phone className="h-4 w-4" /> {site.phone.display}
+                  </a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <ProjectsTeaser />
       <FaqSection />
       <CtaBand />
     </>

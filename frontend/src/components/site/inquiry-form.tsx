@@ -34,8 +34,8 @@ export function InquiryForm({ product, defaultKind = "QUOTE", dark }: Props) {
         <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
         <h3 className="mt-4 font-display text-3xl tracking-wide">Thanks — we got it.</h3>
         <p className={cn("mt-2", dark ? "text-white/70" : "text-muted-foreground")}>
-          Someone from our team will get back to you, usually within one business day. Need it
-          faster? Call 518.370.7000.
+          Someone from our team will get back to you as soon as possible. Need it faster? Call
+          518.370.7000.
         </p>
       </div>
     );

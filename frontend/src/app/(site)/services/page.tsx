@@ -2,11 +2,12 @@ import { ArrowRight, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icon";
-import { CheckList, CtaBand } from "@/components/site/blocks";
+import { CheckList, CtaBand, FaqSection } from "@/components/site/blocks";
+import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
-import { Container, Eyebrow, PageHero, SectionHeading } from "@/components/site/section";
+import { Container, Eyebrow, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
-import { howItWorks, serviceLines, serviceSteps, site } from "@/lib/site";
+import { equipmentWeSupply, howItWorks, serviceLines, serviceSteps, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -23,8 +24,9 @@ export default function ServicesPage() {
         title="Upstate Equipment for all your material handling needs."
         intro="Much more than a sales organization — we help you design, lay out, source, install and service everything from dock equipment and pallet rack to conveyor systems and ergonomics."
         image="/images/loading-dock.jpg"
+        highlights={["Design · Install · Service", "On-site measuring & layout", "Serving Upstate NY since 1990"]}
       >
-        <div className="hero-rise mt-8 flex flex-wrap gap-4" style={{ animationDelay: "360ms" }}>
+        <HeroActions>
           <ButtonLink href="/contact?type=quote" size="lg">
             Request a site visit <ArrowRight className="h-5 w-5" />
           </ButtonLink>
@@ -34,7 +36,18 @@ export default function ServicesPage() {
           >
             <Phone className="h-5 w-5" /> {site.phone.display}
           </a>
-        </div>
+        </HeroActions>
+        <nav aria-label="Services on this page" className="mt-8 hidden max-w-3xl flex-wrap gap-2 sm:flex">
+          {serviceLines.map((line) => (
+            <a
+              key={line.id}
+              href={`#${line.id}`}
+              className="rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-sm font-medium text-white/85 backdrop-blur transition-colors hover:border-primary hover:text-primary"
+            >
+              {line.title}
+            </a>
+          ))}
+        </nav>
       </PageHero>
 
       {/* Process */}
@@ -100,6 +113,32 @@ export default function ServicesPage() {
         </section>
       ))}
 
+      {/* Equipment list from the original site */}
+      <section className="bg-steel-950 py-20 text-white">
+        <Container className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
+          <Reveal>
+            <SectionHeading
+              dark
+              eyebrow="What we supply"
+              title="Distributor, designer and installer."
+              intro="A stocking distributor of material handling, storage and dock equipment — with design and installation service for all of it."
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <ul className="flex flex-wrap gap-3">
+              {equipmentWeSupply.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-md border border-white/15 bg-steel-900 px-4 py-2.5 font-display text-xl tracking-wider text-white/85"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </Container>
+      </section>
+
       {/* How it works */}
       <section className="bg-background py-24">
         <Container>
@@ -120,6 +159,8 @@ export default function ServicesPage() {
         </Container>
       </section>
 
+      <ProjectsTeaser className="bg-secondary py-24" picks={[3, 7, 12]} />
+      <FaqSection className="bg-background" />
       <CtaBand />
     </>
   );

@@ -3,13 +3,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { AddToCart } from "@/components/site/add-to-cart";
+import { OrderingInfo } from "@/components/site/blocks";
+import { SectionBoundary } from "@/components/site/section-boundary";
 import { InquiryForm } from "@/components/site/inquiry-form";
 import { Price, ProductGrid, StockBadge } from "@/components/site/product-card";
 import { ProductGallery } from "@/components/site/product-gallery";
 import { Container } from "@/components/site/section";
 import { serverApi, serverApiOr404 } from "@/lib/server-api";
 import { site } from "@/lib/site";
-import type { ProductDetail } from "@/lib/types";
+import type { ProductDetail, StoreSettings } from "@/lib/types";
 
 export async function generateMetadata({ params }: PageProps<"/products/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -50,7 +52,20 @@ function ProductSkeleton() {
 
 async function ProductContent({ params }: { params: PageProps<"/products/[slug]">["params"] }) {
   const { slug } = await params;
-  const p = await serverApiOr404<ProductDetail>(`/products/${slug}`);
+  const [p, settings] = await Promise.all([
+    serverApiOr404<ProductDetail>(`/products/${slug}`),
+    serverApi<StoreSettings>("/store/settings").catch(() => null),
+  ]);
+  const payment = !settings
+    ? "Order online or call to arrange payment"
+    : settings.paymentMethods.card && settings.paymentMethods.invoice
+      ? "Pay by card or on invoice with your PO"
+      : settings.paymentMethods.invoice
+        ? "Pay on invoice — add your PO at checkout"
+        : "Secure card checkout";
+  const delivery = settings?.pickupEnabled
+    ? "Ship across Upstate NY or pick up in Schenectady"
+    : "Shipped to your facility across Upstate NY";
 
   return (
     <>
@@ -108,7 +123,7 @@ async function ProductContent({ params }: { params: PageProps<"/products/[slug]"
           <ul className="mt-10 grid gap-4 rounded-xl border bg-secondary/60 p-5 text-sm sm:grid-cols-3">
             <li className="flex gap-3">
               <Truck className="h-5 w-5 shrink-0 text-foreground/70" />
-              <span>Ship across Upstate NY or pick up in Schenectady</span>
+              <span>{delivery}</span>
             </li>
             <li className="flex gap-3">
               <Clock className="h-5 w-5 shrink-0 text-foreground/70" />
@@ -116,7 +131,7 @@ async function ProductContent({ params }: { params: PageProps<"/products/[slug]"
             </li>
             <li className="flex gap-3">
               <ShieldCheck className="h-5 w-5 shrink-0 text-foreground/70" />
-              <span>Pay by card or on invoice with your PO</span>
+              <span>{payment}</span>
             </li>
           </ul>
 
@@ -190,6 +205,31 @@ async function ProductContent({ params }: { params: PageProps<"/products/[slug]"
           </Container>
         </section>
       )}
+
+      <section className="border-t bg-secondary py-16">
+        <Container>
+          <h2 className="font-display text-4xl tracking-wide">Ordering &amp; delivery</h2>
+          <SectionBoundary fallback={null}>
+            <Suspense fallback={<div className="mt-8 h-40 animate-pulse rounded-xl bg-card" />}>
+              <OrderingInfo className="mt-8" />
+            </Suspense>
+          </SectionBoundary>
+          <div className="mt-6 flex flex-col items-start justify-between gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center">
+            <div>
+              <h3 className="font-bold">Need it installed or built into a larger system?</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                We design, lay out and install racking, conveyors, mezzanines and dock equipment across Upstate NY.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex shrink-0 items-center gap-2 rounded-md bg-steel-950 px-5 py-3 text-sm font-bold text-primary"
+            >
+              Our services <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </Container>
+      </section>
 
       {p.related.length > 0 && (
         <section className="bg-secondary py-16">

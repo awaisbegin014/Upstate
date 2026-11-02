@@ -1,10 +1,12 @@
-import { Clock, Mail } from "lucide-react";
+import { ArrowDown, Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { ContactCards } from "@/components/site/blocks";
+import { ContactCards, FaqSection } from "@/components/site/blocks";
 import { InquiryForm } from "@/components/site/inquiry-form";
-import { Container, PageHero } from "@/components/site/section";
-import { site } from "@/lib/site";
+import { Reveal } from "@/components/site/reveal";
+import { Container, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
+import { ButtonLink } from "@/components/ui/button";
+import { nextSteps, serviceAreas, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us & Request a Quote",
@@ -23,21 +25,37 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
       <PageHero
         eyebrow="Contact us"
         title="Talk to a material handling pro today."
-        intro="Tell us what's moving — or what's stuck — and we'll take it from there."
-      />
-      <section className="bg-steel-950 pb-16 text-white">
+        intro="Tell us what's moving — or what's stuck — and we'll take it from there. Call, email or send the form below."
+        image="/images/hero-warehouse.jpg"
+        highlights={[
+          `${site.address.street}, ${site.address.city}, ${site.address.state}`,
+          `Toll free ${site.tollFree.display}`,
+          `Fax ${site.fax}`,
+        ]}
+      >
+        <HeroActions>
+          <ButtonLink href={site.phone.href} size="lg">
+            <Phone className="h-5 w-5" /> Call {site.phone.display}
+          </ButtonLink>
+          <ButtonLink href="#quote-form" variant="outline-light" size="lg">
+            Send a message <ArrowDown className="h-5 w-5" />
+          </ButtonLink>
+        </HeroActions>
+      </PageHero>
+
+      <section className="bg-steel-950 py-16 text-white">
         <Container>
           <ContactCards />
         </Container>
       </section>
 
-      <section className="bg-background py-20">
+      <section id="quote-form" className="scroll-mt-16 bg-background py-20">
         <Container className="grid gap-12 lg:grid-cols-[1fr_400px]">
           <div>
             <h2 className="font-display text-5xl tracking-wide">Request a quote or ask a question</h2>
             <p className="mt-3 text-muted-foreground">
-              Include equipment, quantities, dimensions and your timeline — or just describe the
-              problem. We usually reply within one business day.
+              Include equipment, quantities, dimensions and your timeline — or just describe the problem.
+              Photos or drawings help; mention them and we&apos;ll reply with where to send them.
             </p>
             <div className="mt-8">
               <Suspense fallback={<InquiryForm />}>
@@ -82,6 +100,51 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
           </aside>
         </Container>
       </section>
+
+      {/* What happens next */}
+      <section className="bg-secondary py-24">
+        <Container>
+          <Reveal>
+            <SectionHeading eyebrow="What happens next" title="No runaround, just answers." />
+          </Reveal>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {nextSteps.map((s, i) => (
+              <Reveal key={s.title} delay={i * 100}>
+                <div className="border-t-4 border-primary pt-6">
+                  <div className="font-display text-5xl text-foreground/15">{String(i + 1).padStart(2, "0")}</div>
+                  <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Service area */}
+      <section className="bg-background py-24">
+        <Container className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Where we work"
+              title="Throughout Upstate New York."
+              intro="The Capital Region and beyond, plus nearby western New England. If you're close enough to call us, we'll get there."
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="flex flex-wrap gap-3">
+              {serviceAreas.map((a) => (
+                <span key={a} className="inline-flex items-center gap-2 rounded-full border bg-card px-4 py-2 text-sm font-semibold">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  {a}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <FaqSection />
     </>
   );
 }

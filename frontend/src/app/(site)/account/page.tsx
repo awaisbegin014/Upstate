@@ -13,6 +13,7 @@ import { Field, Input } from "@/components/ui/field";
 import { SESSION_KEY, useAuthActions, useSession } from "@/hooks/use-session";
 import { api } from "@/lib/api";
 import { date, money } from "@/lib/format";
+import { site } from "@/lib/site";
 import type { Order, User } from "@/lib/types";
 
 type OrderRow = Pick<Order, "id" | "number" | "status" | "totalCents" | "createdAt"> & {
@@ -175,6 +176,28 @@ export default function AccountPage() {
           <section>
             <h2 className="mb-4 text-lg font-bold">Order history</h2>
             <Orders />
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border bg-card p-5">
+                <h3 className="font-bold">Questions about an order?</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Call {site.phone.display} with your order number, or email{" "}
+                  <a href={`mailto:${site.contacts[0].email}`} className="underline underline-offset-4">
+                    {site.contacts[0].email}
+                  </a>
+                  .
+                </p>
+              </div>
+              <div className="rounded-xl border bg-card p-5">
+                <h3 className="font-bold">Planning something bigger?</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Racking, mezzanines, conveyors and dock equipment are quoted per job.{" "}
+                  <Link href="/contact?type=quote" className="font-semibold text-foreground underline underline-offset-4">
+                    Request a quote
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
           </section>
           <Profile user={user} />
         </div>
