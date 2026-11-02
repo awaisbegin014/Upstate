@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HeroCategoryLinks, OrderingInfo, SourcingBand } from "@/components/site/blocks";
 import { SectionBoundary } from "@/components/site/section-boundary";
-import { Container, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
+import { Container, HERO, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
 import { ShopView } from "@/components/site/shop";
 import { ButtonLink } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Shop Material Handling Equipment",
@@ -32,7 +33,7 @@ export default function ShopPage({ searchParams }: PageProps<"/shop">) {
           </ButtonLink>
         </HeroActions>
         <SectionBoundary fallback={null}>
-          <Suspense fallback={<div className="mt-8 h-24 max-w-3xl" />}>
+          <Suspense fallback={<div className={cn("hidden h-16 sm:block", HERO.chips)} />}>
             <HeroCategoryLinks />
           </Suspense>
         </SectionBoundary>

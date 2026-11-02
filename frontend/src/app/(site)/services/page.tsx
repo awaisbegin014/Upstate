@@ -5,7 +5,15 @@ import { Icon } from "@/components/icon";
 import { CheckList, CtaBand, FaqSection } from "@/components/site/blocks";
 import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
-import { Container, Eyebrow, HeroActions, PageHero, SectionHeading } from "@/components/site/section";
+import {
+  Container,
+  Eyebrow,
+  HeroActions,
+  HeroChips,
+  heroChipClass,
+  PageHero,
+  SectionHeading,
+} from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
 import { equipmentWeSupply, howItWorks, serviceLines, serviceSteps, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -37,17 +45,13 @@ export default function ServicesPage() {
             <Phone className="h-5 w-5" /> {site.phone.display}
           </a>
         </HeroActions>
-        <nav aria-label="Services on this page" className="mt-8 hidden max-w-3xl flex-wrap gap-2 sm:flex">
+        <HeroChips label="Services on this page">
           {serviceLines.map((line) => (
-            <a
-              key={line.id}
-              href={`#${line.id}`}
-              className="rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-sm font-medium text-white/85 backdrop-blur transition-colors hover:border-primary hover:text-primary"
-            >
+            <a key={line.id} href={`#${line.id}`} className={heroChipClass}>
               {line.title}
             </a>
           ))}
-        </nav>
+        </HeroChips>
       </PageHero>
 
       {/* Process */}

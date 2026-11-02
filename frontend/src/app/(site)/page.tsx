@@ -20,7 +20,7 @@ import { ProductGridSkeleton } from "@/components/site/product-card";
 import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
 import { SectionBoundary } from "@/components/site/section-boundary";
-import { Container, Eyebrow, SectionHeading } from "@/components/site/section";
+import { Container, Eyebrow, HERO, SectionHeading } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
 import {
   aboutPoints,
@@ -31,6 +31,7 @@ import {
   stats,
   whyUpstate,
 } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import heroImage from "../../../public/images/hero-warehouse.jpg";
 
 export default function HomePage() {
@@ -50,17 +51,18 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-steel-950 via-steel-950/85 to-steel-950/30" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-steel-950 to-transparent" />
-        <Container className="relative py-16 text-left sm:py-24">
+        <Container className={cn(HERO.container, "text-left")}>
           <div className="max-w-2xl">
             <p
-              className="hero-rise flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary"
+              className="hero-rise flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm sm:tracking-[0.25em]"
               style={{ animationDelay: "100ms" }}
             >
-              <span className="h-px w-10 bg-primary" />
+              <span className="h-px w-10 shrink-0 bg-primary" />
               Schenectady, NY · Since 1990
             </p>
+            {/* Three forced lines, so the height cap is a little tighter than PageHero's. */}
             <h1
-              className="hero-rise mt-6 font-display text-[3.25rem] leading-[0.95] tracking-wide text-white sm:text-7xl lg:text-8xl"
+              className="hero-rise mt-[clamp(0.75rem,2.5svh,1.5rem)] font-display text-[clamp(2.5rem,min(13vw,7.5svh),3.25rem)] leading-[0.95] tracking-wide text-white sm:text-[clamp(2.75rem,8.5svh,4.5rem)] lg:text-[clamp(3rem,9.5svh,6rem)]"
               style={{ animationDelay: "250ms" }}
             >
               Everything that
@@ -70,14 +72,17 @@ export default function HomePage() {
               <span className="text-primary">facility.</span>
             </h1>
             <p
-              className="hero-rise mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+              className={cn("hero-rise max-w-xl leading-relaxed text-white/80", HERO.intro, HERO.gapIntro)}
               style={{ animationDelay: "400ms" }}
             >
               Pallet rack, shelving, conveyors, dock equipment and more — designed, sourced, installed
               and serviced by Upstate New York&apos;s material handling specialists. Now with online
               ordering for stocked equipment.
             </p>
-            <div className="hero-rise mt-10 flex flex-wrap items-center gap-4" style={{ animationDelay: "550ms" }}>
+            <div
+              className={cn("hero-rise flex flex-wrap items-center gap-3 sm:gap-4", HERO.actions)}
+              style={{ animationDelay: "550ms" }}
+            >
               <ButtonLink href="/shop" size="lg" className="shadow-lg hover:-translate-y-1">
                 Shop equipment <ArrowRight className="h-5 w-5" />
               </ButtonLink>
@@ -86,7 +91,7 @@ export default function HomePage() {
               </ButtonLink>
             </div>
             <div
-              className="hero-rise mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/70"
+              className={cn("hero-rise flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/70", HERO.highlights)}
               style={{ animationDelay: "700ms" }}
             >
               {["Design · Install · Service", "Same-day hand truck shipping", "35+ years serving Upstate NY"].map(
@@ -102,7 +107,10 @@ export default function HomePage() {
         <a
           href="#about"
           aria-label="Scroll to content"
-          className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-cue text-white/60 transition-colors hover:text-primary sm:block"
+          className={cn(
+            "absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-cue text-white/60 transition-colors hover:text-primary sm:block",
+            HERO.cue,
+          )}
         >
           <ChevronDown className="h-8 w-8" />
         </a>

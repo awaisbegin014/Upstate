@@ -20,7 +20,7 @@ import type { Brand, Category, Page, ProductCard, StoreSettings } from "@/lib/ty
 import { cn } from "@/lib/utils";
 import { ProductGrid } from "./product-card";
 import { Reveal } from "./reveal";
-import { Container, Eyebrow } from "./section";
+import { Container, Eyebrow, HeroChips, heroChipClass } from "./section";
 
 // ------------------------------------------------------------ data sections
 
@@ -107,20 +107,16 @@ export function BrandMarqueeFallback() {
 /** Category chips for heroes — jump straight to a department. */
 export async function HeroCategoryLinks() {
   const categories = await serverApi<Category[]>("/categories");
+  // Hidden on phones (HeroChips), where the shop's own category row sits right below the hero.
   return (
-    // Hidden on phones, where the shop's own category chip row sits right below the hero.
-    <div className="mt-8 hidden max-w-3xl flex-wrap gap-2 sm:flex">
+    <HeroChips label="Shop by category">
       {categories.map((c) => (
-        <Link
-          key={c.id}
-          href={`/shop/${c.slug}`}
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3.5 py-2 text-sm font-medium text-white/85 backdrop-blur transition-colors hover:border-primary hover:text-primary"
-        >
+        <Link key={c.id} href={`/shop/${c.slug}`} className={heroChipClass}>
           <Icon name={c.icon} className="h-4 w-4" />
           {c.name}
         </Link>
       ))}
-    </div>
+    </HeroChips>
   );
 }
 
