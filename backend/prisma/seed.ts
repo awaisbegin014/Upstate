@@ -94,38 +94,70 @@ async function main() {
   // Store settings
   await prisma.storeSettings.upsert({ where: { id: 'store' }, create: { id: 'store' }, update: {} });
 
-  // Products (create only)
-  let created = 0;
+  // Products
+  let seededProducts = 0;
+  let seededImages = 0;
   for (const p of products) {
-    if (await prisma.product.findUnique({ where: { sku: p.sku }, select: { id: true } })) continue;
     const categoryId = categoryIds.get(p.category);
     if (!categoryId) throw new Error(`Unknown category ${p.category} for ${p.sku}`);
     const brandId = brandIds.get(p.brand);
     if (!brandId) console.warn(`! brand "${p.brand}" not found for ${p.sku}`);
-    await prisma.product.create({
-      data: {
-        sku: p.sku,
-        slug: slugify(p.name),
-        name: p.name,
-        shortDescription: p.short,
-        description: p.description,
-        priceCents: Math.round(p.price * 100),
-        compareAtCents: p.compareAt ? Math.round(p.compareAt * 100) : null,
-        stock: p.stock,
-        isQuoteOnly: p.quoteOnly ?? false,
-        isFeatured: p.featured ?? false,
-        leadTime: p.leadTime ?? null,
-        weightLbs: p.weight ?? null,
-        categoryId,
-        brandId: brandId ?? null,
-        specs: {
-          create: p.specs.map(([label, value], i) => ({ label, value, sortOrder: i })),
-        },
-      },
+
+    let product = await prisma.product.findUnique({
+      where: { sku: p.sku },
+      select: { id: true },
     });
-    created++;
+
+    if (!product) {
+      product = await prisma.product.create({
+        data: {
+          sku: p.sku,
+          slug: slugify(p.name),
+          name: p.name,
+          shortDescription: p.short,
+          description: p.description,
+          priceCents: Math.round(p.price * 100),
+          compareAtCents: p.compareAt ? Math.round(p.compareAt * 100) : null,
+          stock: p.stock,
+          isQuoteOnly: p.quoteOnly ?? false,
+          isFeatured: p.featured ?? false,
+          leadTime: p.leadTime ?? null,
+          weightLbs: p.weight ?? null,
+          categoryId,
+          brandId: brandId ?? null,
+          specs: {
+            create: p.specs.map(([label, value], i) => ({ label, value, sortOrder: i })),
+          },
+        },
+        select: { id: true },
+      });
+      seededProducts++;
+    }
+
+    if (p.image) {
+      const existingImg = await prisma.productImage.findFirst({
+        where: { productId: product.id },
+      });
+      if (!existingImg) {
+        await prisma.productImage.create({
+          data: {
+            productId: product.id,
+            url: p.image,
+            alt: p.name,
+            sortOrder: 0,
+          },
+        });
+        seededImages++;
+      } else if (existingImg.url !== p.image) {
+        await prisma.productImage.update({
+          where: { id: existingImg.id },
+          data: { url: p.image, alt: p.name },
+        });
+        seededImages++;
+      }
+    }
   }
-  console.log(`✓ ${created} new products (${products.length - created} already existed)`);
+  console.log(`✓ ${products.length} products processed (${seededProducts} created, ${seededImages} images synced)`);
 }
 
 main()

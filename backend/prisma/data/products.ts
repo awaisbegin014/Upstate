@@ -18,12 +18,14 @@ export interface SeedProduct {
   weight?: number;
   featured?: boolean;
   quoteOnly?: boolean;
+  image?: string;
 }
 
 export const products: SeedProduct[] = [
   // ---------------------------------------------------------- hand equipment
   {
     sku: 'MAG-CVT-1000',
+    image: '/images/products/magline-convertible-hand-truck.jpg',
     name: 'Magline Aluminum Convertible Hand Truck',
     brand: 'Magline',
     category: 'hand-equipment',
@@ -45,6 +47,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'MAG-2W-500',
+    image: '/images/products/magline-2-wheel-hand-truck.jpg',
     name: 'Magline Aluminum 2-Wheel Hand Truck, Loop Handle',
     brand: 'Magline',
     category: 'hand-equipment',
@@ -65,6 +68,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'MAG-PART-WHL10',
+    image: '/images/products/magline-balloon-cushion-wheel.jpg',
     name: 'Magline 10" Balloon Cushion Replacement Wheel',
     brand: 'Magline',
     category: 'hand-equipment',
@@ -83,6 +87,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'LR-PJ-5500',
+    image: '/images/products/lift-rite-manual-pallet-jack.jpg',
     name: 'Lift-Rite Manual Pallet Jack, 5,500 lb',
     brand: 'LiftRite',
     category: 'hand-equipment',
@@ -104,6 +109,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'WES-PLT-2440',
+    image: '/images/products/wesco-steel-platform-truck.jpg',
     name: 'Wesco Steel Platform Truck, 24" x 48"',
     brand: 'Wesco Manufacturing',
     category: 'hand-equipment',
@@ -124,6 +130,7 @@ export const products: SeedProduct[] = [
   // --------------------------------------------------------- casters & wheels
   {
     sku: 'COL-PL-5PU-S',
+    image: '/images/products/colson-polyurethane-swivel-caster.jpg',
     name: 'Colson 5" Polyurethane Swivel Plate Caster',
     brand: 'Colson Casters',
     category: 'casters-and-wheels',
@@ -142,6 +149,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'COL-PL-5PU-R',
+    image: '/images/products/colson-polyurethane-rigid-caster.jpg',
     name: 'Colson 5" Polyurethane Rigid Plate Caster',
     brand: 'Colson Casters',
     category: 'casters-and-wheels',
@@ -158,6 +166,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'ALB-HD-8PH-S',
+    image: '/images/products/albion-phenolic-swivel-caster.jpg',
     name: 'Albion 8" Heavy-Duty Phenolic Swivel Caster',
     brand: 'Albion Casters',
     category: 'casters-and-wheels',
@@ -177,6 +186,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'FAU-STEM-3-L',
+    image: '/images/products/faultless-total-lock-stem-caster.jpg',
     name: 'Faultless 3" Total-Lock Stem Caster',
     brand: 'Faultless Casters',
     category: 'casters-and-wheels',
@@ -195,6 +205,7 @@ export const products: SeedProduct[] = [
   // ---------------------------------------------------------------- conveyors
   {
     sku: 'RA-GRV-1810',
+    image: '/images/products/roll-away-gravity-roller-conveyor.jpg',
     name: 'Roll-Away Gravity Roller Conveyor, 18" x 10\'',
     brand: 'Roll-Away Conveyors',
     category: 'conveyors',
@@ -214,6 +225,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'RA-SKW-1205',
+    image: '/images/products/roll-away-skatewheel-conveyor.jpg',
     name: 'Roll-Away Aluminum Skatewheel Conveyor, 12" x 5\'',
     brand: 'Roll-Away Conveyors',
     category: 'conveyors',
@@ -231,6 +243,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'BDP-FLEX-24',
+    image: '/images/products/best-flex-expandable-roller-conveyor.jpg',
     name: 'Best Flex Expandable Roller Conveyor, 24" Wide',
     brand: 'Best Diversified Products, Inc.',
     category: 'conveyors',
@@ -249,6 +262,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'ACSI-SYS',
+    image: '/images/products/acsi-engineered-powered-conveyor.jpg',
     name: 'Engineered Powered Conveyor System',
     brand: 'Automated Conveyor Systems, Inc (ACSI)',
     category: 'conveyors',
@@ -267,6 +281,7 @@ export const products: SeedProduct[] = [
   // ----------------------------------------------------------- dock equipment
   {
     sku: 'DUR-BMP-4X10',
+    image: '/images/products/durable-molded-rubber-dock-bumper.jpg',
     name: 'Durable Molded Rubber Dock Bumper, 4.5" x 10" x 14"',
     brand: 'Durable Corporation',
     category: 'dock-equipment',
@@ -282,6 +297,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'DUR-CHOCK-PU',
+    image: '/images/products/durable-urethane-wheel-chock.jpg',
     name: 'Durable Urethane Wheel Chock',
     brand: 'Durable Corporation',
     category: 'dock-equipment',
@@ -297,6 +313,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'JH-DOCKPLATE-4836',
+    image: '/images/products/copperloy-aluminum-dock-plate.jpg',
     name: 'Copperloy Aluminum Dock Plate, 48" x 36"',
     brand: 'J H Industries',
     category: 'dock-equipment',
@@ -313,6 +330,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'MCG-LEVELER',
+    image: '/images/products/mcguire-hydraulic-dock-leveler.jpg',
     name: 'McGuire Hydraulic Dock Leveler',
     brand: 'McGuire',
     category: 'dock-equipment',
@@ -331,6 +349,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'ADV-DOCKLIFT',
+    image: '/images/products/advance-lift-hydraulic-dock-lift.jpg',
     name: 'Advance Lift Hydraulic Dock Lift',
     brand: 'Advance Lift',
     category: 'dock-equipment',
@@ -348,6 +367,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'FAIR-SEAL',
+    image: '/images/products/fairborn-foam-dock-seal.jpg',
     name: 'Fairborn Foam Dock Seal',
     brand: 'Fairborn',
     category: 'dock-equipment',
@@ -362,6 +382,7 @@ export const products: SeedProduct[] = [
   // ----------------------------------------------------------- drum equipment
   {
     sku: 'MOR-DRUMTRK',
+    image: '/images/products/morse-drum-hand-truck.jpg',
     name: 'Morse Drum Hand Truck with Pneumatic Wheels',
     brand: 'Morse Manufacturing Co., Inc.',
     category: 'drum-equipment',
@@ -379,6 +400,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'VES-DOLLY-55',
+    image: '/images/products/vestil-steel-drum-dolly.jpg',
     name: 'Vestil Steel Drum Dolly, 55 Gallon',
     brand: 'Vestil Mfg., Inc.',
     category: 'drum-equipment',
@@ -394,6 +416,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'ENP-SPILL-4D',
+    image: '/images/products/enpac-4-drum-spill-containment-pallet.jpg',
     name: 'Enpac 4-Drum Poly Spill Containment Pallet',
     brand: 'Enpac Corporation',
     category: 'drum-equipment',
@@ -410,6 +433,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'VC-DRUMLIFT',
+    image: '/images/products/valley-craft-fork-mount-drum-lifter.jpg',
     name: 'Valley Craft Fork-Mount Drum Lifter',
     brand: 'Valley Craft Inc.',
     category: 'drum-equipment',
@@ -427,6 +451,7 @@ export const products: SeedProduct[] = [
   // ----------------------------------------------------- industrial furniture
   {
     sku: 'LYON-WB-7230',
+    image: '/images/products/lyon-steel-workbench.jpg',
     name: 'Lyon Heavy-Duty Steel Workbench, 72" x 30"',
     brand: 'Lyon Workspace Products',
     category: 'industrial-furniture',
@@ -445,6 +470,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'JUS-FLAM-45',
+    image: '/images/products/justrite-flammable-safety-cabinet.jpg',
     name: 'Justrite Flammable Safety Cabinet, 45 Gallon',
     brand: 'Justrite Manufacturing Company',
     category: 'industrial-furniture',
@@ -462,6 +488,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'PEN-LKR-3T',
+    image: '/images/products/penco-vanguard-triple-tier-locker.jpg',
     name: 'Penco Vanguard Triple-Tier Locker, 3 Wide',
     brand: 'Penco Products',
     category: 'industrial-furniture',
@@ -477,6 +504,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'LG-CART-2436',
+    image: '/images/products/little-giant-steel-service-cart.jpg',
     name: 'Little Giant Steel Service Cart, 2 Shelves',
     brand: 'Little Giant Products',
     category: 'industrial-furniture',
@@ -495,6 +523,7 @@ export const products: SeedProduct[] = [
   // ------------------------------------------------------------------ ladders
   {
     sku: 'COT-RL-8',
+    image: '/images/products/cotterman-rolling-steel-ladder.jpg',
     name: 'Cotterman Rolling Steel Ladder, 8 Step',
     brand: 'Cotterman Company',
     category: 'ladders',
@@ -513,6 +542,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'LOU-RL-5',
+    image: '/images/products/louisville-rolling-steel-ladder.jpg',
     name: 'Louisville Rolling Steel Ladder, 5 Step',
     brand: 'Louisville Ladder Corp.',
     category: 'ladders',
@@ -529,6 +559,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'TRI-PLAT-4',
+    image: '/images/products/tri-arc-mobile-work-platform.jpg',
     name: 'Tri-Arc Mobile Work Platform, 4 Step',
     brand: 'Tri-Arc',
     category: 'ladders',
@@ -545,6 +576,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'CUSTOM-LADDER',
+    image: '/images/products/custom-fabricated-ladder-crossover.jpg',
     name: 'Custom Fabricated Ladder or Crossover',
     brand: 'Ballymore Company',
     category: 'ladders',
@@ -560,6 +592,7 @@ export const products: SeedProduct[] = [
   // -------------------------------------------------------- lifting equipment
   {
     sku: 'SW-LT-2000',
+    image: '/images/products/southworth-scissor-lift-table.jpg',
     name: 'Southworth Scissor Lift Table, 2,000 lb',
     brand: 'Southworth',
     category: 'lifting-equipment',
@@ -579,6 +612,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'PRESTO-TT-4',
+    image: '/images/products/presto-pallet-turntable.jpg',
     name: 'Presto Pallet Turntable, 4,000 lb',
     brand: 'Presto Lifts',
     category: 'lifting-equipment',
@@ -595,6 +629,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'HAR-HOIST-1T',
+    image: '/images/products/harrington-manual-chain-hoist.jpg',
     name: 'Harrington Manual Chain Hoist, 1 Ton',
     brand: 'Harrington Hoists',
     category: 'lifting-equipment',
@@ -610,6 +645,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'WILDECK-VRC',
+    image: '/images/products/wildeck-vertical-reciprocating-conveyor.jpg',
     name: 'Wildeck Vertical Reciprocating Conveyor (VRC)',
     brand: 'Wildeck',
     category: 'lifting-equipment',
@@ -625,6 +661,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'WILDECK-MEZZ',
+    image: '/images/products/custom-engineered-steel-mezzanine.jpg',
     name: 'Custom Engineered Steel Mezzanine',
     brand: 'Wildeck',
     category: 'lifting-equipment',
@@ -644,6 +681,7 @@ export const products: SeedProduct[] = [
   // ------------------------------------------------------------------ matting
   {
     sku: 'ERGO-MAT-35',
+    image: '/images/products/ergomat-anti-fatigue-mat.jpg',
     name: 'Ergomat Anti-Fatigue Mat, 3\' x 5\'',
     brand: 'Ergomat LLC',
     category: 'matting',
@@ -659,6 +697,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'NOTRAX-DRAIN-35',
+    image: '/images/products/notrax-rubber-drainage-mat.jpg',
     name: 'Notrax Rubber Drainage Mat, 3\' x 5\'',
     brand: 'Superior Manufacturing Group',
     category: 'matting',
@@ -674,6 +713,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'TURTLE-TILE',
+    image: '/images/products/turtle-plastics-interlocking-floor-tile.jpg',
     name: 'Turtle Plastics Interlocking Floor Tile (10-Pack)',
     brand: 'Turtle Plastics',
     category: 'matting',
@@ -691,6 +731,7 @@ export const products: SeedProduct[] = [
   // ---------------------------------------------------------- poly containers
   {
     sku: 'AKRO-BIN-30240',
+    image: '/images/products/akro-mils-akrobin-stackable-bins.jpg',
     name: 'Akro-Mils AkroBin Stackable Bins, 12-Pack',
     brand: 'Akro-Mils',
     category: 'poly-containers',
@@ -707,6 +748,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'BUCK-TOTE-2415',
+    image: '/images/products/buckhorn-attached-lid-container.jpg',
     name: 'Buckhorn Attached-Lid Container, 24" x 15"',
     brand: 'Buckhorn',
     category: 'poly-containers',
@@ -722,6 +764,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'RCP-TILT-1',
+    image: '/images/products/rubbermaid-commercial-tilt-truck.jpg',
     name: 'Rubbermaid Commercial Tilt Truck, 1 Cu. Yd.',
     brand: 'Rubbermaid Commercial Products, LLC.',
     category: 'poly-containers',
@@ -737,6 +780,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'TOTER-CART-96',
+    image: '/images/products/toter-heavy-duty-two-wheel-cart.jpg',
     name: 'Toter Heavy-Duty Two-Wheel Cart, 96 Gallon',
     brand: 'Toter, Inc.',
     category: 'poly-containers',
@@ -751,6 +795,7 @@ export const products: SeedProduct[] = [
   // -------------------------------------------------------------------- racks
   {
     sku: 'RUR-BAY-STARTER',
+    image: '/images/products/ridg-u-rak-selective-pallet-rack.jpg',
     name: 'Ridg-U-Rak Selective Pallet Rack Starter Bay',
     brand: 'Ridg-u-Rak',
     category: 'racks',
@@ -769,6 +814,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'AWP-DECK-4246',
+    image: '/images/products/wire-deck-for-pallet-rack.jpg',
     name: 'Wire Deck for Pallet Rack, 42" x 46"',
     brand: 'American Wire Products (AWP)',
     category: 'racks',
@@ -784,6 +830,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'JARKE-CANT',
+    image: '/images/products/jarke-cantilever-rack.jpg',
     name: 'Jarke Cantilever Rack',
     brand: 'Jarke Corporation',
     category: 'racks',
@@ -796,6 +843,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'PUSHBACK-SYS',
+    image: '/images/products/pushback-drive-in-rack-systems.jpg',
     name: 'Pushback & Drive-In Rack Systems',
     brand: 'W. C. Cardinal Co',
     category: 'racks',
@@ -811,6 +859,7 @@ export const products: SeedProduct[] = [
   // ----------------------------------------------------------------- shelving
   {
     sku: 'EDS-BOLTLESS-4818',
+    image: '/images/products/edsal-boltless-steel-shelving.jpg',
     name: 'Edsal Boltless Steel Shelving, 48" x 18" x 72"',
     brand: 'Edsal Manufacturing',
     category: 'shelving',
@@ -828,6 +877,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'METRO-WIRE-2448',
+    image: '/images/products/metro-super-erecta-wire-shelving.jpg',
     name: 'Metro Super Erecta Chrome Wire Shelving, 24" x 48"',
     brand: 'Intermetro Industries Corp.',
     category: 'shelving',
@@ -843,6 +893,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'TENN-ARCH-36',
+    image: '/images/products/tennsco-archive-shelving.jpg',
     name: 'Tennsco Archive Shelving, 36" x 15"',
     brand: 'Tennsco Corp',
     category: 'shelving',
@@ -858,6 +909,7 @@ export const products: SeedProduct[] = [
   },
   {
     sku: 'RAPID-RACK-6024',
+    image: '/images/products/rapid-rack-bulk-storage-rack.jpg',
     name: 'Rapid Rack Bulk Storage Rack, 60" x 24"',
     brand: 'Rapid Rack Industries',
     category: 'shelving',
