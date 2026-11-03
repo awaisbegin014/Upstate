@@ -1,0 +1,286 @@
+/*
+ * entire div
+ */
+#rot_ctr1_bod_ctr3_bod_wrp1 {
+  font-size: 0.75em;
+  position: relative;
+  z-index: 1000;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 ul li {
+  background: transparent none no-repeat scroll 0px 0px;
+  padding: 0px;
+  list-style-position: outside;
+  list-style-type: none;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 img {
+  padding: 0px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 p {
+  padding: 0px;
+}
+
+
+/*
+ * main content width
+ */
+#rot .container {
+  width: 920px;
+  color: #444444;
+}
+
+
+/*
+ * search form
+ */
+#rot .mini-search .input-text {
+  float: left;
+}
+
+#rot .mini-search .actions {
+  float: right;
+}
+
+
+/*
+ * top links (My Account | My Wishlist | ... )
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .toplinks-bar .top-links a {
+  font-size: 1em;
+  padding: 0pt 7px 0pt 2pt;
+  color: #FFFFFF;
+}
+
+#rot .toplinks-bar {
+  padding: 0px 13px;
+}
+
+
+/*
+ * category buttons
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .header {
+  clear: left;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 #nav li {
+  padding: 3px 8px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 #nav li a {
+  color: #444444;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 #nav li ul {
+  padding: 0px 0px 0px 0px;
+}
+
+
+/*
+ * breadcrumbs color and so on
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .outline-creator a {
+  color: #7F7F7F;
+}
+
+
+/*
+ * category page middle width
+ */
+#rot .col-main {
+  width: 672px;
+}
+
+
+/*
+ * product page
+ */
+#rot .product-info-box {
+  width: 344px;
+}
+
+#rot #qty {
+  width: 2.5em;
+}
+
+
+/*
+ * product description
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .tabs {
+  padding: 0px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .tabs li.active a,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .tabs li.active a:hover {
+  color: #FFFFFF;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .tabs a {
+  color: #444444;
+}
+
+
+
+/*
+ * shopping cart
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .cart-block {
+  width: 898px;
+}
+
+
+/*
+ * checkout
+ */
+/* coupon area *IE */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .coupon-code-area {
+  width: 400px;
+}
+/* qty size *IE */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .a-center > input[type="text"] {
+  width: 2.5em;
+}
+/* saved address dropdown */
+#rot select.address-select {
+  width: 626px;
+}
+
+
+/*
+ * footer links
+ */
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .footer a,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .footer label,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .footer a:hover {
+  color: #444444;
+}
+
+
+/*
+ * button
+ */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button button {
+  display: block;
+  float: right;
+  margin: 0 7px 0 0;
+  background-color: #f5f5f5;
+  border: 1px solid #dedede;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+
+  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size: 100%;
+  line-height: 130%;
+  text-decoration: none;
+  font-weight: normal;
+  color: #565656;
+  cursor: pointer;
+  padding: 2px 7px 3px 7px; /* Links */
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button button {
+  width: auto;
+  overflow: visible;
+  padding: 2px 7px 3px 7px; /* IE6 */
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button button[type] {
+  padding: 2px 7px 3px 7px; /* Firefox */
+  #padding: 0px 7px 1px 7px;
+  line-height: 17px; /* Safari */
+}
+
+/* standard button */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button:hover,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a:hover {
+  background-color: #888888;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a:active {
+  background-color: #888888;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+
+/* positive button */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.positive,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.positive{
+  color: #529214;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.positive:hover,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.positive:hover {
+  background-color: #E6EFC2;
+  border: 1px solid #C6D880;
+  color: #529214;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.positive:active {
+  background-color: #E6EFC2;
+  border: 1px solid #C6D880;
+  color: #529214;
+}
+
+/* negative button */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.negative,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.negative {
+  color: #d12f19;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.negative:hover,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.negative:hover {
+  background: #fbe3e4;
+  border: 1px solid #fbc2c4;
+  color: #d12f19;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.negative:active {
+  background: #fbe3e4;
+  border: 1px solid #fbc2c4;
+  color: #d12f19;
+}
+
+/* important button */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.important,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.important {
+  background-color: #ed7924;
+  border: 1px solid #f3aa7a;
+  color: #ffffff;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.important:hover,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.important:hover {
+  background: #f9d2b9;
+  border: 1px solid #f3aa7a;
+  color: #c25812;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.important:active {
+  background: #f9d2b9;
+  border: 1px solid #f3aa7a;
+  color: #c25812;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button button.important[type] {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* green button */
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.green,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.green {
+  background-color: #50870f;
+  border: 1px solid #81c716;
+  color: #ffffff;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.green:hover,
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 button.green:hover {
+  background: #eafad1;
+  border: 1px solid #81c716;
+  color: #50870f;
+}
+#rot #rot_ctr1_bod_ctr3_bod_wrp1 .form-button a.green:active {
+  background: #eafad1;
+  border: 1px solid #81c716;
+  color: #50870f;
+}
+

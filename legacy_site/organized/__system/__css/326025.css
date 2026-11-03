@@ -1,0 +1,78 @@
+
+/*Block Size, Positioning, Spacing, Background, Border*/
+/*******************************/
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk1 {
+  padding: 30px 0;
+  margin: 0;
+  width: 986px;
+  background:  url(/static/designs/images/repository/bg_1x1_transparent_grey.png) repeat;
+  height: 100px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk2 {
+  float: left;
+  margin: 0 0 0 0;
+  padding:0;
+  width: 703px;
+  overflow: hidden;
+      background:  url(/static/designs/images/repository/util_9x305_vertical_break.png) no-repeat right 30px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk3 {
+  float: right;
+  margin: 0 0 0 0;
+  overflow: hidden;
+  width: 283px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk4 {
+  float: right;
+  clear: right;
+  margin: 0 0 0 0;
+  overflow: hidden;
+  width: 283px;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk2 , #rot #rot_ctr1_bod_ctr3_bod_wrp1_blk4 {
+	padding-bottom: 32767px;
+	margin-bottom: -32767px; 
+}
+/*******************************
+End of Block Positioning and Spacing*/
+
+
+
+/** Content Size, Positioning, and Spacing 
+*****************************************/
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk1_blk1 {
+  margin: 30px 30px 15px 30px;
+  text-align: left;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk2_blk1 {
+  margin: 30px 30px 15px 30px;
+  padding: 0;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk3_blk1 {
+  margin: 30px 30px 15px 30px;
+  padding: 0;
+}
+
+#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk4_blk1 {
+  margin: 30px 30px 15px 30px;
+  padding: 0;
+}
+/*****************************************
+End of Content Size, Positioning, and Spacing */
+
+div#rot #rot_ctr1_bod_ctr3_bod_wrp1_blk2_blk1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-width: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}

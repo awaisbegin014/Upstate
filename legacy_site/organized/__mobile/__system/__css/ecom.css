@@ -1,0 +1,46 @@
+#rot #mobile_page_layout > div {
+  color: #242525;
+}
+#rot #mobile_page_layout .header,
+#rot #mobile_page_layout .middle-container,
+#rot #mobile_page_layout .footer-container {
+  background-color: #F9F6E1;
+}
+#rot #mobile_page_layout .header-top {
+  background-color: #F9F6E1;
+}
+#rot #mobile_page_layout .user-links ul li a,
+#rot #mobile_page_layout .user-links ul li a:visited {
+  color: #242525;
+}
+#rot #mobile_page_layout .shop-access ul {
+  background-color: #292929;
+}
+#rot #mobile_page_layout .shop-access ul li a {
+  color: #FFFFFF;
+}
+#rot #mobile_page_layout .header-nav a span {
+  color: #E51C13;
+}
+#rot #mobile_page_layout .c-list li h5 a,
+#rot #mobile_page_layout .c-list li h5 a:visited {
+  color: #E51C13;
+}
+#rot #mobile_page_layout #nav ul li a,
+#rot #mobile_page_layout .c-list li div.col2-alt-set {
+  border-bottom: 1px solid #242525;
+}
+#rot #mobile_page_layout .c-list {
+  border-top: 1px solid #242525;
+}
+#rot #mobile_page_layout a,
+#rot #mobile_page_layout a:visited {
+  color: #E51C13;
+}
+#rot #mobile_page_layout .footer {
+  background-color: #292929;
+}
+#rot #mobile_page_layout .informational a,
+#rot #mobile_page_layout .informational a:visited {
+  color: #FFFFFF;
+}
