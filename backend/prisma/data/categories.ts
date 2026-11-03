@@ -10,7 +10,7 @@ export const categories = [
     tagline: 'Heavy-duty industrial casters and wheels for every load rating.',
     description:
       'Swivel and rigid plate casters, stem casters and replacement wheels in polyurethane, rubber, phenolic and steel — sourced from Albion, Colson, Fairbanks, Faultless, Payson and more. Tell us the load, floor and environment and we will match the caster.',
-    imageUrl: null,
+    imageUrl: '/projects/custom-ball-transfer-cart.jpg',
   },
   {
     slug: 'conveyors',
@@ -19,7 +19,7 @@ export const categories = [
     tagline: 'Gravity and power conveyor systems that move product, not people.',
     description:
       'Gravity roller and skatewheel conveyor, powered roller and belt conveyor, flexible and expandable conveyor, and complete engineered conveyor systems from ACSI, Roll-Away, Omni Metalcraft, Best Diversified and others.',
-    imageUrl: null,
+    imageUrl: '/projects/stiefel-pick-line-1.jpg',
   },
   {
     slug: 'dock-equipment',
@@ -28,7 +28,7 @@ export const categories = [
     tagline: 'Levelers, lifts, seals, shelters, restraints and dock lights.',
     description:
       'Need to unload trucks but don’t have a dock? Need to keep heat in or cold out? We design new docks and modify existing ones with hydraulic dock lifts, levelers, truck restraints, seals and shelters, yard ramps, dock plates, bumpers, air doors and strip curtains.',
-    imageUrl: '/images/loading-dock.jpg',
+    imageUrl: '/projects/hannay-dock-seals1.jpg',
   },
   {
     slug: 'drum-equipment',
@@ -37,7 +37,7 @@ export const categories = [
     tagline: 'Handlers, dollies, racks and dispensers for drums and totes.',
     description:
       'Drum trucks, drum handlers and lifters, drum dollies and cradles, pumps, spill containment pallets and poly or steel drums from Morse, Valley Craft, Vestil, Enpac, BASCO and more.',
-    imageUrl: null,
+    imageUrl: '/projects/surpass-chemical-2.jpg',
   },
   {
     slug: 'hand-equipment',
@@ -55,7 +55,7 @@ export const categories = [
     tagline: 'Workbenches, cabinets, lockers and shop-floor seating.',
     description:
       'Workbenches and ergonomic workstations, storage and safety cabinets, lockers, packing stations, shop carts and industrial seating from Lyon, Penco, Tennsco, Justrite, Little Giant, Durham and dozens of other manufacturers.',
-    imageUrl: null,
+    imageUrl: '/projects/stiefel-wire-partitions.jpg',
   },
   {
     slug: 'ladders',
@@ -64,7 +64,7 @@ export const categories = [
     tagline: 'Rolling, folding and fixed industrial ladders and platforms.',
     description:
       'Rolling steel warehouse ladders, aluminum ladders, mobile work platforms, prefab metal stairs and alternating-tread stairs from Cotterman, Ballymore, Louisville, Tri-Arc and others — including custom configurations.',
-    imageUrl: null,
+    imageUrl: '/projects/target-ladder.jpg',
   },
   {
     slug: 'lifting-equipment',
@@ -73,7 +73,7 @@ export const categories = [
     tagline: 'Lift tables, turntables, positioners and vertical conveyors.',
     description:
       'Ergonomics in production and warehousing: scissor lift tables, turntables and pallet positioners from Southworth, Presto and Pentalift, plus hoists, jib and bridge cranes, vacuum lifters and vertical reciprocating conveyors.',
-    imageUrl: '/images/mezzanine.jpg',
+    imageUrl: '/projects/stiefel-dock-lift-1.jpg',
   },
   {
     slug: 'matting',
@@ -91,7 +91,7 @@ export const categories = [
     tagline: 'Bins, totes, hampers and bulk containers for every workflow.',
     description:
       'Stackable bins, tote boxes, bulk containers, tilt trucks, laundry hampers and self-dumping hoppers from Akro-Mils, Buckhorn, Orbis, Rubbermaid Commercial, Toter, Quantum and more.',
-    imageUrl: null,
+    imageUrl: '/projects/surpass-chemical-1.jpg',
   },
   {
     slug: 'racks',
@@ -100,7 +100,7 @@ export const categories = [
     tagline: 'Pallet rack, cantilever, bulk storage and wire partitions.',
     description:
       'We provide and install all types of pallet storage racks — standard selective, pushback, flow and drive-in rack, cantilever and bulk storage — and can reconfigure your existing system. Our reps will make on-site calls to help with measuring, layout and design.',
-    imageUrl: '/images/hero-warehouse.jpg',
+    imageUrl: '/projects/nexans-newburgh-3.jpg',
   },
   {
     slug: 'shelving',
@@ -109,6 +109,6 @@ export const categories = [
     tagline: 'Boltless, clip and archive shelving sized to your space.',
     description:
       'Boltless and clip steel shelving, wire shelving and carts, bin units and modular drawer storage from Edsal, Lyon, Metro, Rapid Rack, Penco, Republic, Tennsco and others — sized and laid out for your space.',
-    imageUrl: null,
+    imageUrl: '/projects/nexans-outside-rack-1.jpg',
   },
 ];

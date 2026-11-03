@@ -334,7 +334,7 @@ export const projects = [
     title: "Complete picking & packing system",
     body: "Ridg-U-Rak 2-deep pushback storage above, pallet flow to the pick aisle below, 4 bays of Unex SpanTrack carton flow to the pick aisle, ACSI conveyor to the packing station, Sinco rack guard on the picking side of the rack and a Garlin conveyor crossover.",
     tags: ["Racks", "Conveyors", "Design & layout"],
-    photos: ["stiefel-pick-line-3", "stiefel-pick-line-4", "stiefel-pick-line-1"],
+    photos: ["stiefel-pick-line-3", "stiefel-pick-line-4", "stiefel-pick-line-1", "stiefel-pick-line-2"],
   },
   {
     title: "Fairborn dock seals",
@@ -388,7 +388,7 @@ export const projects = [
     title: "Selective, structural & pushback rack",
     body: "Selective rack with wire decks, structural rack outside, and 3-deep pushback back-to-back for 6 deep total.",
     tags: ["Racks"],
-    photos: ["nexans-newburgh-3", "nexans-outside-rack-1", "stiefel-pushback"],
+    photos: ["nexans-newburgh-3", "nexans-newburgh-1", "nexans-newburgh-2", "nexans-outside-rack-1", "stiefel-pushback"],
   },
   {
     title: "Custom walkways and catwalks",
@@ -399,5 +399,23 @@ export const projects = [
       "stiefel-labs-boiler-walkway2",
       "stiefel-labs-boiler-walkway1",
     ],
+  },
+  {
+    title: "Custom ball transfer cart",
+    body: "Custom engineered and fabricated ball transfer cart designed for multi-directional material positioning and heavy parts transfer.",
+    tags: ["Carts", "Custom fabrication"],
+    photos: ["custom-ball-transfer-cart"],
+  },
+  {
+    title: "Wire partitions & security enclosures",
+    body: "Wireway/Husky wire partition cage installed for secure inventory containment, tool crib security and driver access control.",
+    tags: ["Wire partitions", "Security"],
+    photos: ["stiefel-wire-partitions"],
+  },
+  {
+    title: "Custom aluminum handrail & safety access",
+    body: "Custom aluminum handrail installation and OSHA-compliant warehouse mezzanine access ladder.",
+    tags: ["Custom fabrication", "Ladders"],
+    photos: ["stiefel-custom-aluminum-handrail", "target-ladder"],
   },
 ];
