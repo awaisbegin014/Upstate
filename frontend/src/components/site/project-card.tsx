@@ -1,28 +1,59 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { projects } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import { Reveal } from "./reveal";
 import { Container, SectionHeading } from "./section";
 
 type Project = (typeof projects)[number];
 
 export function ProjectCard({ project }: { project: Project }) {
+  const count = project.photos.length;
+
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl border bg-card">
-      <div className="grid grid-cols-3 gap-1 bg-steel-950 p-1">
-        {project.photos.map((photo, j) => (
-          // Only thumbnails of the original jobsite photos survive, so they
-          // are shown small rather than stretched.
-          // eslint-disable-next-line @next/next/no-img-element
+    <article className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lg">
+      {count === 1 ? (
+        <div className="aspect-[16/9] w-full overflow-hidden bg-steel-950">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            key={photo}
-            src={`/projects/${photo}.jpg`}
-            alt={`${project.title} — photo ${j + 1}`}
+            src={`/projects/${project.photos[0]}.jpg`}
+            alt={project.title}
             loading="lazy"
-            className="aspect-[4/3] w-full rounded-sm object-cover"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "grid gap-1 bg-steel-950 p-1",
+            count === 2
+              ? "grid-cols-2"
+              : count === 3
+                ? "grid-cols-3"
+                : count === 4
+                  ? "grid-cols-2 sm:grid-cols-4"
+                  : "grid-cols-3 sm:grid-cols-5",
+          )}
+        >
+          {project.photos.map((photo, j) => (
+            <div
+              key={photo}
+              className={cn(
+                "overflow-hidden rounded-sm",
+                count === 2 ? "aspect-[16/10]" : "aspect-[4/3]",
+              )}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/projects/${photo}.jpg`}
+                alt={`${project.title} — photo ${j + 1}`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
+      )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t) => (
