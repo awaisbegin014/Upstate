@@ -10,7 +10,7 @@ generator client {
 // Prisma 7: the connection URL lives in prisma.config.ts (for the CLI) and is
 // supplied to PrismaClient through a driver adapter at runtime.
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 enum Role {

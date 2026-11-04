@@ -102,10 +102,10 @@ export class CatalogService {
             AND: [
               {
                 OR: [
-                  { name: { contains: term } },
-                  { sku: { contains: term } },
-                  { shortDescription: { contains: term } },
-                  { brand: { name: { contains: term } } },
+                  { name: { contains: term, mode: 'insensitive' } },
+                  { sku: { contains: term, mode: 'insensitive' } },
+                  { shortDescription: { contains: term, mode: 'insensitive' } },
+                  { brand: { name: { contains: term, mode: 'insensitive' } } },
                 ],
               },
             ],

@@ -35,7 +35,7 @@ export class AdminCatalogService {
         ? { isActive: true, isQuoteOnly: false, stock: { lte: LOW_STOCK } }
         : {}),
       ...(term
-        ? { OR: [{ name: { contains: term } }, { sku: { contains: term } }] }
+        ? { OR: [{ name: { contains: term, mode: 'insensitive' } }, { sku: { contains: term, mode: 'insensitive' } }] }
         : {}),
     };
     const [items, total] = await this.prisma.$transaction([

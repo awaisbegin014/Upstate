@@ -306,11 +306,11 @@ export class OrdersService implements OnModuleInit, OnModuleDestroy {
       ...(term
         ? {
             OR: [
-              { number: { contains: term } },
-              { email: { contains: term } },
-              { contactName: { contains: term } },
-              { company: { contains: term } },
-              { poNumber: { contains: term } },
+              { number: { contains: term, mode: 'insensitive' } },
+              { email: { contains: term, mode: 'insensitive' } },
+              { contactName: { contains: term, mode: 'insensitive' } },
+              { company: { contains: term, mode: 'insensitive' } },
+              { poNumber: { contains: term, mode: 'insensitive' } },
             ],
           }
         : {}),

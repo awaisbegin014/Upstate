@@ -8,7 +8,8 @@
  *   npm run db:seed
  */
 import 'dotenv/config';
-import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -27,8 +28,9 @@ interface SeedBrand {
 }
 
 const here = dirname(fileURLToPath(import.meta.url));
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({
-  adapter: new PrismaBetterSqlite3({ url: process.env.DATABASE_URL ?? 'file:./dev.db' }),
+  adapter: new PrismaPg(pool),
 });
 
 async function main() {
@@ -165,4 +167,7 @@ main()
     console.error(e);
     process.exitCode = 1;
   })
-  .finally(() => prisma.$disconnect());
+  .finally(async () => {
+    await prisma.$disconnect();
+    await pool.end();
+  });
