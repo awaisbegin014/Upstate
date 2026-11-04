@@ -1,19 +1,20 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 import { PrismaClient } from '../generated/prisma/client.js';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(PrismaService.name);
+  private readonly pool: Pool;
 
   constructor() {
-    // Prisma 7 supplies the connection through a driver adapter rather than a
-    // `url` in schema.prisma.
+    const connectionString = process.env.DATABASE_URL;
+    const pool = new Pool({ connectionString });
     super({
-      adapter: new PrismaBetterSqlite3({
-        url: process.env.DATABASE_URL ?? 'file:./dev.db',
-      }),
+      adapter: new PrismaPg(pool),
     });
+    this.pool = pool;
   }
 
   async onModuleInit(): Promise<void> {
@@ -23,5 +24,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
 
   async onModuleDestroy(): Promise<void> {
     await this.$disconnect();
+    await this.pool.end();
   }
 }
