@@ -2,7 +2,11 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import type { Prisma } from '../generated/prisma/client.js';
 import { pageResult, paginate } from '../common/utils/pagination.js';
 import { PrismaService } from '../prisma/prisma.service.js';
-import type { BrandQuery, ProductQuery, ProductSort } from './dto/catalog.dto.js';
+import type {
+  BrandQuery,
+  ProductQuery,
+  ProductSort,
+} from './dto/catalog.dto.js';
 
 /** Fields every product card needs. */
 export const productCardSelect = {
@@ -26,13 +30,26 @@ export const productCardSelect = {
   brand: { select: { slug: true, name: true } },
 } satisfies Prisma.ProductSelect;
 
-const SORT_ORDER: Record<ProductSort, Prisma.ProductOrderByWithRelationInput[]> = {
+const SORT_ORDER: Record<
+  ProductSort,
+  Prisma.ProductOrderByWithRelationInput[]
+> = {
   featured: [{ isFeatured: 'desc' }, { name: 'asc' }],
   newest: [{ createdAt: 'desc' }],
   // Quote-only items have no list price, so they always sort after priced ones.
   'price-asc': [{ isQuoteOnly: 'asc' }, { priceCents: 'asc' }],
   'price-desc': [{ isQuoteOnly: 'asc' }, { priceCents: 'desc' }],
   name: [{ name: 'asc' }],
+};
+
+const EXCLUDED_BRAND_NAMES = ['Pentalift', 'Wildeck', 'Interlake'];
+const publicBrandWhere: Prisma.BrandWhereInput = {
+  NOT: EXCLUDED_BRAND_NAMES.map((name) => ({
+    name: { contains: name, mode: 'insensitive' },
+  })),
+};
+const publicProductWhere: Prisma.ProductWhereInput = {
+  OR: [{ brandId: null }, { brand: publicBrandWhere }],
 };
 
 @Injectable()
@@ -43,7 +60,9 @@ export class CatalogService {
     const categories = await this.prisma.category.findMany({
       orderBy: [{ sortOrder: 'asc' }, { name: 'asc' }],
       include: {
-        _count: { select: { products: { where: { isActive: true } }, brands: true } },
+        _count: {
+          select: { products: { where: { isActive: true } }, brands: true },
+        },
       },
     });
     return categories.map(({ _count, ...c }) => ({
@@ -58,6 +77,7 @@ export class CatalogService {
       where: { slug },
       include: {
         brands: {
+          where: publicBrandWhere,
           orderBy: { name: 'asc' },
           select: { slug: true, name: true, description: true, website: true },
         },
@@ -70,6 +90,7 @@ export class CatalogService {
   brands(q: BrandQuery) {
     return this.prisma.brand.findMany({
       where: {
+        ...publicBrandWhere,
         ...(q.featured ? { isFeatured: true } : {}),
         ...(q.category ? { categories: { some: { slug: q.category } } } : {}),
       },
@@ -81,7 +102,10 @@ export class CatalogService {
         description: true,
         website: true,
         isFeatured: true,
-        categories: { select: { slug: true, name: true }, orderBy: { sortOrder: 'asc' } },
+        categories: {
+          select: { slug: true, name: true },
+          orderBy: { sortOrder: 'asc' },
+        },
         _count: { select: { products: { where: { isActive: true } } } },
       },
     });
@@ -92,24 +116,35 @@ export class CatalogService {
     const term = q.q?.trim();
     const where: Prisma.ProductWhereInput = {
       isActive: true,
+      AND: [
+        publicProductWhere,
+        ...(term
+          ? [
+              {
+                OR: [
+                  { name: { contains: term, mode: 'insensitive' as const } },
+                  { sku: { contains: term, mode: 'insensitive' as const } },
+                  {
+                    shortDescription: {
+                      contains: term,
+                      mode: 'insensitive' as const,
+                    },
+                  },
+                  {
+                    brand: {
+                      name: { contains: term, mode: 'insensitive' as const },
+                    },
+                  },
+                ],
+              },
+            ]
+          : []),
+      ],
       ...(q.category ? { category: { slug: q.category } } : {}),
       ...(q.brand ? { brand: { slug: q.brand } } : {}),
       ...(q.featured ? { isFeatured: true } : {}),
-      ...(q.inStock ? { OR: [{ stock: { gt: 0 } }, { isQuoteOnly: true }] } : {}),
-      // SQLite LIKE is case-insensitive for ASCII. On Postgres add mode: 'insensitive'.
-      ...(term
-        ? {
-            AND: [
-              {
-                OR: [
-                  { name: { contains: term, mode: 'insensitive' } },
-                  { sku: { contains: term, mode: 'insensitive' } },
-                  { shortDescription: { contains: term, mode: 'insensitive' } },
-                  { brand: { name: { contains: term, mode: 'insensitive' } } },
-                ],
-              },
-            ],
-          }
+      ...(q.inStock
+        ? { OR: [{ stock: { gt: 0 } }, { isQuoteOnly: true }] }
         : {}),
     };
     const [items, total] = await this.prisma.$transaction([
@@ -127,18 +162,31 @@ export class CatalogService {
 
   async product(slug: string) {
     const product = await this.prisma.product.findFirst({
-      where: { slug, isActive: true },
+      where: { slug, isActive: true, ...publicProductWhere },
       include: {
-        images: { orderBy: { sortOrder: 'asc' }, select: { id: true, url: true, alt: true } },
-        specs: { orderBy: { sortOrder: 'asc' }, select: { label: true, value: true } },
+        images: {
+          orderBy: { sortOrder: 'asc' },
+          select: { id: true, url: true, alt: true },
+        },
+        specs: {
+          orderBy: { sortOrder: 'asc' },
+          select: { label: true, value: true },
+        },
         category: { select: { slug: true, name: true, icon: true } },
-        brand: { select: { slug: true, name: true, website: true, description: true } },
+        brand: {
+          select: { slug: true, name: true, website: true, description: true },
+        },
       },
     });
     if (!product) throw new NotFoundException('Product not found.');
 
     const related = await this.prisma.product.findMany({
-      where: { isActive: true, categoryId: product.categoryId, id: { not: product.id } },
+      where: {
+        isActive: true,
+        categoryId: product.categoryId,
+        id: { not: product.id },
+        ...publicProductWhere,
+      },
       orderBy: [{ isFeatured: 'desc' }, { name: 'asc' }],
       take: 4,
       select: productCardSelect,

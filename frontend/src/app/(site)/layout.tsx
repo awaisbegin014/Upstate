@@ -1,12 +1,16 @@
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
+import { getSiteContent } from "@/lib/site-content-server";
 
-export default function SiteLayout({ children }: LayoutProps<"/">) {
+export const instant = false;
+
+export default async function SiteLayout({ children }: LayoutProps<"/">) {
+  const content = await getSiteContent();
   return (
     <>
-      <Header />
+      <Header content={content} />
       <main className="min-h-[60vh]">{children}</main>
-      <Footer />
+      <Footer content={content} />
     </>
   );
 }

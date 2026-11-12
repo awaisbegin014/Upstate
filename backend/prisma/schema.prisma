@@ -286,6 +286,13 @@ model StoreSettings {
   updatedAt                  DateTime @updatedAt
 }
 
+/// Single-row JSON document containing admin-editable marketing copy.
+model SiteContent {
+  id        String   @id @default("site")
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
 /// Monotonic counters (order numbers).
 model Counter {
   id    String @id
