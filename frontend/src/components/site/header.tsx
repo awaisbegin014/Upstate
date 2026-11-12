@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Menu, Phone, Search, ShoppingCart, User, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, Phone, Search, ShoppingCart, User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
@@ -17,18 +17,26 @@ function isActive(pathname: string, href: string) {
 function NavLinkList({ pathname }: { pathname?: string }) {
   return (
     <>
-      {mainNav.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
-            pathname && isActive(pathname, item.href) ? "text-primary" : "text-white/80",
-          )}
-        >
-          {item.label}
-        </Link>
-      ))}
+      {mainNav.map((item) => {
+        const active = pathname ? isActive(pathname, item.href) : false;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "relative px-3.5 py-2 text-sm font-semibold tracking-wide transition-all rounded-md",
+              active
+                ? "text-primary font-bold bg-white/5"
+                : "text-white/80 hover:text-white hover:bg-white/5",
+            )}
+          >
+            {item.label}
+            {active && (
+              <span className="absolute bottom-0 inset-x-3.5 h-0.5 bg-primary rounded-full" />
+            )}
+          </Link>
+        );
+      })}
     </>
   );
 }
@@ -59,11 +67,11 @@ function CartButton() {
     <Link
       href="/cart"
       aria-label={`Cart${count ? `, ${count} items` : ""}`}
-      className="relative rounded-md p-2 text-white/90 transition-colors hover:bg-white/10 hover:text-primary"
+      className="relative rounded-lg p-2.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
     >
       <ShoppingCart className="h-5 w-5" />
       {count > 0 && (
-        <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[11px] font-bold text-primary-foreground">
+        <span className="absolute 0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-black text-primary-foreground">
           {count > 99 ? "99+" : count}
         </span>
       )}
@@ -80,17 +88,24 @@ function AccountButton() {
       href={href}
       aria-label={label}
       title={label}
-      className="rounded-md p-2 text-white/90 transition-colors hover:bg-white/10 hover:text-primary"
+      className="rounded-lg p-2.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
     >
       <User className="h-5 w-5" />
     </Link>
   );
 }
 
-function StaircaseLogo({ className = "h-7 w-7 text-primary" }: { className?: string }) {
+/**
+ * Authentic Upstate Equipment Pyramid & Ascending Staircase Emblem.
+ * Faithfully vectorized from the original corporate seal.
+ */
+export function UpstateEmblem({ className = "h-10 w-10 text-primary" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 40" className={className} fill="currentColor" aria-hidden="true">
-      <polygon points="4,36 4,6 12,6 12,14 20,14 20,22 28,22 28,30 36,30 36,36" />
+    <svg viewBox="0 0 100 90" className={className} fill="currentColor" aria-hidden="true">
+      {/* Top/Left Peak with descending staircase */}
+      <polygon points="50,6 64.3,32 50,32 50,44 40,44 40,56 30,56 30,68 20,68 20,80 9.2,80" />
+      {/* Bottom/Right Base with matching ascending staircase */}
+      <polygon points="94,86 38,86 38,74 48,74 48,62 58,62 58,50 68,50 68,38 73,38" />
     </svg>
   );
 }
@@ -119,66 +134,87 @@ export function Header() {
         <RouteChangeCloser onChange={closeAll} />
       </Suspense>
 
-      {/* Top Utility Bar with Stressed Phone Number and Address */}
+      {/* Top Utility Bar with Stressed Local Direct Dial and Corporate Address */}
       <div className="border-b border-white/10 bg-steel-950/95 py-2 text-xs text-white/80">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-white/60 hidden xs:inline">Direct:</span>
-            <a
-              href={site.phone.href}
-              className="inline-flex items-center gap-2 rounded-md bg-primary/15 px-3 py-1 text-base sm:text-lg font-black tracking-wide text-primary border border-primary/30 transition-all hover:bg-primary hover:text-white hover:scale-[1.02]"
-              title="Call Upstate Equipment direct: 518-370-7000"
-            >
-              <Phone className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
-              <span>{site.phone.display}</span>
-            </a>
-            <span className="hidden sm:inline text-white/30">•</span>
-            <span className="hidden sm:inline text-xs font-semibold text-white/70">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          {/* Left: Direct Line with Pulse */}
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 font-medium text-white/75">
+              <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-[11px] font-bold uppercase tracking-wider text-white/60">
+                Direct Line:
+              </span>
+              <a
+                href={site.phone.href}
+                className="text-sm font-extrabold text-primary hover:text-white transition-colors tracking-wide"
+                title="Call direct: 518.370.7000"
+              >
+                {site.phone.display}
+              </a>
+            </span>
+            <span className="hidden sm:inline text-white/20">•</span>
+            <span className="hidden sm:inline text-[11px] text-white/60">
               Local &amp; Long Distance (No 800 Needed)
             </span>
           </div>
+
+          {/* Right: Address & Fax & Catalog */}
           <div className="hidden md:flex items-center gap-4 text-xs text-white/65">
-            <span>{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span>
-            <span className="text-white/30">•</span>
-            <span>Fax {site.fax}</span>
+            <span>
+              {site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}
+            </span>
+            <span className="text-white/20">•</span>
+            <span>Fax: {site.fax}</span>
+            <span className="text-white/20">•</span>
+            <a
+              href={site.catalogUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-white/80 hover:text-primary transition-colors"
+            >
+              <span>Digital Catalog</span>
+              <ArrowUpRight className="h-3 w-3 opacity-60" />
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
-        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${site.shortName} home`}>
-          <StaircaseLogo className="h-8 w-8 text-primary transition-transform group-hover:scale-105" />
-          <div className="flex flex-col">
-            <span className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-primary group-hover:brightness-110 transition-all leading-tight">
-              Upstate Equipment Co., Inc.
-            </span>
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 hidden sm:block">
+      {/* Main Navigation Bar */}
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        {/* Brand / Logo */}
+        <Link
+          href="/"
+          className="group flex items-center gap-3.5 shrink-0"
+          aria-label={`${site.shortName} home`}
+        >
+          <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-steel-900 border border-white/10 p-1.5 transition-all group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(12,169,64,0.25)]">
+            <UpstateEmblem className="h-full w-full text-primary transition-transform group-hover:scale-105" />
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors leading-tight">
+              Upstate Equipment <span className="text-primary font-normal">Co., Inc.</span>
+            </div>
+            <span className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60 whitespace-nowrap">
               Schenectady, NY · Material Handling Since 1990
             </span>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
+        {/* Center Nav Links */}
+        <nav className="hidden items-center gap-1 xl:gap-2 lg:flex" aria-label="Main">
           <Suspense fallback={<NavLinkList />}>
             <ActiveNavLinks />
           </Suspense>
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
-          <a
-            href={site.phone.href}
-            className="mr-2 hidden items-center gap-2 text-sm font-extrabold text-primary transition-colors hover:text-white xl:flex"
-            title="Call direct"
-          >
-            <Phone className="h-4 w-4 text-primary" />
-            {site.phone.display}
-          </a>
+        {/* Right Actions */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           <button
             type="button"
             aria-label="Search products"
             aria-expanded={searchOpen}
             onClick={() => setSearchOpen((v) => !v)}
-            className="rounded-md p-2 text-white/90 transition-colors hover:bg-white/10 hover:text-primary"
+            className="rounded-lg p-2.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
           >
             <Search className="h-5 w-5" />
           </button>
@@ -186,9 +222,9 @@ export function Header() {
           <CartButton />
           <Link
             href="/contact?type=quote"
-            className="ml-2 hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
+            className="hidden sm:inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98]"
           >
-            Get a Quote
+            <span>Get a Quote</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
           <button
@@ -196,7 +232,7 @@ export function Header() {
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className="rounded-md p-2 text-white hover:bg-white/10 lg:hidden"
+            className="rounded-lg p-2 text-white hover:bg-white/10 lg:hidden"
           >
             {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -214,7 +250,9 @@ export function Header() {
               aria-label="Search products"
               className="w-full rounded-md border border-white/15 bg-steel-900 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
             />
-            <button className="rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground">Search</button>
+            <button className="rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground">
+              Search
+            </button>
           </form>
         </div>
       )}
