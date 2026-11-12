@@ -755,15 +755,6 @@
     "featured": false
   },
   {
-    "name": "Interlake",
-    "description": "Roll Formed and Structural, Welded and Bolted Pallet Racking",
-    "website": "https://www.interlake.com",
-    "categories": [
-      "racks"
-    ],
-    "featured": true
-  },
-  {
     "name": "Intermetro Industries Corp.",
     "description": "Wire Shelving and Carts, Modular Work Stations",
     "website": "https://www.metro.com",
@@ -1181,16 +1172,6 @@
       "industrial-furniture",
       "racks",
       "shelving"
-    ],
-    "featured": true
-  },
-  {
-    "name": "Pentalift Equipment Corp.",
-    "description": "Loading Dock Equipment and Custom Lift Tables",
-    "website": "https://www.pentalift.com",
-    "categories": [
-      "dock-equipment",
-      "lifting-equipment"
     ],
     "featured": true
   },
@@ -1902,15 +1883,6 @@
       "hand-equipment"
     ],
     "featured": false
-  },
-  {
-    "name": "Wildeck",
-    "description": "mezzanines and Vertical reciprocating conveyors",
-    "website": "https://www.wildeck.com",
-    "categories": [
-      "lifting-equipment"
-    ],
-    "featured": true
   },
   {
     "name": "Wirecrafters, Inc.",

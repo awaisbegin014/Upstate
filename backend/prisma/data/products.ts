@@ -644,10 +644,10 @@ export const products: SeedProduct[] = [
     ],
   },
   {
-    sku: 'WILDECK-VRC',
-    image: '/images/products/wildeck-vertical-reciprocating-conveyor.jpg',
-    name: 'Wildeck Vertical Reciprocating Conveyor (VRC)',
-    brand: 'Wildeck',
+    sku: 'COGAN-VRC',
+    image: '/images/products/vertical-reciprocating-conveyor.jpg',
+    name: 'Engineered Vertical Reciprocating Conveyor (VRC)',
+    brand: 'Cogan',
     category: 'lifting-equipment',
     price: 0,
     stock: 0,
@@ -660,10 +660,10 @@ export const products: SeedProduct[] = [
     ],
   },
   {
-    sku: 'WILDECK-MEZZ',
+    sku: 'COGAN-MEZZ',
     image: '/images/products/custom-engineered-steel-mezzanine.jpg',
     name: 'Custom Engineered Steel Mezzanine',
-    brand: 'Wildeck',
+    brand: 'Cogan',
     category: 'lifting-equipment',
     price: 0,
     stock: 0,
@@ -673,7 +673,7 @@ export const products: SeedProduct[] = [
     description:
       'Do you need additional floor space? Do you have a high ceiling area that is underutilized? We sell and install custom engineered mezzanines that increase your floor space at a cost per square foot that is much less than new construction.',
     specs: [
-      ['Brands', 'Wildeck, Cogan, Cubic Design'],
+      ['Brands', 'Cogan, Cubic Design'],
       ['Includes', 'Engineering, permits support, installation'],
     ],
   },

@@ -1,4 +1,4 @@
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icon";
@@ -15,7 +15,7 @@ import {
   SectionHeading,
 } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
-import { equipmentWeSupply, howItWorks, serviceLines, serviceSteps, site } from "@/lib/site";
+import { equipmentWeSupply, howItWorks, serviceLines, serviceSteps, site, supplierUrls } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -92,12 +92,35 @@ export default function ServicesPage() {
               </div>
               <div className="mt-8 rounded-xl border bg-card p-5">
                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                  Suppliers we work with
+                  Suppliers we represent &amp; install
                 </div>
-                <CheckList
-                  items={line.suppliers.map(([name, what]) => `${name} — ${what}`)}
-                  className="mt-4 space-y-3 text-sm"
-                />
+                <ul className="mt-4 space-y-3 text-sm">
+                  {line.suppliers.map(([name, what]) => {
+                    const url = supplierUrls[name];
+                    return (
+                      <li key={name} className="flex items-start gap-2.5">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <div>
+                          {url ? (
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-bold text-foreground hover:text-primary inline-flex items-center gap-1 transition-colors"
+                              title={`Visit ${name} official website`}
+                            >
+                              <span>{name}</span>
+                              <ArrowUpRight className="h-3.5 w-3.5 text-primary opacity-80" />
+                            </a>
+                          ) : (
+                            <span className="font-bold text-foreground">{name}</span>
+                          )}
+                          <span className="text-muted-foreground"> &mdash; {what}</span>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
               <Link
                 href={`/shop/${line.category}`}

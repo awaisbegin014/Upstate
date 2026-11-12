@@ -21,7 +21,7 @@ export default function AboutPage() {
         eyebrow="About us"
         title="Keeping Upstate New York moving since 1990."
         intro="Upstate Equipment Company has been serving the material handling equipment needs of Upstate New York businesses since its founding in June of 1990."
-        image="/images/hand-trucks.jpg"
+        image="/images/hero-warehouse.jpg"
         highlights={["Family-run since 1990", "Based on Crane Street, Schenectady", "Design · Install · Service"]}
       >
         <HeroActions>

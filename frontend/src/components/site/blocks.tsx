@@ -24,28 +24,126 @@ import { Container, Eyebrow, HeroChips, heroChipClass } from "./section";
 
 // ------------------------------------------------------------ data sections
 
+export const CATEGORY_DIRECT_REPRESENTATION: Record<
+  string,
+  Array<{ name: string; url: string; note?: string }>
+> = {
+  conveyors: [
+    { name: "ACSI Conveyors", url: "https://www.automatedconveyors.com", note: "Engineered belt & roller systems" },
+    { name: "Roll-Away", url: "https://www.roll-away.com" },
+  ],
+  "dock-equipment": [
+    { name: "McGuire", url: "https://www.wbmcguire.com", note: "Dock levelers & restraints" },
+    { name: "Advance Lifts", url: "https://www.advancelifts.com", note: "Hydraulic dock lifts" },
+    { name: "Fairborn", url: "https://www.fairbornusa.com", note: "Seals & shelters" },
+  ],
+  "hand-equipment": [
+    { name: "Magliner", url: "https://www.magliner.com", note: "Hand trucks & delivery gear" },
+    { name: "Lift-Rite", url: "https://www.liftrite.com", note: "Pallet jacks" },
+  ],
+  racks: [
+    { name: "Ridg-U-Rak", url: "https://www.ridgurak.com", note: "Pallet rack & storage design" },
+    { name: "Wireway/Husky", url: "https://www.wirewayhusky.com", note: "Partitions & guards" },
+  ],
+  "lifting-equipment": [
+    { name: "Southworth", url: "https://www.southworthproducts.com", note: "Ergonomic lift tables" },
+    { name: "Cogan", url: "https://www.cogan.com", note: "Custom mezzanines" },
+  ],
+  "casters-and-wheels": [
+    { name: "Albion Casters", url: "https://www.albioncasters.com" },
+    { name: "Colson", url: "https://www.colsoncaster.com" },
+  ],
+  "industrial-furniture": [
+    { name: "Lyon", url: "https://www.lyonworkspace.com" },
+    { name: "Penco", url: "https://www.pencoproducts.com" },
+  ],
+  "drum-equipment": [
+    { name: "Morse", url: "https://morsedrum.com" },
+    { name: "Valley Craft", url: "https://www.valleycraft.com" },
+  ],
+  ladders: [
+    { name: "Cotterman", url: "https://www.cotterman.com" },
+    { name: "Ballymore", url: "https://www.ballymore.com" },
+  ],
+  shelving: [
+    { name: "Penco", url: "https://www.pencoproducts.com" },
+    { name: "Edsal", url: "https://www.edsal.com" },
+  ],
+  "poly-containers": [
+    { name: "Akro-Mils", url: "https://akro-mils.com" },
+    { name: "Buckhorn", url: "https://www.buckhorninc.com" },
+  ],
+  matting: [
+    { name: "Ergomat", url: "https://www.ergomat.com" },
+    { name: "Notrax", url: "https://www.notrax.com" },
+  ],
+};
+
 export async function CategoryGrid() {
   const categories = await serverApi<Category[]>("/categories");
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {categories.map((c, i) => (
-        <Reveal key={c.id} delay={(i % 4) * 80}>
-          <Link
-            href={`/shop/${c.slug}`}
-            className="group flex h-full flex-col rounded-xl border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lg"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15 text-foreground transition-colors group-hover:bg-primary">
-              <Icon name={c.icon} className="h-6 w-6" />
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {categories.map((c, i) => {
+        const directBrands = CATEGORY_DIRECT_REPRESENTATION[c.slug] ?? [];
+        return (
+          <Reveal key={c.id} delay={(i % 4) * 80}>
+            <div className="group flex h-full flex-col rounded-xl border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary hover:shadow-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15 text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon name={c.icon} className="h-6 w-6" />
+                </div>
+                <Link
+                  href={`/shop/${c.slug}`}
+                  className="text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Catalog →
+                </Link>
+              </div>
+
+              <h3 className="mt-4 text-xl font-bold tracking-tight">
+                <Link href={`/shop/${c.slug}`} className="hover:text-primary transition-colors">
+                  {c.name}
+                </Link>
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.tagline}</p>
+
+              {/* Direct Manufacturer Links */}
+              {directBrands.length > 0 && (
+                <div className="mt-5 border-t border-border pt-4">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground block mb-2">
+                    Direct Representation:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {directBrands.map((brand) => (
+                      <a
+                        key={brand.name}
+                        href={brand.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={brand.note ? `${brand.name} - ${brand.note}` : `Visit ${brand.name} website`}
+                        className="inline-flex items-center gap-1 rounded-md border border-border bg-secondary px-2.5 py-1 text-xs font-semibold text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                      >
+                        <span>{brand.name}</span>
+                        <ArrowUpRight className="h-3 w-3 opacity-60" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-auto pt-5 flex items-center justify-between text-xs font-medium text-muted-foreground">
+                <Link
+                  href={`/shop/${c.slug}`}
+                  className="inline-flex items-center gap-1 font-semibold text-foreground hover:text-primary transition-colors"
+                >
+                  <span>Browse catalog items</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
             </div>
-            <h3 className="mt-5 text-lg font-bold">{c.name}</h3>
-            <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{c.tagline}</p>
-            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-foreground/70 transition-colors group-hover:text-foreground">
-              {c.productCount > 0 ? `Shop ${c.productCount} products` : "Browse category"}
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </span>
-          </Link>
-        </Reveal>
-      ))}
+          </Reveal>
+        );
+      })}
     </div>
   );
 }
@@ -66,27 +164,56 @@ export async function FeaturedProducts({ limit = 8 }: { limit?: number }) {
   return <ProductGrid products={page.items} />;
 }
 
-const FALLBACK_BRANDS = [
-  "Magline", "Southworth", "Advance Lift", "McGuire", "Wildeck", "Interlake",
-  "Ridg-U-Rak", "Wireway/Husky", "Penco Products", "Konstant", "Cogan",
-  "Albion Casters", "Colson Casters", "LiftRite", "Fairborn", "Poweramp",
-  "Pentalift", "Durable Corp",
+export interface MarqueeBrand {
+  name: string;
+  website?: string | null;
+  slug?: string;
+}
+
+const FALLBACK_BRANDS: MarqueeBrand[] = [
+  { name: "Magline", website: "https://www.magliner.com" },
+  { name: "Southworth", website: "https://www.southworthproducts.com" },
+  { name: "Advance Lift", website: "https://www.advancelifts.com" },
+  { name: "McGuire", website: "https://www.wbmcguire.com" },
+  { name: "Automated Conveyor Systems (ACSI)", website: "https://www.automatedconveyors.com" },
+  { name: "Ridg-U-Rak", website: "https://www.ridgurak.com" },
+  { name: "Wireway/Husky", website: "https://www.wirewayhusky.com" },
+  { name: "Penco Products", website: "https://www.pencoproducts.com" },
+  { name: "Konstant", website: "https://www.konstant.com" },
+  { name: "Cogan", website: "https://www.cogan.com" },
+  { name: "Albion Casters", website: "https://www.albioncasters.com" },
+  { name: "Colson Casters", website: "https://www.colsoncaster.com" },
+  { name: "LiftRite", website: "https://www.liftrite.com" },
+  { name: "Fairborn", website: "https://www.fairbornusa.com" },
+  { name: "Poweramp", website: "https://www.poweramp.com" },
+  { name: "Durable Corp", website: "https://www.durablecorp.com" },
 ];
 
-export function BrandMarqueeTrack({ names }: { names: string[] }) {
-  const list = [...names, ...names];
+export function BrandMarqueeTrack({ brands }: { brands: MarqueeBrand[] }) {
+  const list = [...brands, ...brands];
   return (
     <div className="relative">
       <div className="flex w-max animate-marquee gap-4 pr-4">
-        {list.map((name, i) => (
-          <span
-            key={`${name}-${i}`}
-            aria-hidden={i >= names.length}
-            className="whitespace-nowrap rounded-md border border-white/15 bg-steel-800 px-6 py-3 font-display text-2xl tracking-wider text-white/80"
-          >
-            {name}
-          </span>
-        ))}
+        {list.map((b, i) => {
+          const href = b.website || `/brands/${b.slug || ""}`;
+          const isExternal = Boolean(b.website);
+          return (
+            <a
+              key={`${b.name}-${i}`}
+              href={href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              aria-hidden={i >= brands.length}
+              title={`Visit ${b.name}${isExternal ? " website" : ""}`}
+              className="group inline-flex items-center gap-2.5 whitespace-nowrap rounded-md border border-white/15 bg-steel-800 px-6 py-3 font-display text-2xl tracking-wider text-white/80 transition-all hover:scale-[1.03] hover:border-primary hover:bg-steel-700 hover:text-primary active:scale-95"
+            >
+              <span>{b.name}</span>
+              {isExternal && (
+                <ArrowUpRight className="h-4 w-4 opacity-50 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
+              )}
+            </a>
+          );
+        })}
       </div>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-steel-900 to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-steel-900 to-transparent" />
@@ -96,12 +223,15 @@ export function BrandMarqueeTrack({ names }: { names: string[] }) {
 
 export async function BrandMarquee() {
   const brands = await serverApi<Brand[]>("/brands?featured=true");
-  const names = brands.length ? brands.map((b) => b.name) : FALLBACK_BRANDS;
-  return <BrandMarqueeTrack names={names} />;
+  const filtered = brands.filter((b) => !/pentalift|wildeck|interlake/i.test(b.name));
+  const items: MarqueeBrand[] = filtered.length
+    ? filtered.map((b) => ({ name: b.name, website: b.website, slug: b.slug }))
+    : FALLBACK_BRANDS;
+  return <BrandMarqueeTrack brands={items} />;
 }
 
 export function BrandMarqueeFallback() {
-  return <BrandMarqueeTrack names={FALLBACK_BRANDS} />;
+  return <BrandMarqueeTrack brands={FALLBACK_BRANDS} />;
 }
 
 /** Category chips for heroes — jump straight to a department. */
@@ -211,6 +341,7 @@ export function FeatureSplit({
   cta,
   reverse,
   tone = "background",
+  imageFit = "cover",
 }: {
   id?: string;
   eyebrow: string;
@@ -222,6 +353,7 @@ export function FeatureSplit({
   cta: { href: string; label: string; external?: boolean };
   reverse?: boolean;
   tone?: "background" | "secondary";
+  imageFit?: "cover" | "contain";
 }) {
   const ctaClass =
     "mt-10 inline-flex items-center gap-2 rounded-md bg-steel-950 px-7 py-4 text-base font-bold text-primary transition-transform hover:-translate-y-1";
@@ -246,7 +378,12 @@ export function FeatureSplit({
           </div>
         </Reveal>
         <Reveal delay={100} className={reverse ? "lg:order-first" : undefined}>
-          <div className="relative overflow-hidden rounded-xl shadow-2xl">
+          <div
+            className={cn(
+              "relative overflow-hidden rounded-xl shadow-2xl",
+              imageFit === "contain" ? "bg-white p-6 sm:p-8 flex items-center justify-center min-h-[380px]" : ""
+            )}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image}
@@ -254,7 +391,12 @@ export function FeatureSplit({
               loading="lazy"
               width={1280}
               height={960}
-              className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+              className={cn(
+                "w-full transition-transform duration-700 hover:scale-105",
+                imageFit === "contain"
+                  ? "aspect-[4/3] object-contain max-h-[340px]"
+                  : "aspect-[4/3] object-cover"
+              )}
             />
             <div className="absolute inset-x-0 bottom-0 h-1.5 bg-primary" />
           </div>
@@ -308,17 +450,10 @@ export function CtaBand() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href={site.phone.href}
-              className="inline-flex items-center gap-2 rounded-md bg-steel-950 px-7 py-4 text-base font-bold text-primary transition-transform hover:-translate-y-1"
+              className="inline-flex items-center gap-3 rounded-md bg-steel-950 px-9 py-5 text-xl font-bold text-primary shadow-xl transition-transform hover:-translate-y-1"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-6 w-6" />
               Call {site.phone.display}
-            </a>
-            <a
-              href={site.tollFree.href}
-              className="inline-flex items-center gap-2 rounded-md bg-primary-foreground px-7 py-4 text-base font-bold text-primary transition-transform hover:-translate-y-1"
-            >
-              <Phone className="h-5 w-5" />
-              {site.tollFree.display} {site.tollFree.digits}
             </a>
           </div>
         </Reveal>
@@ -333,12 +468,12 @@ export function ContactCards({ className }: { className?: string }) {
       icon: Phone,
       title: "Call us",
       lines: [
-        <a key="p" href={site.phone.href} className="block font-semibold text-white/85 hover:text-primary">
+        <a key="p" href={site.phone.href} className="block text-xl font-bold text-white hover:text-primary">
           {site.phone.display}
         </a>,
-        <a key="t" href={site.tollFree.href} className="block font-semibold text-white/85 hover:text-primary">
-          {site.tollFree.display} {site.tollFree.digits}
-        </a>,
+        <span key="sub" className="text-xs text-white/60">
+          Direct Line (Local &amp; Long Distance)
+        </span>,
       ],
     },
     {
@@ -384,7 +519,7 @@ export function SameDayBand() {
             Same-day hand truck assembly &amp; shipping
           </div>
           <div className="mt-1 text-white/70">
-            Call {site.tollFree.display} — the largest Magliner inventory north of NYC.
+            Call {site.phone.display} — the largest Magliner inventory north of NYC.
           </div>
         </div>
         <ButtonLink href="/shop/hand-equipment" size="lg">

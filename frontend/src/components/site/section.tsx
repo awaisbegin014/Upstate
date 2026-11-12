@@ -83,7 +83,7 @@ export function PageHero({
 }) {
   return (
     <>
-      <section className="relative flex min-h-svh items-center overflow-hidden bg-steel-950 pt-16 text-white">
+      <section className="relative flex min-h-svh items-center overflow-hidden bg-steel-950 pt-24 sm:pt-28 text-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}

@@ -69,12 +69,8 @@ export function Footer() {
             <li className="flex items-start gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span>
-                <a href={site.phone.href} className="transition-colors hover:text-primary">
+                <a href={site.phone.href} className="font-bold text-white transition-colors hover:text-primary">
                   {site.phone.display}
-                </a>
-                <br />
-                <a href={site.tollFree.href} className="transition-colors hover:text-primary">
-                  {site.tollFree.display} {site.tollFree.digits}
                 </a>
               </span>
             </li>

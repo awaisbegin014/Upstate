@@ -47,6 +47,17 @@ async function main() {
   console.log(`✓ ${categories.length} categories`);
 
   // Brands (suppliers)
+  await prisma.brand.deleteMany({
+    where: {
+      slug: { in: ['pentalift-equipment-corp', 'wildeck', 'interlake', 'pentalift'] },
+    },
+  });
+  await prisma.product.deleteMany({
+    where: {
+      sku: { in: ['WILDECK-VRC', 'WILDECK-MEZZ'] },
+    },
+  });
+
   const brands = JSON.parse(
     readFileSync(join(here, 'data', 'brands.json'), 'utf-8'),
   ) as SeedBrand[];
@@ -105,8 +116,9 @@ async function main() {
     const brandId = brandIds.get(p.brand);
     if (!brandId) console.warn(`! brand "${p.brand}" not found for ${p.sku}`);
 
-    let product = await prisma.product.findUnique({
-      where: { sku: p.sku },
+    const productSlug = slugify(p.name);
+    let product = await prisma.product.findFirst({
+      where: { OR: [{ sku: p.sku }, { slug: productSlug }] },
       select: { id: true },
     });
 
@@ -114,7 +126,7 @@ async function main() {
       product = await prisma.product.create({
         data: {
           sku: p.sku,
-          slug: slugify(p.name),
+          slug: productSlug,
           name: p.name,
           shortDescription: p.short,
           description: p.description,

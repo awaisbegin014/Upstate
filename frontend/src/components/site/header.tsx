@@ -87,6 +87,14 @@ function AccountButton() {
   );
 }
 
+function StaircaseLogo({ className = "h-7 w-7 text-primary" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 40 40" className={className} fill="currentColor" aria-hidden="true">
+      <polygon points="4,36 4,6 12,6 12,14 20,14 20,22 28,22 28,30 36,30 36,36" />
+    </svg>
+  );
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -110,12 +118,44 @@ export function Header() {
       <Suspense fallback={null}>
         <RouteChangeCloser onChange={closeAll} />
       </Suspense>
+
+      {/* Top Utility Bar with Stressed Phone Number and Address */}
+      <div className="border-b border-white/10 bg-steel-950/95 py-2 text-xs text-white/80">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white/60 hidden xs:inline">Direct:</span>
+            <a
+              href={site.phone.href}
+              className="inline-flex items-center gap-2 rounded-md bg-primary/15 px-3 py-1 text-base sm:text-lg font-black tracking-wide text-primary border border-primary/30 transition-all hover:bg-primary hover:text-white hover:scale-[1.02]"
+              title="Call Upstate Equipment direct: 518-370-7000"
+            >
+              <Phone className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
+              <span>{site.phone.display}</span>
+            </a>
+            <span className="hidden sm:inline text-white/30">•</span>
+            <span className="hidden sm:inline text-xs font-semibold text-white/70">
+              Local &amp; Long Distance (No 800 Needed)
+            </span>
+          </div>
+          <div className="hidden md:flex items-center gap-4 text-xs text-white/65">
+            <span>{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span>
+            <span className="text-white/30">•</span>
+            <span>Fax {site.fax}</span>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
-        <Link href="/" className="flex items-baseline gap-2" aria-label={`${site.shortName} home`}>
-          <span className="font-display text-2xl tracking-wide text-primary">UPSTATE</span>
-          <span className="hidden text-xs font-semibold uppercase tracking-[0.2em] text-white/80 sm:inline">
-            Equipment Co.
-          </span>
+        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${site.shortName} home`}>
+          <StaircaseLogo className="h-8 w-8 text-primary transition-transform group-hover:scale-105" />
+          <div className="flex flex-col">
+            <span className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-primary group-hover:brightness-110 transition-all leading-tight">
+              Upstate Equipment Co., Inc.
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70 hidden sm:block">
+              Schenectady, NY · Material Handling Since 1990
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
@@ -127,9 +167,10 @@ export function Header() {
         <div className="flex items-center gap-1 sm:gap-2">
           <a
             href={site.phone.href}
-            className="mr-2 hidden items-center gap-2 text-sm font-semibold text-white/90 transition-colors hover:text-primary xl:flex"
+            className="mr-2 hidden items-center gap-2 text-sm font-extrabold text-primary transition-colors hover:text-white xl:flex"
+            title="Call direct"
           >
-            <Phone className="h-4 w-4" />
+            <Phone className="h-4 w-4 text-primary" />
             {site.phone.display}
           </a>
           <button
