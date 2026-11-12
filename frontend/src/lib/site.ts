@@ -15,11 +15,6 @@ export const site = {
     zip: "12303",
   },
   phone: { display: "518.370.7000", href: "tel:+15183707000" },
-  tollFree: {
-    display: "800.7.MAGLINE",
-    digits: "(762.4546)",
-    href: "tel:+18007624546",
-  },
   fax: "518.370.7002",
   contacts: [
     { name: "Jim Reinhardt", email: "jimr@upstateeq.com" },
@@ -150,7 +145,7 @@ export const faqs = [
   },
   {
     q: "How fast can I get a hand truck?",
-    a: "We carry the largest Magliner hand truck and parts inventory north of New York City. In most cases we assemble and ship your hand truck the same day — call 800.7.MAGLINE.",
+    a: "We carry the largest Magliner hand truck and parts inventory north of New York City. In most cases we assemble and ship your hand truck the same day — call 518.370.7000.",
   },
   {
     q: "Can you help me add floor space without moving?",
@@ -196,7 +191,7 @@ export const milestones = [
   {
     label: "Magliner",
     title: "Hand truck specialists",
-    body: "We build the largest inventory of Magliner hand trucks and parts north of New York City — and the 800.7.MAGLINE line to go with it.",
+    body: "We build the largest inventory of Magliner hand trucks and parts north of New York City — with same-day assembly and delivery.",
   },
   {
     label: "Catalog",
@@ -242,7 +237,6 @@ export const serviceLines = [
       ["W. C. Cardinal Company", "Pallet rack and wire partitions"],
       ["Konstant", "Pallet rack, cantilever rack and mezzanines"],
       ["Penco Products", "Pallet rack, shelving, lockers, cabinets"],
-      ["Interlake", "Roll formed and structural, welded and bolted pallet racking"],
     ],
     category: "racks",
   },
@@ -280,7 +274,6 @@ export const serviceLines = [
       "We sell and install custom engineered mezzanines that can increase your floor space at a cost per square foot that is much less than new construction.",
     ],
     suppliers: [
-      ["Wildeck", "Mezzanines and vertical reciprocating conveyors"],
       ["Cubic Design", "Mezzanines and industrial guards"],
       ["Cogan", "Mezzanines and wire partitioning"],
     ],
@@ -292,7 +285,7 @@ export const serviceLines = [
     image: "/images/hand-trucks.jpg",
     body: [
       "We have the largest inventory of MAGLINER brand hand trucks and hand truck parts north of New York City.",
-      "Call us with your needs at 1-800-7-MAGLINE (800-762-4546). Chances are we can assemble and ship your hand truck the same day.",
+      "Call us with your needs at 518.370.7000. Chances are we can assemble and ship your hand truck the same day.",
     ],
     suppliers: [["Magline", "Hand trucks, platform trucks, truck ramps and delivery equipment"]],
     category: "hand-equipment",
@@ -309,6 +302,24 @@ export const serviceLines = [
     category: "hand-equipment",
   },
 ] as const;
+
+export const supplierUrls: Record<string, string> = {
+  "Advance Lift": "https://www.advancelifts.com",
+  "Advance Lifts": "https://www.advancelifts.com",
+  McGuire: "https://www.wbmcguire.com",
+  Fairborn: "https://www.fairbornusa.com",
+  Magline: "https://www.magliner.com",
+  "Ridg-U-Rak": "https://www.ridgurak.com",
+  "Wireway/Husky": "https://www.wirewayhusky.com",
+  "W. C. Cardinal Company": "https://www.wccardinal.com",
+  Konstant: "https://www.konstant.com",
+  "Penco Products": "https://www.pencoproducts.com",
+  Southworth: "https://www.southworthproducts.com",
+  Cogan: "https://www.cogan.com",
+  "Cubic Design": "https://www.cubicdesign.com",
+  LiftRite: "https://www.liftrite.com",
+  BT: "https://www.toyota-forklifts.eu",
+};
 
 /** Jobsite photos from the original Photos page (thumbnails — originals are no longer online). */
 export const projects = [

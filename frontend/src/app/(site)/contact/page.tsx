@@ -11,7 +11,7 @@ import { nextSteps, serviceAreas, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact Us & Request a Quote",
   description:
-    "Contact Upstate Equipment Co., 1417 Crane Street, Schenectady, NY 12303. Phone 518.370.7000, toll free 800.7.MAGLINE, fax 518.370.7002.",
+    "Contact Upstate Equipment Co., 1417 Crane Street, Schenectady, NY 12303. Phone 518.370.7000, fax 518.370.7002.",
 };
 
 async function ContactForm({ searchParams }: { searchParams: PageProps<"/contact">["searchParams"] }) {
@@ -29,7 +29,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
         image="/images/hero-warehouse.jpg"
         highlights={[
           `${site.address.street}, ${site.address.city}, ${site.address.state}`,
-          `Toll free ${site.tollFree.display}`,
+          `Phone ${site.phone.display}`,
           `Fax ${site.fax}`,
         ]}
       >
@@ -84,7 +84,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
                 <Clock className="h-5 w-5 text-primary" /> Same-day hand trucks
               </h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Call {site.tollFree.display} {site.tollFree.digits}. Chances are we can assemble and ship your
+                Call {site.phone.display}. Chances are we can assemble and ship your
                 hand truck the same day.
               </p>
             </div>

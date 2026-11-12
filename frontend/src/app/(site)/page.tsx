@@ -38,7 +38,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-svh items-center overflow-hidden bg-steel-950 pt-16">
+      <section className="relative flex min-h-svh items-center overflow-hidden bg-steel-950 pt-24 sm:pt-28">
         <Image
           src={heroImage}
           alt="Forklift moving pallets inside a fully racked warehouse"
@@ -173,12 +173,45 @@ export default function HomePage() {
         <Container>
           <Reveal>
             <SectionHeading
-              eyebrow="Product categories"
+              eyebrow="Equipment &amp; Turnkey Systems"
               title="Whatever it is, we handle it."
-              intro="Twelve categories of material handling equipment. Order stocked items online, or call us and we'll find it for you."
+              intro="Direct factory representation for premier manufacturers, backed by full engineering layout, custom installation, and field service."
             />
           </Reveal>
-          <div className="mt-14">
+
+          {/* Turnkey Engineering Callout Banner */}
+          <Reveal delay={100}>
+            <div className="mt-8 rounded-2xl border border-primary/30 bg-gradient-to-br from-steel-900 to-steel-950 p-6 sm:p-8 text-white shadow-xl">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div className="max-w-3xl">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                    <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                    Turnkey Engineering vs. Catalog Orders
+                  </div>
+                  <h3 className="mt-3 font-display text-3xl tracking-wide text-white sm:text-4xl">
+                    Beyond the Catalog: Complete Layout, Construction &amp; Installation
+                  </h3>
+                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-white/75">
+                    Anyone can order a commodity item from a catalog. Our true specialty is where engineering, layout, and heavy installation meet: cutting through building exterior walls, excavating concrete pit floors, and installing complete turnkey dock operations (industrial doors, levelers, seals, and truck restraints) &mdash; plus complete warehouse pallet racking layouts engineered for maximum storage and forklift turning clearances.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto">
+                  <ButtonLink href="/contact?type=quote" size="lg" className="w-full justify-center">
+                    Discuss Your Project
+                  </ButtonLink>
+                  <a
+                    href={site.phone.href}
+                    className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10 hover:text-primary"
+                  >
+                    <Phone className="h-4 w-4 text-primary" />
+                    {site.phone.display}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="mt-12">
             <SectionBoundary>
               <Suspense fallback={<CategoryGridSkeleton />}>
                 <CategoryGrid />
@@ -258,7 +291,8 @@ export default function HomePage() {
           "Replacement wheels, noses and parts for every model",
         ]}
         image="/images/hand-trucks.jpg"
-        imageAlt="Row of new aluminum hand trucks lined up in a warehouse"
+        imageAlt="Authentic Magliner aluminum hand truck"
+        imageFit="contain"
         cta={{ href: "/shop/hand-equipment", label: "Shop hand equipment" }}
       />
       <FeatureSplit
@@ -267,7 +301,7 @@ export default function HomePage() {
         reverse
         eyebrow="Featured · Mezzanines"
         title="Add floor space without adding square footage."
-        body="Need more floor space? Have a high-ceiling area sitting idle? We sell and install custom engineered mezzanines from Wildeck, Cogan and Cubic Design — at a cost per square foot far below new construction."
+        body="Need more floor space? Have a high-ceiling area sitting idle? We sell and install custom engineered mezzanines from Cogan and Cubic Design — at a cost per square foot far below new construction."
         points={[
           "Custom engineered work platforms and industrial guards",
           "Vertical reciprocating conveyors (VRCs) available",

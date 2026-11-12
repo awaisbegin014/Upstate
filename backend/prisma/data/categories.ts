@@ -45,7 +45,7 @@ export const categories = [
     icon: 'hand',
     tagline: 'Hand trucks, platform trucks, pallet jacks and delivery gear.',
     description:
-      'We have the largest inventory of Magliner hand trucks and hand truck parts north of New York City, plus Lift-Rite and BT pallet jacks stocked for immediate shipment. Call 800.7.MAGLINE — chances are we can assemble and ship your hand truck the same day.',
+      'We have the largest inventory of Magliner hand trucks and hand truck parts north of New York City, plus Lift-Rite and BT pallet jacks stocked for immediate shipment. Call 518.370.7000 — chances are we can assemble and ship your hand truck the same day.',
     imageUrl: '/images/hand-trucks.jpg',
   },
   {
@@ -72,7 +72,7 @@ export const categories = [
     icon: 'forklift',
     tagline: 'Lift tables, turntables, positioners and vertical conveyors.',
     description:
-      'Ergonomics in production and warehousing: scissor lift tables, turntables and pallet positioners from Southworth, Presto and Pentalift, plus hoists, jib and bridge cranes, vacuum lifters and vertical reciprocating conveyors.',
+      'Ergonomics in production and warehousing: scissor lift tables, turntables and pallet positioners from Southworth and Presto, plus hoists, jib and bridge cranes, vacuum lifters and vertical reciprocating conveyors.',
     imageUrl: '/projects/stiefel-dock-lift-1.jpg',
   },
   {

@@ -13,7 +13,7 @@ import type { Brand, Category } from "@/lib/types";
 export const metadata: Metadata = {
   title: "Brands We Carry",
   description:
-    "An alphabetical directory of the 200+ material handling manufacturers Upstate Equipment Co. sources from — Magline, Southworth, Ridg-U-Rak, McGuire, Wildeck and more.",
+    "An alphabetical directory of the 200+ material handling manufacturers Upstate Equipment Co. sources from — Magline, Southworth, Ridg-U-Rak, McGuire, Cogan and more.",
 };
 
 function FeaturedPartners({ brands }: { brands: Brand[] }) {
@@ -25,7 +25,7 @@ function FeaturedPartners({ brands }: { brands: Brand[] }) {
           <SectionHeading
             eyebrow="Featured partners"
             title="The names you'll see on our installs."
-            intro="Manufacturers we work with most often — from Magliner hand trucks to Wildeck mezzanines."
+            intro="Manufacturers we work with most often — from Magliner hand trucks to Cogan mezzanines and ACSI conveyors."
           />
         </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -99,7 +99,7 @@ export default function BrandsPage() {
         eyebrow="Brands we carry"
         title="200+ manufacturer partners, one phone number."
         intro="An alphabetical listing of many of our suppliers, with direct links to their web sites. If they make it, we can usually get it — and install it."
-        image="/images/hand-trucks.jpg"
+        image="/images/loading-dock.jpg"
         highlights={["Pallet rack to Magliner parts", "One quote, many manufacturers", "Installed by our own crew"]}
       >
         <HeroActions>
