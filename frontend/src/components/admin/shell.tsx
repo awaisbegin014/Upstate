@@ -2,6 +2,7 @@
 
 import {
   ExternalLink,
+  FileText,
   Inbox,
   LayoutDashboard,
   LogOut,
@@ -26,6 +27,7 @@ const NAV = [
   { href: "/admin/products", label: "Products", icon: Package },
   { href: "/admin/categories", label: "Categories", icon: Warehouse },
   { href: "/admin/brands", label: "Brands", icon: Tags },
+  { href: "/admin/content", label: "Site Content", icon: FileText },
   { href: "/admin/customers", label: "Customers", icon: Users },
   { href: "/admin/inquiries", label: "Inquiries", icon: Inbox },
   { href: "/admin/settings", label: "Settings", icon: Settings },
