@@ -1,4 +1,11 @@
-import { ArrowRight, ArrowUpRight, ChevronDown, CircleCheck, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ChevronDown,
+  CircleCheck,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -20,10 +27,14 @@ import { ProductGridSkeleton } from "@/components/site/product-card";
 import { ProjectsTeaser } from "@/components/site/project-card";
 import { Reveal } from "@/components/site/reveal";
 import { SectionBoundary } from "@/components/site/section-boundary";
-import { Container, Eyebrow, HERO, SectionHeading } from "@/components/site/section";
+import {
+  Container,
+  Eyebrow,
+  HERO,
+  SectionHeading,
+} from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
 import {
-  aboutPoints,
   howItWorks,
   serviceAreas,
   serviceSteps,
@@ -32,9 +43,12 @@ import {
   whyUpstate,
 } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { editableFaqs } from "@/lib/content";
+import { getSiteContent } from "@/lib/site-content-server";
 import heroImage from "../../../public/images/hero-warehouse.jpg";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const content = await getSiteContent();
   return (
     <>
       {/* Hero */}
@@ -58,49 +72,62 @@ export default function HomePage() {
               style={{ animationDelay: "100ms" }}
             >
               <span className="h-px w-10 shrink-0 bg-primary" />
-              Schenectady, NY · Since 1990
+              {content.heroEyebrow}
             </p>
-            {/* Three forced lines, so the height cap is a little tighter than PageHero's. */}
             <h1
               className="hero-rise mt-[clamp(0.75rem,2.5svh,1.5rem)] font-display text-[clamp(2.5rem,min(13vw,7.5svh),3.25rem)] leading-[0.95] tracking-wide text-white sm:text-[clamp(2.75rem,8.5svh,4.5rem)] lg:text-[clamp(3rem,9.5svh,6rem)]"
               style={{ animationDelay: "250ms" }}
             >
-              Everything that
-              <br />
-              moves your
-              <br />
-              <span className="text-primary">facility.</span>
+              {content.heroHeading}
             </h1>
             <p
-              className={cn("hero-rise max-w-xl leading-relaxed text-white/80", HERO.intro, HERO.gapIntro)}
+              className={cn(
+                "hero-rise max-w-xl leading-relaxed text-white/80",
+                HERO.intro,
+                HERO.gapIntro,
+              )}
               style={{ animationDelay: "400ms" }}
             >
-              Pallet rack, shelving, conveyors, dock equipment and more — designed, sourced, installed
-              and serviced by Upstate New York&apos;s material handling specialists. Now with online
-              ordering for stocked equipment.
+              {content.heroBody}
             </p>
             <div
-              className={cn("hero-rise flex flex-wrap items-center gap-3 sm:gap-4", HERO.actions)}
+              className={cn(
+                "hero-rise flex flex-wrap items-center gap-3 sm:gap-4",
+                HERO.actions,
+              )}
               style={{ animationDelay: "550ms" }}
             >
-              <ButtonLink href="/shop" size="lg" className="shadow-lg hover:-translate-y-1">
+              <ButtonLink
+                href="/shop"
+                size="lg"
+                className="shadow-lg hover:-translate-y-1"
+              >
                 Shop equipment <ArrowRight className="h-5 w-5" />
               </ButtonLink>
-              <ButtonLink href="/contact?type=quote" variant="outline-light" size="lg">
+              <ButtonLink
+                href="/contact?type=quote"
+                variant="outline-light"
+                size="lg"
+              >
                 Request a free quote <ArrowUpRight className="h-5 w-5" />
               </ButtonLink>
             </div>
             <div
-              className={cn("hero-rise flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/70", HERO.highlights)}
+              className={cn(
+                "hero-rise flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/70",
+                HERO.highlights,
+              )}
               style={{ animationDelay: "700ms" }}
             >
-              {["Design · Install · Service", "Same-day hand truck shipping", "35+ years serving Upstate NY"].map(
-                (t) => (
-                  <span key={t} className="flex items-center gap-2">
-                    <CircleCheck className="h-4 w-4 text-primary" /> {t}
-                  </span>
-                ),
-              )}
+              {[
+                "Design · Install · Service",
+                "Same-day hand truck shipping",
+                "35+ years serving Upstate NY",
+              ].map((t) => (
+                <span key={t} className="flex items-center gap-2">
+                  <CircleCheck className="h-4 w-4 text-primary" /> {t}
+                </span>
+              ))}
             </div>
           </div>
         </Container>
@@ -122,7 +149,9 @@ export default function HomePage() {
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 100}>
               <div className="text-center lg:text-left">
-                <div className="font-display text-5xl tracking-wide text-primary">{s.value}</div>
+                <div className="font-display text-5xl tracking-wide text-primary">
+                  {s.value}
+                </div>
                 <div className="mt-2 text-sm text-white/70">{s.label}</div>
               </div>
             </Reveal>
@@ -134,31 +163,43 @@ export default function HomePage() {
       <section id="about" className="scroll-mt-24 bg-background py-24">
         <Container className="grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
-            <Eyebrow>Who we are</Eyebrow>
+            <Eyebrow>{content.aboutEyebrow}</Eyebrow>
             <h2 className="mt-5 font-display text-5xl leading-none tracking-wide sm:text-6xl">
-              More than a sales organization.
+              {content.aboutHeading}
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Upstate Equipment Company has been serving the material handling equipment needs of
-              Upstate New York businesses since its founding in June of 1990. We don&apos;t just sell
-              equipment — we help you plan your space, choose the right solution, and keep it working
-              for years.
+              {content.aboutBody}
             </p>
-            <CheckList items={aboutPoints} className="mt-8" />
+            <CheckList
+              items={[
+                content.aboutPoint1,
+                content.aboutPoint2,
+                content.aboutPoint3,
+              ]}
+              className="mt-8"
+            />
           </Reveal>
           <Reveal delay={150}>
             <div className="relative">
               <div className="rounded-xl border bg-card p-8 shadow-xl">
-                <div className="font-display text-7xl tracking-wide text-primary">35+</div>
-                <div className="mt-1 text-lg font-semibold">years of keeping Upstate NY moving</div>
+                <div className="font-display text-7xl tracking-wide text-primary">
+                  35+
+                </div>
+                <div className="mt-1 text-lg font-semibold">
+                  years of keeping Upstate NY moving
+                </div>
                 <div className="mt-8 grid grid-cols-2 gap-6 border-t pt-8 text-sm">
                   <div>
                     <div className="text-2xl font-bold">Dock to shelf</div>
-                    <div className="mt-1 text-muted-foreground">Complete storage &amp; handling systems</div>
+                    <div className="mt-1 text-muted-foreground">
+                      Complete storage &amp; handling systems
+                    </div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold">Crew-safe</div>
-                    <div className="mt-1 text-muted-foreground">Ergonomics &amp; safety built into every layout</div>
+                    <div className="mt-1 text-muted-foreground">
+                      Ergonomics &amp; safety built into every layout
+                    </div>
                   </div>
                 </div>
               </div>
@@ -186,25 +227,29 @@ export default function HomePage() {
                 <div className="max-w-3xl">
                   <div className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
                     <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                    Turnkey Engineering vs. Catalog Orders
+                    {content.turnkeyBadge}
                   </div>
                   <h3 className="mt-3 font-display text-3xl tracking-wide text-white sm:text-4xl">
-                    Beyond the Catalog: Complete Layout, Construction &amp; Installation
+                    {content.turnkeyHeading}
                   </h3>
                   <p className="mt-2 text-sm sm:text-base leading-relaxed text-white/75">
-                    Anyone can order a commodity item from a catalog. Our true specialty is where engineering, layout, and heavy installation meet: cutting through building exterior walls, excavating concrete pit floors, and installing complete turnkey dock operations (industrial doors, levelers, seals, and truck restraints) &mdash; plus complete warehouse pallet racking layouts engineered for maximum storage and forklift turning clearances.
+                    {content.turnkeyBody}
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto">
-                  <ButtonLink href="/contact?type=quote" size="lg" className="w-full justify-center">
+                  <ButtonLink
+                    href="/contact?type=quote"
+                    size="lg"
+                    className="w-full justify-center"
+                  >
                     Discuss Your Project
                   </ButtonLink>
                   <a
-                    href={site.phone.href}
+                    href={content.phoneHref}
                     className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10 hover:text-primary"
                   >
                     <Phone className="h-4 w-4 text-primary" />
-                    {site.phone.display}
+                    {content.phoneDisplay}
                   </a>
                 </div>
               </div>
@@ -226,7 +271,10 @@ export default function HomePage() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <Reveal>
-              <SectionHeading eyebrow="Shop online" title="In stock and ready to ship." />
+              <SectionHeading
+                eyebrow="Shop online"
+                title="In stock and ready to ship."
+              />
             </Reveal>
             <ButtonLink href="/shop" variant="outline">
               View all products <ArrowRight className="h-4 w-4" />
@@ -243,7 +291,10 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section id="services" className="scroll-mt-24 bg-steel-950 py-24 text-white">
+      <section
+        id="services"
+        className="scroll-mt-24 bg-steel-950 py-24 text-white"
+      >
         <Container>
           <Reveal>
             <SectionHeading
@@ -264,7 +315,9 @@ export default function HomePage() {
                     </span>
                   </div>
                   <h3 className="mt-5 text-base font-bold">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">{s.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">
+                    {s.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -327,11 +380,16 @@ export default function HomePage() {
       />
 
       {/* Brands */}
-      <section id="brands" className="scroll-mt-24 overflow-hidden border-y border-white/10 bg-steel-900 py-16">
+      <section
+        id="brands"
+        className="scroll-mt-24 overflow-hidden border-y border-white/10 bg-steel-900 py-16"
+      >
         <Container className="mb-10">
           <Reveal>
             <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">Brands we carry</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                Brands we carry
+              </p>
               <h2 className="mt-4 font-display text-4xl tracking-wide text-white sm:text-5xl">
                 200+ manufacturer partners, one phone number.
               </h2>
@@ -344,7 +402,10 @@ export default function HomePage() {
           </Suspense>
         </SectionBoundary>
         <div className="mt-10 text-center">
-          <Link href="/brands" className="inline-flex items-center gap-2 font-semibold text-primary hover:text-white">
+          <Link
+            href="/brands"
+            className="inline-flex items-center gap-2 font-semibold text-primary hover:text-white"
+          >
             See the full supplier directory <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -354,7 +415,10 @@ export default function HomePage() {
       <section className="bg-background py-24">
         <Container>
           <Reveal>
-            <SectionHeading eyebrow="How it works" title="Four steps to a better facility." />
+            <SectionHeading
+              eyebrow="How it works"
+              title="Four steps to a better facility."
+            />
           </Reveal>
           <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {howItWorks.map((s, i) => (
@@ -364,7 +428,9 @@ export default function HomePage() {
                     Step {i + 1}
                   </div>
                   <h3 className="mt-2 text-xl font-bold">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {s.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -376,7 +442,10 @@ export default function HomePage() {
       <section className="bg-secondary py-24">
         <Container>
           <Reveal>
-            <SectionHeading eyebrow="Why Upstate" title="The crew you call back." />
+            <SectionHeading
+              eyebrow="Why Upstate"
+              title="The crew you call back."
+            />
           </Reveal>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {whyUpstate.map((w, i) => (
@@ -384,7 +453,9 @@ export default function HomePage() {
                 <div className="h-full rounded-xl border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-lg">
                   <Icon name={w.icon} className="h-8 w-8 text-primary" />
                   <h3 className="mt-5 text-lg font-bold">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{w.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {w.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -403,9 +474,10 @@ export default function HomePage() {
               Proudly serving Upstate New York.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Based on Crane Street in Schenectady and on the road across the region since 1990. If your
-              facility is in New York&apos;s North Country, Capital Region, Mohawk Valley, Southern Tier
-              or Hudson Valley — we&apos;ve probably worked down the road from you.
+              Based on Crane Street in Schenectady and on the road across the
+              region since 1990. If your facility is in New York&apos;s North
+              Country, Capital Region, Mohawk Valley, Southern Tier or Hudson
+              Valley — we&apos;ve probably worked down the road from you.
             </p>
             <a
               href={site.phone.href}
@@ -431,11 +503,14 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <FaqSection />
+      <FaqSection items={editableFaqs(content)} />
       <CtaBand />
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-24 bg-steel-950 py-24 text-white">
+      <section
+        id="contact"
+        className="scroll-mt-24 bg-steel-950 py-24 text-white"
+      >
         <Container>
           <Reveal>
             <SectionHeading

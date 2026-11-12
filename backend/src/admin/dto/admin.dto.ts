@@ -6,6 +6,7 @@ import {
   IsIn,
   IsInt,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   IsUrl,
@@ -27,7 +28,9 @@ const IMAGE_URL = /^(\/(uploads|images)\/[\w\-./]+|https:\/\/\S+)$/;
 
 export class ProductImageInput {
   @IsString()
-  @Matches(IMAGE_URL, { message: 'Image must be an uploaded file or an https URL.' })
+  @Matches(IMAGE_URL, {
+    message: 'Image must be an uploaded file or an https URL.',
+  })
   @MaxLength(500)
   url: string;
 
@@ -62,13 +65,17 @@ export class ProductInput {
   @Transform(trim)
   @IsOptional()
   @IsString()
-  @Matches(SLUG, { message: 'Slug may only contain lowercase letters, numbers and dashes.' })
+  @Matches(SLUG, {
+    message: 'Slug may only contain lowercase letters, numbers and dashes.',
+  })
   @MaxLength(80)
   slug?: string;
 
   @Transform(trim)
   @IsString()
-  @Matches(/^[A-Za-z0-9\-_.]{2,40}$/, { message: 'SKU: 2–40 letters, numbers, dashes or dots.' })
+  @Matches(/^[A-Za-z0-9\-_.]{2,40}$/, {
+    message: 'SKU: 2–40 letters, numbers, dashes or dots.',
+  })
   sku: string;
 
   @Transform(trim)
@@ -164,7 +171,9 @@ export class CategoryInput {
   @Transform(trim)
   @IsOptional()
   @IsString()
-  @Matches(SLUG, { message: 'Slug may only contain lowercase letters, numbers and dashes.' })
+  @Matches(SLUG, {
+    message: 'Slug may only contain lowercase letters, numbers and dashes.',
+  })
   @MaxLength(80)
   slug?: string;
 
@@ -184,7 +193,9 @@ export class CategoryInput {
 
   @IsOptional()
   @IsString()
-  @Matches(IMAGE_URL, { message: 'Image must be an uploaded file or an https URL.' })
+  @Matches(IMAGE_URL, {
+    message: 'Image must be an uploaded file or an https URL.',
+  })
   @MaxLength(500)
   imageUrl?: string | null;
 
@@ -204,7 +215,9 @@ export class BrandInput {
   @Transform(trim)
   @IsOptional()
   @IsString()
-  @Matches(SLUG, { message: 'Slug may only contain lowercase letters, numbers and dashes.' })
+  @Matches(SLUG, {
+    message: 'Slug may only contain lowercase letters, numbers and dashes.',
+  })
   @MaxLength(80)
   slug?: string;
 
@@ -215,7 +228,10 @@ export class BrandInput {
 
   @Transform(trim)
   @IsOptional()
-  @IsUrl({ require_protocol: true }, { message: 'Website must start with https://' })
+  @IsUrl(
+    { require_protocol: true },
+    { message: 'Website must start with https://' },
+  )
   @MaxLength(300)
   website?: string | null;
 
@@ -276,4 +292,45 @@ export class SettingsInput {
 
   @IsBoolean()
   invoiceEnabled: boolean;
+}
+
+export const CONTENT_FIELDS = [
+  'phoneDisplay',
+  'phoneHref',
+  'phoneTagline',
+  'street',
+  'cityStateZip',
+  'fax',
+  'catalogUrl',
+  'heroEyebrow',
+  'heroHeading',
+  'heroBody',
+  'turnkeyBadge',
+  'turnkeyHeading',
+  'turnkeyBody',
+  'aboutEyebrow',
+  'aboutHeading',
+  'aboutBody',
+  'aboutPoint1',
+  'aboutPoint2',
+  'aboutPoint3',
+  'serviceRackTitle',
+  'serviceRackBody',
+  'serviceDockTitle',
+  'serviceDockBody',
+  'serviceMezzanineTitle',
+  'serviceMezzanineBody',
+  'serviceHandTruckTitle',
+  'serviceHandTruckBody',
+  'faq1Q',
+  'faq1A',
+  'faq2Q',
+  'faq2A',
+  'faq3Q',
+  'faq3A',
+] as const;
+
+export class SiteContentInput {
+  @IsObject()
+  values: Record<(typeof CONTENT_FIELDS)[number], string>;
 }

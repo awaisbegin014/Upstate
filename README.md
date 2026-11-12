@@ -3,23 +3,23 @@
 Full-stack e-commerce site for **Upstate Equipment Co., Inc.** (material handling equipment, 1417 Crane Street, Schenectady, NY). Customers can browse 12 equipment categories, add stocked items to a cart, check out (card via Stripe or pay on invoice), and request quotes for engineered items. Staff manage everything from an admin panel.
 
 - **Content** comes from the original site, [upstateeq.com](https://www.upstateeq.com): services copy, contact details, the 12 product categories, the ~225-supplier directory (old "Links" page) and jobsite photos (old "Photos" page).
-- **Design** follows the redesign at [upstate-iron-showcase.lovable.app](https://upstate-iron-showcase.lovable.app/): Bebas Neue + Barlow, safety-yellow on steel blues, scroll reveals and the brand marquee.
+- **Design** preserves the original Upstate identity with Bitstream Cooper branding, the company green on steel blues, scroll reveals and the linked manufacturer marquee.
 
 ```
 frontend/   Next.js 16 (App Router, React 19, Tailwind CSS v4, TanStack Query)
-backend/    NestJS 12 REST API (Prisma 7, SQLite for dev, JWT cookie auth, Stripe)
+backend/    NestJS 12 REST API (Prisma 7, PostgreSQL, JWT cookie auth, Stripe)
 ```
 
 ## Quick start
 
-Requirements: Node.js 20+ (built with Node 24).
+Requirements: Node.js 20+ (built with Node 24) and PostgreSQL.
 
 ```bash
 # 1. API — http://localhost:3001/api
 cd backend
 npm install                  # also generates the Prisma client
 cp .env.example .env         # then set JWT_SECRET and ADMIN_PASSWORD
-npx prisma migrate deploy    # creates dev.db
+npx prisma migrate deploy    # creates or updates the PostgreSQL schema
 npm run db:seed              # categories, suppliers, admin user, starter products
 npm run start:dev
 
@@ -37,6 +37,7 @@ The browser only talks to the Next.js server: `/api/*` and `/uploads/*` are rewr
 ## Features
 
 **Storefront**
+
 - Home page with the redesign's sections: hero, stats, categories, featured products, services, Magliner / mezzanine / dock features, brand marquee, how it works, service area, FAQ and contact.
 - `/shop` and `/shop/[category]` with search, sorting, an in-stock filter, pagination, and each category's supplier list.
 - `/products/[slug]` with gallery, specs, stock and lead time, add to cart, and related items. Quote-only items (mezzanines, dock levelers, conveyor systems) show a quote form instead of a price.
@@ -50,11 +51,13 @@ The browser only talks to the Next.js server: `/api/*` and `/uploads/*` are rewr
 - Content pages: Services, About, Projects, Brands directory (searchable and filterable) and Contact (quote form and map).
 
 **Admin (`/admin`)**
+
 - Dashboard: open orders, 30-day paid revenue, new inquiries, low stock, recent orders.
 - Orders: filter, search, change status and payment status, internal notes. Cancelling an order restocks it.
 - Products: create and edit with image upload (JPG/PNG/WebP/GIF, checked by file signature), specs, pricing, stock, and active / featured / quote-only flags.
 - Categories, Brands (supplier directory), Customers (deactivate or promote to admin), Inquiries (quote and contact requests).
 - Settings: tax rate, flat shipping, free-shipping threshold, pickup and invoice toggles, Stripe status.
+- Site Content & Verbiage: publish header, homepage, service and FAQ copy directly to the live storefront without editing code.
 
 ## Payments (Stripe)
 
@@ -64,15 +67,11 @@ Card checkout is off until keys are set. Without them, customers see **Pay on in
 2. Add a webhook endpoint at `https://<store>/api/payments/stripe/webhook` for `checkout.session.completed`, `checkout.session.async_payment_succeeded` and `checkout.session.expired`.
 3. Local testing: `stripe listen --forward-to localhost:3000/api/payments/stripe/webhook`.
 
-The success page also asks Stripe directly, so orders confirm even before the webhook arrives. Refunds are issued from the Stripe dashboard; then mark the order *Refunded* in the admin panel.
+The success page also asks Stripe directly, so orders confirm even before the webhook arrives. Refunds are issued from the Stripe dashboard; then mark the order _Refunded_ in the admin panel.
 
 ## Production notes
 
-- **Database:** dev uses SQLite (`backend/dev.db`). For production, switch to Postgres (e.g. Supabase or Neon):
-  1. Set `provider = "postgresql"` in `prisma/schema.prisma`.
-  2. Swap `@prisma/adapter-better-sqlite3` for `@prisma/adapter-pg` in `src/prisma/prisma.service.ts` and `prisma/seed.ts`.
-  3. Regenerate the migrations.
-  4. Add `mode: 'insensitive'` to the search filters noted in `catalog.service.ts`.
+- **Database:** PostgreSQL is required in every environment. Point `DATABASE_URL` at a dedicated database (Supabase, Neon or self-hosted PostgreSQL), then run `npm run db:deploy` before starting the API.
 - **Uploads** are stored on local disk in `backend/uploads/`. Use a persistent volume, or move them to S3 or Cloudinary, on hosts with ephemeral disks.
 - Set `NODE_ENV=production` so auth cookies are `Secure`, set `FRONTEND_URL` and `STORE_URL`, and use a long random `JWT_SECRET`.
 
@@ -87,13 +86,14 @@ The success page also asks Stripe directly, so orders confirm even before the we
 
 ## Useful scripts
 
-| Where | Command | What it does |
-|---|---|---|
-| backend | `npm run start:dev` | API with watch mode |
-| backend | `npm run build && npm run start:prod` | Production build and start |
-| backend | `npm run db:migrate` | Create or apply a migration after editing the schema |
-| backend | `npm run db:seed` | Re-run the seed (updates categories, brands and admin; never overwrites existing products) |
-| backend | `npm run db:studio` | Browse the database in Prisma Studio |
-| backend | `npm test` | Unit tests |
-| frontend | `npm run dev` / `npm run build` / `npm start` | Next.js dev, build, serve |
-| frontend | `npm run lint` | ESLint |
+| Where    | Command                                       | What it does                                                                               |
+| -------- | --------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| backend  | `npm run start:dev`                           | API with watch mode                                                                        |
+| backend  | `npm run build && npm run start:prod`         | Production build and start                                                                 |
+| backend  | `npm run db:migrate`                          | Create a development migration after editing the schema                                    |
+| backend  | `npm run db:deploy`                           | Apply committed migrations in staging or production                                        |
+| backend  | `npm run db:seed`                             | Re-run the seed (updates categories, brands and admin; never overwrites existing products) |
+| backend  | `npm run db:studio`                           | Browse the database in Prisma Studio                                                       |
+| backend  | `npm test`                                    | Unit tests                                                                                 |
+| frontend | `npm run dev` / `npm run build` / `npm start` | Next.js dev, build, serve                                                                  |
+| frontend | `npm run lint`                                | ESLint                                                                                     |

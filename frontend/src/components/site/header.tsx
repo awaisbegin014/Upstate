@@ -1,16 +1,27 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Menu, Phone, Search, ShoppingCart, User, X } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Menu,
+  Phone,
+  Search,
+  ShoppingCart,
+  User,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useCart } from "@/hooks/use-cart";
 import { useSession } from "@/hooks/use-session";
 import { mainNav, site } from "@/lib/site";
+import { defaultSiteContent, type SiteContent } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 function isActive(pathname: string, href: string) {
-  if (href === "/shop") return pathname.startsWith("/shop") || pathname.startsWith("/products");
+  if (href === "/shop")
+    return pathname.startsWith("/shop") || pathname.startsWith("/products");
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -81,8 +92,16 @@ function CartButton() {
 
 function AccountButton() {
   const { user } = useSession();
-  const href = user ? (user.role === "ADMIN" ? "/admin" : "/account") : "/login";
-  const label = user ? (user.role === "ADMIN" ? "Admin panel" : "My account") : "Sign in";
+  const href = user
+    ? user.role === "ADMIN"
+      ? "/admin"
+      : "/account"
+    : "/login";
+  const label = user
+    ? user.role === "ADMIN"
+      ? "Admin panel"
+      : "My account"
+    : "Sign in";
   return (
     <Link
       href={href}
@@ -99,9 +118,18 @@ function AccountButton() {
  * Authentic Upstate Equipment Pyramid & Ascending Staircase Emblem.
  * Faithfully vectorized from the original corporate seal.
  */
-export function UpstateEmblem({ className = "h-10 w-10 text-primary" }: { className?: string }) {
+export function UpstateEmblem({
+  className = "h-10 w-10 text-primary",
+}: {
+  className?: string;
+}) {
   return (
-    <svg viewBox="0 0 100 90" className={className} fill="currentColor" aria-hidden="true">
+    <svg
+      viewBox="0 0 100 90"
+      className={className}
+      fill="currentColor"
+      aria-hidden="true"
+    >
       {/* Top/Left Peak with descending staircase */}
       <polygon points="50,6 64.3,32 50,32 50,44 40,44 40,56 30,56 30,68 20,68 20,80 9.2,80" />
       {/* Bottom/Right Base with matching ascending staircase */}
@@ -110,7 +138,11 @@ export function UpstateEmblem({ className = "h-10 w-10 text-primary" }: { classN
   );
 }
 
-export function Header() {
+export function Header({
+  content = defaultSiteContent,
+}: {
+  content?: SiteContent;
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [term, setTerm] = useState("");
@@ -145,29 +177,29 @@ export function Header() {
                 Direct Line:
               </span>
               <a
-                href={site.phone.href}
+                href={content.phoneHref}
                 className="text-sm font-extrabold text-primary hover:text-white transition-colors tracking-wide"
-                title="Call direct: 518.370.7000"
+                title={`Call direct: ${content.phoneDisplay}`}
               >
-                {site.phone.display}
+                {content.phoneDisplay}
               </a>
             </span>
             <span className="hidden sm:inline text-white/20">•</span>
             <span className="hidden sm:inline text-[11px] text-white/60">
-              Local &amp; Long Distance (No 800 Needed)
+              {content.phoneTagline}
             </span>
           </div>
 
           {/* Right: Address & Fax & Catalog */}
           <div className="hidden md:flex items-center gap-4 text-xs text-white/65">
             <span>
-              {site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}
+              {content.street}, {content.cityStateZip}
             </span>
             <span className="text-white/20">•</span>
-            <span>Fax: {site.fax}</span>
+            <span>Fax: {content.fax}</span>
             <span className="text-white/20">•</span>
             <a
-              href={site.catalogUrl}
+              href={content.catalogUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-white/80 hover:text-primary transition-colors"
@@ -192,7 +224,8 @@ export function Header() {
           </div>
           <div className="flex flex-col justify-center">
             <div className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors leading-tight">
-              Upstate Equipment <span className="text-primary font-normal">Co., Inc.</span>
+              Upstate Equipment{" "}
+              <span className="text-primary font-normal">Co., Inc.</span>
             </div>
             <span className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60 whitespace-nowrap">
               Schenectady, NY · Material Handling Since 1990
@@ -201,7 +234,10 @@ export function Header() {
         </Link>
 
         {/* Center Nav Links */}
-        <nav className="hidden items-center gap-1 xl:gap-2 lg:flex" aria-label="Main">
+        <nav
+          className="hidden items-center gap-1 xl:gap-2 lg:flex"
+          aria-label="Main"
+        >
           <Suspense fallback={<NavLinkList />}>
             <ActiveNavLinks />
           </Suspense>
@@ -234,14 +270,21 @@ export function Header() {
             onClick={() => setMenuOpen((v) => !v)}
             className="rounded-lg p-2 text-white hover:bg-white/10 lg:hidden"
           >
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {menuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
 
       {searchOpen && (
         <div className="border-t border-white/10 bg-steel-950">
-          <form onSubmit={submitSearch} className="mx-auto flex max-w-3xl gap-2 px-4 py-4 sm:px-6">
+          <form
+            onSubmit={submitSearch}
+            className="mx-auto flex max-w-3xl gap-2 px-4 py-4 sm:px-6"
+          >
             <input
               autoFocus
               value={term}
@@ -258,7 +301,10 @@ export function Header() {
       )}
 
       {menuOpen && (
-        <nav className="border-t border-white/10 bg-steel-950 lg:hidden" aria-label="Mobile">
+        <nav
+          className="border-t border-white/10 bg-steel-950 lg:hidden"
+          aria-label="Mobile"
+        >
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
             {mainNav.map((item) => (
               <Link
@@ -270,8 +316,12 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-3 grid gap-2 border-t border-white/10 pt-4 sm:grid-cols-2">
-              <a href={site.phone.href} className="flex items-center gap-2 px-3 py-2 font-semibold text-white/90">
-                <Phone className="h-4 w-4 text-primary" /> {site.phone.display}
+              <a
+                href={content.phoneHref}
+                className="flex items-center gap-2 px-3 py-2 font-semibold text-white/90"
+              >
+                <Phone className="h-4 w-4 text-primary" />{" "}
+                {content.phoneDisplay}
               </a>
               <Link
                 href="/contact?type=quote"

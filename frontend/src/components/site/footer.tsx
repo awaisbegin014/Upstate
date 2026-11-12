@@ -1,6 +1,7 @@
 import { ArrowUpRight, Mail, MapPin, Phone, Printer } from "lucide-react";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { defaultSiteContent, type SiteContent } from "@/lib/content";
 import { UpstateEmblem } from "./header";
 
 const explore = [
@@ -21,7 +22,11 @@ const popular = [
   { href: "/shop/casters-and-wheels", label: "Casters & Wheels" },
 ];
 
-export function Footer() {
+export function Footer({
+  content = defaultSiteContent,
+}: {
+  content?: SiteContent;
+}) {
   return (
     <footer className="border-t border-white/10 bg-steel-950 py-16 text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
@@ -32,21 +37,29 @@ export function Footer() {
             </div>
             <div className="flex flex-col">
               <span className="font-cooper text-xl font-bold tracking-tight text-white leading-tight">
-                Upstate Equipment <span className="text-primary font-normal">Co., Inc.</span>
+                Upstate Equipment{" "}
+                <span className="text-primary font-normal">Co., Inc.</span>
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
                 Schenectady, NY · Est. 1990
               </span>
             </div>
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{site.description}</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+            {site.description}
+          </p>
         </div>
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">Explore</h4>
+          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">
+            Explore
+          </h4>
           <ul className="mt-4 space-y-2 text-sm">
             {explore.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-white/60 transition-colors hover:text-primary">
+                <Link
+                  href={l.href}
+                  className="text-white/60 transition-colors hover:text-primary"
+                >
                   {l.label}
                 </Link>
               </li>
@@ -54,11 +67,16 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">Popular categories</h4>
+          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">
+            Popular categories
+          </h4>
           <ul className="mt-4 space-y-2 text-sm">
             {popular.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-white/60 transition-colors hover:text-primary">
+                <Link
+                  href={l.href}
+                  className="text-white/60 transition-colors hover:text-primary"
+                >
                   {l.label}
                 </Link>
               </li>
@@ -66,35 +84,48 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">Contact</h4>
+          <h4 className="text-sm font-bold uppercase tracking-widest text-white/80">
+            Contact
+          </h4>
           <ul className="mt-4 space-y-3 text-sm text-white/60">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <a href={site.mapUrl} target="_blank" rel="noreferrer" className="hover:text-primary">
-                {site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}
+              <a
+                href={site.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-primary"
+              >
+                {content.street}, {content.cityStateZip}
               </a>
             </li>
             <li className="flex items-start gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span>
-                <a href={site.phone.href} className="font-bold text-white transition-colors hover:text-primary">
-                  {site.phone.display}
+                <a
+                  href={content.phoneHref}
+                  className="font-bold text-white transition-colors hover:text-primary"
+                >
+                  {content.phoneDisplay}
                 </a>
               </span>
             </li>
             <li className="flex items-start gap-2">
               <Printer className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              Fax {site.fax}
+              Fax {content.fax}
             </li>
             <li className="flex items-start gap-2">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <a href={`mailto:${site.contacts[0].email}`} className="hover:text-primary">
+              <a
+                href={`mailto:${site.contacts[0].email}`}
+                className="hover:text-primary"
+              >
                 {site.contacts[0].email}
               </a>
             </li>
           </ul>
           <a
-            href={site.catalogUrl}
+            href={content.catalogUrl}
             target="_blank"
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-white"

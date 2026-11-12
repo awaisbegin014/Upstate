@@ -9,6 +9,11 @@ class StoreSettingsController {
   get() {
     return this.settings.publicSettings();
   }
+
+  @Get('content')
+  content() {
+    return this.settings.siteContent();
+  }
 }
 
 @Global()

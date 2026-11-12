@@ -16,7 +16,13 @@ import { ButtonLink } from "@/components/ui/button";
 import { money } from "@/lib/format";
 import { serverApi } from "@/lib/server-api";
 import { faqs, site } from "@/lib/site";
-import type { Brand, Category, Page, ProductCard, StoreSettings } from "@/lib/types";
+import type {
+  Brand,
+  Category,
+  Page,
+  ProductCard,
+  StoreSettings,
+} from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ProductGrid } from "./product-card";
 import { Reveal } from "./reveal";
@@ -29,24 +35,60 @@ export const CATEGORY_DIRECT_REPRESENTATION: Record<
   Array<{ name: string; url: string; note?: string }>
 > = {
   conveyors: [
-    { name: "ACSI Conveyors", url: "https://www.automatedconveyors.com", note: "Engineered belt & roller systems" },
+    {
+      name: "ACSI Conveyors",
+      url: "https://www.automatedconveyors.com",
+      note: "Engineered belt & roller systems",
+    },
     { name: "Roll-Away", url: "https://www.roll-away.com" },
   ],
   "dock-equipment": [
-    { name: "McGuire", url: "https://www.wbmcguire.com", note: "Dock levelers & restraints" },
-    { name: "Advance Lifts", url: "https://www.advancelifts.com", note: "Hydraulic dock lifts" },
-    { name: "Fairborn", url: "https://www.fairbornusa.com", note: "Seals & shelters" },
+    {
+      name: "McGuire",
+      url: "https://www.wbmcguire.com",
+      note: "Dock levelers & restraints",
+    },
+    {
+      name: "Advance Lifts",
+      url: "https://www.advancelifts.com",
+      note: "Hydraulic dock lifts",
+    },
+    {
+      name: "Fairborn",
+      url: "https://www.fairbornusa.com",
+      note: "Seals & shelters",
+    },
   ],
   "hand-equipment": [
-    { name: "Magliner", url: "https://www.magliner.com", note: "Hand trucks & delivery gear" },
-    { name: "Lift-Rite", url: "https://www.liftrite.com", note: "Pallet jacks" },
+    {
+      name: "Magliner",
+      url: "https://www.magliner.com",
+      note: "Hand trucks & delivery gear",
+    },
+    {
+      name: "Lift-Rite",
+      url: "https://www.liftrite.com",
+      note: "Pallet jacks",
+    },
   ],
   racks: [
-    { name: "Ridg-U-Rak", url: "https://www.ridgurak.com", note: "Pallet rack & storage design" },
-    { name: "Wireway/Husky", url: "https://www.wirewayhusky.com", note: "Partitions & guards" },
+    {
+      name: "Ridg-U-Rak",
+      url: "https://www.ridgurak.com",
+      note: "Pallet rack & storage design",
+    },
+    {
+      name: "Wireway/Husky",
+      url: "https://www.wirewayhusky.com",
+      note: "Partitions & guards",
+    },
   ],
   "lifting-equipment": [
-    { name: "Southworth", url: "https://www.southworthproducts.com", note: "Ergonomic lift tables" },
+    {
+      name: "Southworth",
+      url: "https://www.southworthproducts.com",
+      note: "Ergonomic lift tables",
+    },
     { name: "Cogan", url: "https://www.cogan.com", note: "Custom mezzanines" },
   ],
   "casters-and-wheels": [
@@ -80,18 +122,157 @@ export const CATEGORY_DIRECT_REPRESENTATION: Record<
 };
 
 export const FALLBACK_CATEGORIES: Category[] = [
-  { id: "1", slug: "casters-and-wheels", name: "Casters & Wheels", icon: "disc-3", tagline: "Heavy-duty industrial casters and wheels for every load rating.", description: "", sortOrder: 0, imageUrl: "/projects/custom-ball-transfer-cart.jpg", productCount: 0, brandCount: 0 },
-  { id: "2", slug: "conveyors", name: "Conveyors", icon: "arrow-right", tagline: "Gravity and power conveyor systems that move product, not people.", description: "", sortOrder: 1, imageUrl: "/projects/stiefel-pick-line-1.jpg", productCount: 0, brandCount: 0 },
-  { id: "3", slug: "dock-equipment", name: "Dock Equipment", icon: "truck", tagline: "Levelers, lifts, seals, shelters, restraints and dock lights.", description: "", sortOrder: 2, imageUrl: "/projects/hannay-dock-seals1.jpg", productCount: 0, brandCount: 0 },
-  { id: "4", slug: "drum-equipment", name: "Drum Equipment", icon: "cylinder", tagline: "Handlers, dollies, racks and dispensers for drums and totes.", description: "", sortOrder: 3, imageUrl: "/projects/surpass-chemical-2.jpg", productCount: 0, brandCount: 0 },
-  { id: "5", slug: "hand-equipment", name: "Hand Equipment", icon: "hand", tagline: "Hand trucks, platform trucks, pallet jacks and delivery gear.", description: "", sortOrder: 4, imageUrl: "/images/hand-trucks.jpg", productCount: 0, brandCount: 0 },
-  { id: "6", slug: "industrial-furniture", name: "Industrial Furniture", icon: "armchair", tagline: "Workbenches, workstations, industrial seating, shop desks and drawer cabinets.", description: "", sortOrder: 5, imageUrl: "/projects/fgi-inplant1.jpg", productCount: 0, brandCount: 0 },
-  { id: "7", slug: "ladders", name: "Ladders", icon: "ladder", tagline: "Rolling safety ladders, mobile work platforms, fixed access and crossover ladders.", description: "", sortOrder: 6, imageUrl: "/projects/galvanized-ladder-1.jpg", productCount: 0, brandCount: 0 },
-  { id: "8", slug: "lifting-equipment", name: "Lifting Equipment", icon: "forklift", tagline: "Lift tables, turntables, positioners and vertical conveyors.", description: "", sortOrder: 7, imageUrl: "/projects/stiefel-dock-lift-1.jpg", productCount: 0, brandCount: 0 },
-  { id: "9", slug: "matting", name: "Matting", icon: "grid-3x3", tagline: "Anti-fatigue, safety and entrance matting for warehouses and clean rooms.", description: "", sortOrder: 8, imageUrl: "/projects/stiefel-pick-line-4.jpg", productCount: 0, brandCount: 0 },
-  { id: "10", slug: "poly-containers", name: "Poly Containers", icon: "box", tagline: "Plastic bins, tote boxes, hopper boxes and bulk storage containers.", description: "", sortOrder: 9, imageUrl: "/projects/stiefel-pick-line-3.jpg", productCount: 0, brandCount: 0 },
-  { id: "11", slug: "racks", name: "Racks", icon: "server", tagline: "Pallet rack, cantilever rack, pushback and drive-in storage systems.", description: "", sortOrder: 10, imageUrl: "/projects/nexans-newburgh-1.jpg", productCount: 0, brandCount: 0 },
-  { id: "12", slug: "shelving", name: "Shelving", icon: "layers", tagline: "Steel shelving, rivet shelving, wide-span and wire shelving for any space.", description: "", sortOrder: 11, imageUrl: "/projects/stiefel-pushback.jpg", productCount: 0, brandCount: 0 },
+  {
+    id: "1",
+    slug: "casters-and-wheels",
+    name: "Casters & Wheels",
+    icon: "disc-3",
+    tagline: "Heavy-duty industrial casters and wheels for every load rating.",
+    description: "",
+    sortOrder: 0,
+    imageUrl: "/projects/custom-ball-transfer-cart.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "2",
+    slug: "conveyors",
+    name: "Conveyors",
+    icon: "arrow-right",
+    tagline:
+      "Gravity and power conveyor systems that move product, not people.",
+    description: "",
+    sortOrder: 1,
+    imageUrl: "/projects/stiefel-pick-line-1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "3",
+    slug: "dock-equipment",
+    name: "Dock Equipment",
+    icon: "truck",
+    tagline: "Levelers, lifts, seals, shelters, restraints and dock lights.",
+    description: "",
+    sortOrder: 2,
+    imageUrl: "/projects/hannay-dock-seals1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "4",
+    slug: "drum-equipment",
+    name: "Drum Equipment",
+    icon: "cylinder",
+    tagline: "Handlers, dollies, racks and dispensers for drums and totes.",
+    description: "",
+    sortOrder: 3,
+    imageUrl: "/projects/surpass-chemical-2.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "5",
+    slug: "hand-equipment",
+    name: "Hand Equipment",
+    icon: "hand",
+    tagline: "Hand trucks, platform trucks, pallet jacks and delivery gear.",
+    description: "",
+    sortOrder: 4,
+    imageUrl: "/images/hand-trucks.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "6",
+    slug: "industrial-furniture",
+    name: "Industrial Furniture",
+    icon: "armchair",
+    tagline:
+      "Workbenches, workstations, industrial seating, shop desks and drawer cabinets.",
+    description: "",
+    sortOrder: 5,
+    imageUrl: "/projects/fgi-inplant1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "7",
+    slug: "ladders",
+    name: "Ladders",
+    icon: "ladder",
+    tagline:
+      "Rolling safety ladders, mobile work platforms, fixed access and crossover ladders.",
+    description: "",
+    sortOrder: 6,
+    imageUrl: "/projects/galvanized-ladder-1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "8",
+    slug: "lifting-equipment",
+    name: "Lifting Equipment",
+    icon: "forklift",
+    tagline: "Lift tables, turntables, positioners and vertical conveyors.",
+    description: "",
+    sortOrder: 7,
+    imageUrl: "/projects/stiefel-dock-lift-1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "9",
+    slug: "matting",
+    name: "Matting",
+    icon: "grid-3x3",
+    tagline:
+      "Anti-fatigue, safety and entrance matting for warehouses and clean rooms.",
+    description: "",
+    sortOrder: 8,
+    imageUrl: "/projects/stiefel-pick-line-4.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "10",
+    slug: "poly-containers",
+    name: "Poly Containers",
+    icon: "box",
+    tagline:
+      "Plastic bins, tote boxes, hopper boxes and bulk storage containers.",
+    description: "",
+    sortOrder: 9,
+    imageUrl: "/projects/stiefel-pick-line-3.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "11",
+    slug: "racks",
+    name: "Racks",
+    icon: "server",
+    tagline:
+      "Pallet rack, cantilever rack, pushback and drive-in storage systems.",
+    description: "",
+    sortOrder: 10,
+    imageUrl: "/projects/nexans-newburgh-1.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
+  {
+    id: "12",
+    slug: "shelving",
+    name: "Shelving",
+    icon: "layers",
+    tagline:
+      "Steel shelving, rivet shelving, wide-span and wire shelving for any space.",
+    description: "",
+    sortOrder: 11,
+    imageUrl: "/projects/stiefel-pushback.jpg",
+    productCount: 0,
+    brandCount: 0,
+  },
 ];
 
 export async function CategoryGrid() {
@@ -122,11 +303,16 @@ export async function CategoryGrid() {
               </div>
 
               <h3 className="mt-4 text-xl font-bold tracking-tight">
-                <Link href={`/shop/${c.slug}`} className="hover:text-primary transition-colors">
+                <Link
+                  href={`/shop/${c.slug}`}
+                  className="hover:text-primary transition-colors"
+                >
                   {c.name}
                 </Link>
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.tagline}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {c.tagline}
+              </p>
 
               {/* Direct Manufacturer Links */}
               {directBrands.length > 0 && (
@@ -141,7 +327,11 @@ export async function CategoryGrid() {
                         href={brand.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title={brand.note ? `${brand.name} - ${brand.note}` : `Visit ${brand.name} website`}
+                        title={
+                          brand.note
+                            ? `${brand.name} - ${brand.note}`
+                            : `Visit ${brand.name} website`
+                        }
                         className="inline-flex items-center gap-1 rounded-md border border-border bg-secondary px-2.5 py-1 text-xs font-semibold text-foreground transition-all hover:border-primary hover:bg-primary hover:text-primary-foreground"
                       >
                         <span>{brand.name}</span>
@@ -180,7 +370,9 @@ export function CategoryGridSkeleton() {
 }
 
 export async function FeaturedProducts({ limit = 8 }: { limit?: number }) {
-  const page = await serverApi<Page<ProductCard>>(`/products?featured=true&pageSize=${limit}`);
+  const page = await serverApi<Page<ProductCard>>(
+    `/products?featured=true&pageSize=${limit}`,
+  );
   if (!page.items.length) return null;
   return <ProductGrid products={page.items} />;
 }
@@ -196,7 +388,10 @@ const FALLBACK_BRANDS: MarqueeBrand[] = [
   { name: "Southworth", website: "https://www.southworthproducts.com" },
   { name: "Advance Lift", website: "https://www.advancelifts.com" },
   { name: "McGuire", website: "https://www.wbmcguire.com" },
-  { name: "Automated Conveyor Systems (ACSI)", website: "https://www.automatedconveyors.com" },
+  {
+    name: "Automated Conveyor Systems (ACSI)",
+    website: "https://www.automatedconveyors.com",
+  },
   { name: "Ridg-U-Rak", website: "https://www.ridgurak.com" },
   { name: "Wireway/Husky", website: "https://www.wirewayhusky.com" },
   { name: "Penco Products", website: "https://www.pencoproducts.com" },
@@ -246,9 +441,15 @@ export async function BrandMarquee() {
   let items: MarqueeBrand[] = FALLBACK_BRANDS;
   try {
     const brands = await serverApi<Brand[]>("/brands?featured=true");
-    const filtered = (brands || []).filter((b) => !/pentalift|wildeck|interlake/i.test(b.name));
+    const filtered = (brands || []).filter(
+      (b) => !/pentalift|wildeck|interlake/i.test(b.name),
+    );
     if (filtered.length) {
-      items = filtered.map((b) => ({ name: b.name, website: b.website, slug: b.slug }));
+      items = filtered.map((b) => ({
+        name: b.name,
+        website: b.website,
+        slug: b.slug,
+      }));
     }
   } catch {
     items = FALLBACK_BRANDS;
@@ -301,10 +502,20 @@ export async function OrderingInfo({ className }: { className?: string }) {
   const cards = [
     { icon: Truck, title: "Shipping", body: shipping },
     ...(s.pickupEnabled
-      ? [{ icon: Store, title: "Local pickup", body: `Free pickup at ${site.address.street}, ${site.address.city}. We call when it's ready.` }]
+      ? [
+          {
+            icon: Store,
+            title: "Local pickup",
+            body: `Free pickup at ${site.address.street}, ${site.address.city}. We call when it's ready.`,
+          },
+        ]
       : []),
     { icon: Receipt, title: "Payment", body: payment },
-    { icon: Phone, title: "Real help", body: `Not sure what fits? Call ${site.phone.display} and talk to someone who knows warehouses.` },
+    {
+      icon: Phone,
+      title: "Real help",
+      body: `Not sure what fits? Call ${site.phone.display} and talk to someone who knows warehouses.`,
+    },
   ];
   return (
     <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-4", className)}>
@@ -312,7 +523,9 @@ export async function OrderingInfo({ className }: { className?: string }) {
         <div key={c.title} className="rounded-xl border bg-card p-5">
           <c.icon className="h-6 w-6 text-foreground/70" />
           <h3 className="mt-3 font-bold">{c.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+            {c.body}
+          </p>
         </div>
       ))}
     </div>
@@ -332,8 +545,9 @@ export function SourcingBand() {
             We carry far more than we list online.
           </h2>
           <p className="mt-4 text-white/70">
-            We source from 200+ manufacturers. Send us a part number, a photo or just a description and
-            we&apos;ll track it down — or design a complete system around it.
+            We source from 200+ manufacturers. Send us a part number, a photo or
+            just a description and we&apos;ll track it down — or design a
+            complete system around it.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -349,7 +563,13 @@ export function SourcingBand() {
   );
 }
 
-export function CheckList({ items, className }: { items: readonly string[]; className?: string }) {
+export function CheckList({
+  items,
+  className,
+}: {
+  items: readonly string[];
+  className?: string;
+}) {
   return (
     <ul className={cn("space-y-4", className)}>
       {items.map((item) => (
@@ -390,13 +610,23 @@ export function FeatureSplit({
   const ctaClass =
     "mt-10 inline-flex items-center gap-2 rounded-md bg-steel-950 px-7 py-4 text-base font-bold text-primary transition-transform hover:-translate-y-1";
   return (
-    <section id={id} className={cn("scroll-mt-24 py-24", tone === "secondary" ? "bg-secondary" : "bg-background")}>
+    <section
+      id={id}
+      className={cn(
+        "scroll-mt-24 py-24",
+        tone === "secondary" ? "bg-secondary" : "bg-background",
+      )}
+    >
       <Container className="grid items-center gap-14 lg:grid-cols-2">
         <Reveal>
           <div>
             <Eyebrow>{eyebrow}</Eyebrow>
-            <h2 className="mt-5 font-display text-5xl leading-none tracking-wide sm:text-6xl">{title}</h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{body}</p>
+            <h2 className="mt-5 font-display text-5xl leading-none tracking-wide sm:text-6xl">
+              {title}
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              {body}
+            </p>
             <CheckList items={points} className="mt-8" />
             {cta.external ? (
               <a href={cta.href} className={ctaClass}>
@@ -413,7 +643,9 @@ export function FeatureSplit({
           <div
             className={cn(
               "relative overflow-hidden rounded-xl shadow-2xl",
-              imageFit === "contain" ? "bg-white p-6 sm:p-8 flex items-center justify-center min-h-[380px]" : ""
+              imageFit === "contain"
+                ? "bg-white p-6 sm:p-8 flex items-center justify-center min-h-[380px]"
+                : "",
             )}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -427,7 +659,7 @@ export function FeatureSplit({
                 "w-full transition-transform duration-700 hover:scale-105",
                 imageFit === "contain"
                   ? "aspect-[4/3] object-contain max-h-[340px]"
-                  : "aspect-[4/3] object-cover"
+                  : "aspect-[4/3] object-cover",
               )}
             />
             <div className="absolute inset-x-0 bottom-0 h-1.5 bg-primary" />
@@ -438,27 +670,40 @@ export function FeatureSplit({
   );
 }
 
-export function FaqSection({ className }: { className?: string }) {
+export function FaqSection({
+  className,
+  items = faqs,
+}: {
+  className?: string;
+  items?: ReadonlyArray<{ q: string; a: string }>;
+}) {
   return (
-    <section id="faq" className={cn("scroll-mt-24 bg-secondary py-24", className)}>
+    <section
+      id="faq"
+      className={cn("scroll-mt-24 bg-secondary py-24", className)}
+    >
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-10">
         <Reveal>
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">FAQ</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+              FAQ
+            </p>
             <h2 className="mt-4 font-display text-5xl leading-none tracking-wide sm:text-6xl">
               Questions we hear every week.
             </h2>
           </div>
         </Reveal>
         <div className="mt-12 space-y-4">
-          {faqs.map((f, i) => (
+          {items.map((f, i) => (
             <Reveal key={f.q} delay={i * 70}>
               <details className="group rounded-xl border bg-card p-6 transition-colors open:border-primary">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
                 </summary>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{f.a}</p>
+                <p className="mt-4 leading-relaxed text-muted-foreground">
+                  {f.a}
+                </p>
               </details>
             </Reveal>
           ))}
@@ -477,7 +722,8 @@ export function CtaBand() {
             Let&apos;s move your operation forward.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg font-medium text-primary-foreground/80">
-            Call for a quote, a site visit or just honest advice about your warehouse layout. We answer.
+            Call for a quote, a site visit or just honest advice about your
+            warehouse layout. We answer.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
@@ -500,7 +746,11 @@ export function ContactCards({ className }: { className?: string }) {
       icon: Phone,
       title: "Call us",
       lines: [
-        <a key="p" href={site.phone.href} className="block text-xl font-bold text-white hover:text-primary">
+        <a
+          key="p"
+          href={site.phone.href}
+          className="block text-xl font-bold text-white hover:text-primary"
+        >
           {site.phone.display}
         </a>,
         <span key="sub" className="text-xs text-white/60">
@@ -511,13 +761,23 @@ export function ContactCards({ className }: { className?: string }) {
     {
       icon: Printer,
       title: "Fax",
-      lines: [<div key="f" className="text-white/70">{site.fax}</div>],
+      lines: [
+        <div key="f" className="text-white/70">
+          {site.fax}
+        </div>,
+      ],
     },
     {
       icon: MapPin,
       title: "Visit us",
       lines: [
-        <a key="a" href={site.mapUrl} target="_blank" rel="noreferrer" className="block text-white/70 hover:text-primary">
+        <a
+          key="a"
+          href={site.mapUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="block text-white/70 hover:text-primary"
+        >
           {site.address.street}
           <br />
           {site.address.city}, {site.address.state} {site.address.zip}
@@ -551,7 +811,8 @@ export function SameDayBand() {
             Same-day hand truck assembly &amp; shipping
           </div>
           <div className="mt-1 text-white/70">
-            Call {site.phone.display} — the largest Magliner inventory north of NYC.
+            Call {site.phone.display} — the largest Magliner inventory north of
+            NYC.
           </div>
         </div>
         <ButtonLink href="/shop/hand-equipment" size="lg">

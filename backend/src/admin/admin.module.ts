@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -19,7 +20,10 @@ import {
   CurrentUser,
   type AuthUser,
 } from '../common/decorators/current-user.decorator.js';
-import { AdminOrderQuery, AdminUpdateOrderDto } from '../orders/dto/orders.dto.js';
+import {
+  AdminOrderQuery,
+  AdminUpdateOrderDto,
+} from '../orders/dto/orders.dto.js';
 import { OrdersModule } from '../orders/orders.module.js';
 import { OrdersService } from '../orders/orders.service.js';
 import { SettingsService } from '../settings/settings.service.js';
@@ -33,8 +37,10 @@ import {
   AdminUpdateInquiryDto,
   BrandInput,
   CategoryInput,
+  CONTENT_FIELDS,
   ProductInput,
   SettingsInput,
+  SiteContentInput,
 } from './dto/admin.dto.js';
 import { MAX_UPLOAD_BYTES, saveProductImage } from './uploads.js';
 
@@ -81,7 +87,9 @@ class AdminController {
 
   @Post('uploads')
   @HttpCode(201)
-  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: MAX_UPLOAD_BYTES } }))
+  @UseInterceptors(
+    FileInterceptor('file', { limits: { fileSize: MAX_UPLOAD_BYTES } }),
+  )
   upload(@UploadedFile() file: Express.Multer.File | undefined) {
     return saveProductImage(file);
   }
@@ -140,7 +148,10 @@ class AdminController {
   }
 
   @Patch('orders/:number')
-  updateOrder(@Param('number') number: string, @Body() dto: AdminUpdateOrderDto) {
+  updateOrder(
+    @Param('number') number: string,
+    @Body() dto: AdminUpdateOrderDto,
+  ) {
     return this.orders.adminUpdate(number, dto);
   }
 
@@ -184,6 +195,43 @@ class AdminController {
   @Put('settings')
   updateSettings(@Body() dto: SettingsInput) {
     return this.settings.update(dto);
+  }
+
+  @Get('content')
+  getContent() {
+    return this.settings.siteContent();
+  }
+
+  @Put('content')
+  updateContent(@Body() dto: SiteContentInput) {
+    const clean: Record<string, string> = {};
+    for (const key of CONTENT_FIELDS) {
+      const value = dto.values[key];
+      if (typeof value !== 'string' || !value.trim()) {
+        throw new BadRequestException(`${key} is required.`);
+      }
+      if (value.length > 10_000) {
+        throw new BadRequestException(`${key} is too long.`);
+      }
+      clean[key] = value.trim();
+    }
+    if (!/^tel:\+?[1-9]\d{6,14}$/.test(clean.phoneHref)) {
+      throw new BadRequestException(
+        'Phone dial link must use the format tel:+15183707000.',
+      );
+    }
+    let catalogUrl: URL;
+    try {
+      catalogUrl = new URL(clean.catalogUrl);
+    } catch {
+      throw new BadRequestException('Catalog URL must be a valid web address.');
+    }
+    if (!['http:', 'https:'].includes(catalogUrl.protocol)) {
+      throw new BadRequestException(
+        'Catalog URL must start with http:// or https://.',
+      );
+    }
+    return this.settings.updateSiteContent(clean);
   }
 }
 
