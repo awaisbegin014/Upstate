@@ -79,8 +79,29 @@ export const CATEGORY_DIRECT_REPRESENTATION: Record<
   ],
 };
 
+export const FALLBACK_CATEGORIES: Category[] = [
+  { id: "1", slug: "casters-and-wheels", name: "Casters & Wheels", icon: "disc-3", tagline: "Heavy-duty industrial casters and wheels for every load rating.", description: "", sortOrder: 0, imageUrl: "/projects/custom-ball-transfer-cart.jpg", productCount: 0, brandCount: 0 },
+  { id: "2", slug: "conveyors", name: "Conveyors", icon: "arrow-right", tagline: "Gravity and power conveyor systems that move product, not people.", description: "", sortOrder: 1, imageUrl: "/projects/stiefel-pick-line-1.jpg", productCount: 0, brandCount: 0 },
+  { id: "3", slug: "dock-equipment", name: "Dock Equipment", icon: "truck", tagline: "Levelers, lifts, seals, shelters, restraints and dock lights.", description: "", sortOrder: 2, imageUrl: "/projects/hannay-dock-seals1.jpg", productCount: 0, brandCount: 0 },
+  { id: "4", slug: "drum-equipment", name: "Drum Equipment", icon: "cylinder", tagline: "Handlers, dollies, racks and dispensers for drums and totes.", description: "", sortOrder: 3, imageUrl: "/projects/surpass-chemical-2.jpg", productCount: 0, brandCount: 0 },
+  { id: "5", slug: "hand-equipment", name: "Hand Equipment", icon: "hand", tagline: "Hand trucks, platform trucks, pallet jacks and delivery gear.", description: "", sortOrder: 4, imageUrl: "/images/hand-trucks.jpg", productCount: 0, brandCount: 0 },
+  { id: "6", slug: "industrial-furniture", name: "Industrial Furniture", icon: "armchair", tagline: "Workbenches, workstations, industrial seating, shop desks and drawer cabinets.", description: "", sortOrder: 5, imageUrl: "/projects/fgi-inplant1.jpg", productCount: 0, brandCount: 0 },
+  { id: "7", slug: "ladders", name: "Ladders", icon: "ladder", tagline: "Rolling safety ladders, mobile work platforms, fixed access and crossover ladders.", description: "", sortOrder: 6, imageUrl: "/projects/galvanized-ladder-1.jpg", productCount: 0, brandCount: 0 },
+  { id: "8", slug: "lifting-equipment", name: "Lifting Equipment", icon: "forklift", tagline: "Lift tables, turntables, positioners and vertical conveyors.", description: "", sortOrder: 7, imageUrl: "/projects/stiefel-dock-lift-1.jpg", productCount: 0, brandCount: 0 },
+  { id: "9", slug: "matting", name: "Matting", icon: "grid-3x3", tagline: "Anti-fatigue, safety and entrance matting for warehouses and clean rooms.", description: "", sortOrder: 8, imageUrl: "/projects/stiefel-pick-line-4.jpg", productCount: 0, brandCount: 0 },
+  { id: "10", slug: "poly-containers", name: "Poly Containers", icon: "box", tagline: "Plastic bins, tote boxes, hopper boxes and bulk storage containers.", description: "", sortOrder: 9, imageUrl: "/projects/stiefel-pick-line-3.jpg", productCount: 0, brandCount: 0 },
+  { id: "11", slug: "racks", name: "Racks", icon: "server", tagline: "Pallet rack, cantilever rack, pushback and drive-in storage systems.", description: "", sortOrder: 10, imageUrl: "/projects/nexans-newburgh-1.jpg", productCount: 0, brandCount: 0 },
+  { id: "12", slug: "shelving", name: "Shelving", icon: "layers", tagline: "Steel shelving, rivet shelving, wide-span and wire shelving for any space.", description: "", sortOrder: 11, imageUrl: "/projects/stiefel-pushback.jpg", productCount: 0, brandCount: 0 },
+];
+
 export async function CategoryGrid() {
-  const categories = await serverApi<Category[]>("/categories");
+  let categories: Category[] = FALLBACK_CATEGORIES;
+  try {
+    const data = await serverApi<Category[]>("/categories");
+    if (data?.length) categories = data;
+  } catch {
+    categories = FALLBACK_CATEGORIES;
+  }
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {categories.map((c, i) => {
@@ -222,11 +243,16 @@ export function BrandMarqueeTrack({ brands }: { brands: MarqueeBrand[] }) {
 }
 
 export async function BrandMarquee() {
-  const brands = await serverApi<Brand[]>("/brands?featured=true");
-  const filtered = brands.filter((b) => !/pentalift|wildeck|interlake/i.test(b.name));
-  const items: MarqueeBrand[] = filtered.length
-    ? filtered.map((b) => ({ name: b.name, website: b.website, slug: b.slug }))
-    : FALLBACK_BRANDS;
+  let items: MarqueeBrand[] = FALLBACK_BRANDS;
+  try {
+    const brands = await serverApi<Brand[]>("/brands?featured=true");
+    const filtered = (brands || []).filter((b) => !/pentalift|wildeck|interlake/i.test(b.name));
+    if (filtered.length) {
+      items = filtered.map((b) => ({ name: b.name, website: b.website, slug: b.slug }));
+    }
+  } catch {
+    items = FALLBACK_BRANDS;
+  }
   return <BrandMarqueeTrack brands={items} />;
 }
 
@@ -236,7 +262,13 @@ export function BrandMarqueeFallback() {
 
 /** Category chips for heroes — jump straight to a department. */
 export async function HeroCategoryLinks() {
-  const categories = await serverApi<Category[]>("/categories");
+  let categories: Category[] = FALLBACK_CATEGORIES;
+  try {
+    const data = await serverApi<Category[]>("/categories");
+    if (data?.length) categories = data;
+  } catch {
+    categories = FALLBACK_CATEGORIES;
+  }
   // Hidden on phones (HeroChips), where the shop's own category row sits right below the hero.
   return (
     <HeroChips label="Shop by category">
