@@ -1,6 +1,7 @@
 import { ArrowUpRight, Mail, MapPin, Phone, Printer } from "lucide-react";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { UpstateEmblem } from "./header";
 
 const explore = [
   { href: "/shop", label: "Shop all products" },
@@ -25,11 +26,18 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-steel-950 py-16 text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
         <div>
-          <div className="flex items-baseline gap-2">
-            <span className="font-display text-3xl tracking-wide text-primary">UPSTATE</span>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-              Equipment Co., Inc.
-            </span>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-steel-900 border border-white/10 p-1.5 shrink-0">
+              <UpstateEmblem className="h-full w-full text-primary" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-cooper text-xl font-bold tracking-tight text-white leading-tight">
+                Upstate Equipment <span className="text-primary font-normal">Co., Inc.</span>
+              </span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
+                Schenectady, NY · Est. 1990
+              </span>
+            </div>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">{site.description}</p>
         </div>
