@@ -36,9 +36,8 @@ export function Footer({
               <UpstateEmblem className="h-full w-full text-primary" />
             </div>
             <div className="flex flex-col">
-              <span className="font-cooper text-xl font-bold tracking-tight text-white leading-tight">
-                Upstate Equipment{" "}
-                <span className="text-primary font-normal">Co., Inc.</span>
+              <span className="font-cooper text-xl font-bold tracking-tight text-primary leading-tight">
+                Upstate Equipment <span className="font-normal">Co., Inc.</span>
               </span>
               <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
                 Schenectady, NY · Est. 1990

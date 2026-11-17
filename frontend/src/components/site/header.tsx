@@ -169,18 +169,19 @@ export function Header({
       {/* Top Utility Bar with Stressed Local Direct Dial and Corporate Address */}
       <div className="border-b border-white/10 bg-steel-950/95 py-2 text-xs text-white/80">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Left: Direct Line with Pulse */}
+          {/* Left: Direct Line with Pulse — the phone number is the most prominent item in the bar */}
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-2 font-medium text-white/75">
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-[11px] font-bold uppercase tracking-wider text-white/60">
+              <span className="hidden text-[11px] font-bold uppercase tracking-wider text-white/60 min-[400px]:inline">
                 Direct Line:
               </span>
               <a
                 href={content.phoneHref}
-                className="text-sm font-extrabold text-primary hover:text-white transition-colors tracking-wide"
+                className="inline-flex items-center gap-1.5 text-lg font-extrabold leading-none tracking-wide text-primary transition-colors hover:text-white sm:text-xl"
                 title={`Call direct: ${content.phoneDisplay}`}
               >
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 {content.phoneDisplay}
               </a>
             </span>
@@ -223,9 +224,8 @@ export function Header({
             <UpstateEmblem className="h-full w-full text-primary transition-transform group-hover:scale-105" />
           </div>
           <div className="flex flex-col justify-center">
-            <div className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors leading-tight">
-              Upstate Equipment{" "}
-              <span className="text-primary font-normal">Co., Inc.</span>
+            <div className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-primary transition-colors leading-tight group-hover:text-white">
+              Upstate Equipment <span className="font-normal">Co., Inc.</span>
             </div>
             <span className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60 whitespace-nowrap">
               Schenectady, NY · Material Handling Since 1990
