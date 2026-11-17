@@ -170,9 +170,11 @@ export default function CheckoutPage() {
                   icon={Truck}
                   title="Ship to my facility"
                   body={
-                    settings && settings.freeShippingThresholdCents > 0
-                      ? `${money(settings.flatShippingCents)} flat · free over ${money(settings.freeShippingThresholdCents)}`
-                      : "Flat-rate shipping"
+                    !settings || settings.flatShippingCents === 0
+                      ? "Freight quoted per order"
+                      : settings.freeShippingThresholdCents > 0
+                        ? `${money(settings.flatShippingCents)} flat · free over ${money(settings.freeShippingThresholdCents)}`
+                        : `${money(settings.flatShippingCents)} flat rate`
                   }
                 />
                 {pickupOn && (
@@ -260,7 +262,11 @@ export default function CheckoutPage() {
               ))}
             </ul>
             <div className="border-t pt-4">
-              <TotalsTable {...totals} pickup={mode === "PICKUP"} />
+              <TotalsTable
+                {...totals}
+                pickup={mode === "PICKUP"}
+                freightQuoted={settings?.flatShippingCents === 0}
+              />
             </div>
             {placeOrder.error && (
               <p className="rounded-md bg-red-50 p-3 text-sm font-medium text-destructive">{placeOrder.error.message}</p>

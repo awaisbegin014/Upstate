@@ -43,7 +43,7 @@ The browser only talks to the Next.js server: `/api/*` and `/uploads/*` are rewr
 - `/products/[slug]` with gallery, specs, stock and lead time, add to cart, and related items. Quote-only items (mezzanines, dock levelers, conveyor systems) show a quote form instead of a price.
 - Server-side cart: guests get an httpOnly cookie, and the guest cart merges into the account on sign-in.
 - Checkout for signed-in customers:
-  - Shipping (flat rate, free over a threshold) or free local pickup.
+  - Shipping (freight quoted per order by default, or an optional flat rate with a free-shipping threshold) or free local pickup.
   - NY sales tax on goods plus shipping.
   - PO number, delivery notes, card (Stripe) or pay on invoice.
 - Stock is reserved atomically at checkout. Abandoned card payments release stock and put the items back in the cart.
@@ -78,7 +78,7 @@ The success page also asks Stripe directly, so orders confirm even before the we
 ## Before going live
 
 - [ ] **Replace the starter catalog.** The 51 seeded products (`backend/prisma/data/products.ts`) use real supplier brands, but their **names, specs, prices and stock are placeholders**. Edit them in Admin → Products and upload real photos. Until a product has a photo, the store shows a branded placeholder.
-- [ ] Confirm the tax rate, shipping fee and free-shipping threshold in Admin → Settings (defaults: 8%, $49, free over $1,000).
+- [ ] Confirm the tax rate, shipping fee and free-shipping threshold in Admin → Settings (defaults: 8%, freight quoted per order — flat shipping $0, no free-shipping threshold).
 - [ ] Add Stripe keys if card payments are wanted.
 - [ ] Add terms of sale, a returns policy and a privacy policy.
 - [ ] Get larger jobsite photos. Only 200 px thumbnails survive on the old site; `frontend/public/projects/`.

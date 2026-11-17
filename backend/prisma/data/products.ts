@@ -63,7 +63,7 @@ export const products: SeedProduct[] = [
       ['Capacity', '500 lb'],
       ['Height', '52"'],
       ['Handle', 'Loop'],
-      ['Wheels', '10" balloon cushion'],
+      ['Wheels', '10" pneumatic'],
     ],
   },
   {
@@ -80,7 +80,9 @@ export const products: SeedProduct[] = [
     description:
       'Genuine replacement wheel for Magline hand trucks and convertibles. Flat-free balloon cushion tire, 5/8" bore with bearings.',
     specs: [
+      ['Manufacturer part', '101030'],
       ['Diameter', '10"'],
+      ['Width', '2"'],
       ['Tread', 'Balloon cushion (flat-free)'],
       ['Bore', '5/8"'],
     ],
@@ -431,22 +433,6 @@ export const products: SeedProduct[] = [
       ['Load capacity', '6,000 lb'],
     ],
   },
-  {
-    sku: 'VC-DRUMLIFT',
-    image: '/images/products/valley-craft-fork-mount-drum-lifter.jpg',
-    name: 'Valley Craft Fork-Mount Drum Lifter',
-    brand: 'Valley Craft Inc.',
-    category: 'drum-equipment',
-    price: 1189,
-    stock: 2,
-    leadTime: 'Ships in 2–3 weeks',
-    short: 'Turns any forklift into a drum handler.',
-    description: 'Fork-mounted drum gripper for steel, plastic and fiber drums.',
-    specs: [
-      ['Capacity', '1,500 lb'],
-      ['Drums', 'Steel, plastic, fiber'],
-    ],
-  },
 
   // ----------------------------------------------------- industrial furniture
   {
@@ -673,7 +659,7 @@ export const products: SeedProduct[] = [
     description:
       'Do you need additional floor space? Do you have a high ceiling area that is underutilized? We sell and install custom engineered mezzanines that increase your floor space at a cost per square foot that is much less than new construction.',
     specs: [
-      ['Brands', 'Cogan, Cubic Design'],
+      ['Brands', 'Cogan, Specialized Storage Solutions'],
       ['Includes', 'Engineering, permits support, installation'],
     ],
   },
@@ -845,7 +831,7 @@ export const products: SeedProduct[] = [
     sku: 'PUSHBACK-SYS',
     image: '/images/products/pushback-drive-in-rack-systems.jpg',
     name: 'Pushback & Drive-In Rack Systems',
-    brand: 'W. C. Cardinal Co',
+    brand: 'Ridg-U-Rak',
     category: 'racks',
     price: 0,
     stock: 0,

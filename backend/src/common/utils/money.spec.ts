@@ -28,4 +28,12 @@ describe('computeTotals', () => {
     const t = computeTotals(500_000, { ...settings, freeShippingThresholdCents: 0 }, 'SHIPPING');
     expect(t.shippingCents).toBe(4900);
   });
+
+  it('charges no shipping when freight is quoted per order (flat rate 0)', () => {
+    const quoted = { taxRateBps: 800, flatShippingCents: 0, freeShippingThresholdCents: 0 };
+    const t = computeTotals(10_000, quoted, 'SHIPPING');
+    expect(t.shippingCents).toBe(0);
+    expect(t.taxCents).toBe(800);
+    expect(t.totalCents).toBe(10_800);
+  });
 });

@@ -4,15 +4,15 @@ import urllib.request
 
 MAPPING = {
     "MAG-CVT-1000": {
-        "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2Fae061739b3f7abf9b633473eeaa81d31/mag-hmk116ua4-jan181.jpg/400x400",
+        "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2F19b8ca4e2cdea49439bdce1a1a81bbf8/mag-geaj1-ua4r-main-jan26.jpg/800x800",
         "file": "magline-convertible-hand-truck.jpg"
     },
     "MAG-2W-500": {
-        "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2F1f4c65a9910fea86e6805925137827e8/trucks-hand.jpg/400x400",
+        "local": "frontend/public/images/hand-trucks.jpg",
         "file": "magline-2-wheel-hand-truck.jpg"
     },
     "MAG-PART-WHL10": {
-        "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2Ff2b5748ac57fe0fddfe197b1c495a35f/pc-500-8udg.jpg/400x400",
+        "url": "https://www.zoro.com/static/cms/product/large/Z-s88zlcpIx-.JPG",
         "file": "magline-balloon-cushion-wheel.jpg"
     },
     "LR-PJ-5500": {
@@ -90,10 +90,6 @@ MAPPING = {
     "ENP-SPILL-4D": {
         "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2F7803ae005804515e32ccc9325f5f2843/drums-cabinets.jpg/400x400",
         "file": "enpac-4-drum-spill-containment-pallet.jpg"
-    },
-    "VC-DRUMLIFT": {
-        "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2F014febaf0e3f7445f26232eb8a3f567b/vmfdt-22.jpg/400x400",
-        "file": "valley-craft-fork-mount-drum-lifter.jpg"
     },
     "LYON-WB-7230": {
         "url": "https://assets-smo-prod.roccommercecloud.com/cdn-cgi/imagedelivery/LtMD2-yac1d5teL5q3QR1A/roc%2Fsmo%2F389cc2ae291ed87fc52b0f47ac1cbf04/tables-work1.jpg/400x400",

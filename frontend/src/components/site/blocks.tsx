@@ -101,7 +101,7 @@ export const CATEGORY_DIRECT_REPRESENTATION: Record<
   ],
   "drum-equipment": [
     { name: "Morse", url: "https://morsedrum.com" },
-    { name: "Valley Craft", url: "https://www.valleycraft.com" },
+    { name: "Vestil", url: "https://www.vestil.com" },
   ],
   ladders: [
     { name: "Cotterman", url: "https://www.cotterman.com" },
@@ -490,9 +490,11 @@ export async function HeroCategoryLinks() {
 export async function OrderingInfo({ className }: { className?: string }) {
   const s = await serverApi<StoreSettings>("/store/settings");
   const shipping =
-    s.freeShippingThresholdCents > 0
-      ? `Flat ${money(s.flatShippingCents)} per order, free on orders over ${money(s.freeShippingThresholdCents)}.`
-      : `Flat ${money(s.flatShippingCents)} per order to your facility.`;
+    s.flatShippingCents === 0
+      ? "Freight is quoted per order based on weight and destination — we confirm the cost with you before anything ships."
+      : s.freeShippingThresholdCents > 0
+        ? `Flat ${money(s.flatShippingCents)} per order, free on orders over ${money(s.freeShippingThresholdCents)}.`
+        : `Flat ${money(s.flatShippingCents)} per order to your facility.`;
   const payment =
     s.paymentMethods.card && s.paymentMethods.invoice
       ? "Pay securely by card, or choose pay on invoice and add your PO number."

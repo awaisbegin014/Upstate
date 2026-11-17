@@ -7,7 +7,7 @@ import { TotalsTable } from "@/components/site/order-summary";
 import { ProductImage } from "@/components/site/product-image";
 import { Container } from "@/components/site/section";
 import { ButtonLink } from "@/components/ui/button";
-import { useCart, useCartActions } from "@/hooks/use-cart";
+import { useCart, useCartActions, useStoreSettings } from "@/hooks/use-cart";
 import { useSession } from "@/hooks/use-session";
 import { money } from "@/lib/format";
 
@@ -15,6 +15,8 @@ export function CartView() {
   const { data: cart, isPending, error } = useCart();
   const { update, remove } = useCartActions();
   const { user } = useSession();
+  const { data: settings } = useStoreSettings();
+  const freightQuoted = settings?.flatShippingCents === 0;
 
   return (
     <div className="bg-secondary pt-16">
@@ -87,9 +89,11 @@ export function CartView() {
 
             <aside className="h-fit space-y-4 rounded-xl border bg-card p-6 lg:sticky lg:top-24">
               <h2 className="text-lg font-bold">Order summary</h2>
-              <TotalsTable {...cart.totals.SHIPPING} />
+              <TotalsTable {...cart.totals.SHIPPING} freightQuoted={freightQuoted} />
               <p className="text-xs text-muted-foreground">
-                Shipping shown for delivery. Choose free local pickup in Schenectady at checkout.
+                {freightQuoted
+                  ? "Freight for delivered orders is quoted separately — we confirm the cost with you before anything ships. Or choose free local pickup in Schenectady at checkout."
+                  : "Shipping shown for delivery. Choose free local pickup in Schenectady at checkout."}
               </p>
               {cart.hasIssues && (
                 <p className="rounded-md bg-amber-100 p-3 text-sm font-medium text-amber-900">

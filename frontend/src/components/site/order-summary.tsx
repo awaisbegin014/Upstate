@@ -36,6 +36,7 @@ export function TotalsTable({
   totalCents,
   taxRateBps,
   pickup,
+  freightQuoted,
 }: {
   subtotalCents: number;
   shippingCents: number;
@@ -43,7 +44,14 @@ export function TotalsTable({
   totalCents: number;
   taxRateBps: number;
   pickup?: boolean;
+  /** Delivered orders with no shipping charge: freight is quoted separately, not free. */
+  freightQuoted?: boolean;
 }) {
+  const shippingLabel = shippingCents
+    ? money(shippingCents)
+    : !pickup && freightQuoted
+      ? "Quoted separately"
+      : "Free";
   return (
     <dl className="space-y-2 text-sm">
       <div className="flex justify-between">
@@ -52,7 +60,7 @@ export function TotalsTable({
       </div>
       <div className="flex justify-between">
         <dt className="text-muted-foreground">{pickup ? "Local pickup" : "Shipping"}</dt>
-        <dd className="font-semibold">{shippingCents ? money(shippingCents) : "Free"}</dd>
+        <dd className="font-semibold">{shippingLabel}</dd>
       </div>
       <div className="flex justify-between">
         <dt className="text-muted-foreground">Sales tax ({percent(taxRateBps)})</dt>
@@ -106,7 +114,7 @@ export function OrderSummary({ order }: { order: Order }) {
           ))}
         </ul>
         <div className="border-t p-5">
-          <TotalsTable {...order} pickup={order.fulfillment === "PICKUP"} />
+          <TotalsTable {...order} pickup={order.fulfillment === "PICKUP"} freightQuoted />
         </div>
       </div>
 

@@ -278,9 +278,10 @@ model StoreSettings {
   id                         String   @id @default("store")
   /// Basis points: 800 = 8.00%.
   taxRateBps                 Int      @default(800)
-  flatShippingCents          Int      @default(4900)
+  /// 0 = freight is quoted per order and not charged at checkout.
+  flatShippingCents          Int      @default(0)
   /// 0 disables free shipping.
-  freeShippingThresholdCents Int      @default(100000)
+  freeShippingThresholdCents Int      @default(0)
   pickupEnabled              Boolean  @default(true)
   invoiceEnabled             Boolean  @default(true)
   updatedAt                  DateTime @updatedAt

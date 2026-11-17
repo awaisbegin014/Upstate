@@ -176,7 +176,7 @@
   {
     "name": "B T",
     "description": "Pallet Jacks and Stackers",
-    "website": "https://www.bt-forklifts.com",
+    "website": "https://toyota-forklifts.rs/guides/hand-pallet-truck-guide/",
     "categories": [
       "hand-equipment"
     ],
@@ -224,16 +224,6 @@
     "website": "https://www.bayheadproducts.com",
     "categories": [
       "poly-containers"
-    ],
-    "featured": false
-  },
-  {
-    "name": "Beech Engineering & Mfg",
-    "description": "Lifters, Stackers, Engine Hoists and Vertical Reciprocating Conveyors",
-    "website": "https://www.beechengineering.com",
-    "categories": [
-      "hand-equipment",
-      "lifting-equipment"
     ],
     "featured": false
   },
@@ -418,9 +408,9 @@
     "featured": false
   },
   {
-    "name": "Cubic Design",
-    "description": "Mezzanines and industrial guards",
-    "website": "https://www.cubicdesigns.com",
+    "name": "Specialized Storage Solutions",
+    "description": "Storage Mezzanines (formerly Cubic Designs)",
+    "website": "https://www.specializedstorage.com/solutions/mezzanines/storage-mezzanines",
     "categories": [],
     "featured": false
   },
@@ -590,24 +580,6 @@
     "featured": false
   },
   {
-    "name": "Fairbanks Casters",
-    "description": "Heavy Duty Industrial Casters and Wheels",
-    "website": "https://www.fairbankscasters.com",
-    "categories": [
-      "casters-and-wheels"
-    ],
-    "featured": false
-  },
-  {
-    "name": "Fairbanks Company",
-    "description": "Casters, Platform Trucks Heavy Duty Hand Trucks",
-    "website": "https://www.fairbankcasters.com",
-    "categories": [
-      "hand-equipment"
-    ],
-    "featured": false
-  },
-  {
     "name": "Fairborn",
     "description": "Dock Seals and Shelters",
     "website": "https://www.fairbornusa.com",
@@ -667,15 +639,6 @@
     "featured": false
   },
   {
-    "name": "H. Wilson Company",
-    "description": "Specialty Carts",
-    "website": "https://www.hwilson.com",
-    "categories": [
-      "hand-equipment"
-    ],
-    "featured": false
-  },
-  {
     "name": "Hallowell",
     "description": "Industrial Shelving",
     "website": "https://www.hallowell-list.com",
@@ -714,7 +677,7 @@
   {
     "name": "Hillman Rollers",
     "description": "Machinery Movers",
-    "website": "https://www.hillmanrollers.com",
+    "website": "https://www.gksweb.com/",
     "categories": [
       "hand-equipment"
     ],
@@ -760,15 +723,6 @@
     "website": "https://www.metro.com",
     "categories": [
       "shelving"
-    ],
-    "featured": false
-  },
-  {
-    "name": "Interthor",
-    "description": "Pallet Jacks, Lifters and Stackers",
-    "website": "https://www.interthor.com",
-    "categories": [
-      "hand-equipment"
     ],
     "featured": false
   },
@@ -902,7 +856,7 @@
   {
     "name": "LiftRite",
     "description": "Pallet Jacks, Lifters and Stackers",
-    "website": "https://http:",
+    "website": "https://www.liftrite.com/",
     "categories": [
       "hand-equipment"
     ],
@@ -1015,7 +969,7 @@
   {
     "name": "Milwaukee Truck",
     "description": "Steel Hand Trucks",
-    "website": null,
+    "website": "https://www.milwaukeehandtrucks.com/",
     "categories": [
       "hand-equipment"
     ],
@@ -1228,15 +1182,6 @@
     "featured": false
   },
   {
-    "name": "Pramac Industries",
-    "description": "Pallet Jacks and Stackers",
-    "website": "https://www.pramac.com",
-    "categories": [
-      "hand-equipment"
-    ],
-    "featured": false
-  },
-  {
     "name": "Premier Plastics",
     "description": "Polyethylene Work Stands",
     "website": "https://www.durablebydesign.com",
@@ -1275,7 +1220,7 @@
   {
     "name": "Pucel Enterprises",
     "description": "Grizzly Brand Cabinets, Welding Stations, Work Benches and Stands",
-    "website": "https://www.pucel-grizzly.com",
+    "website": "https://www.pucelenterprises.com/",
     "categories": [
       "hand-equipment",
       "industrial-furniture"
@@ -1366,15 +1311,6 @@
     "description": "Plastic Material Handling Containers",
     "website": "https://www.regplas.com",
     "categories": [],
-    "featured": false
-  },
-  {
-    "name": "Rehrig International",
-    "description": "Plastic Platform and General Purpose Trucks",
-    "website": "https://www.rehrig.com",
-    "categories": [
-      "hand-equipment"
-    ],
     "featured": false
   },
   {
@@ -1838,31 +1774,12 @@
     "featured": false
   },
   {
-    "name": "Valley Craft Inc.",
-    "description": "Drum Handling Equipment, Fork Truck Attachments",
-    "website": "https://www.valleycraft.com",
-    "categories": [
-      "drum-equipment",
-      "hand-equipment"
-    ],
-    "featured": false
-  },
-  {
     "name": "Vestil Mfg., Inc.",
     "description": "Ergonomic Products, Loading Dock Equipment, Material Handling Equipment, Drum Handling Equipment, Packaging Equipment",
     "website": "https://www.vestilmfg.com",
     "categories": [
       "drum-equipment",
       "hand-equipment"
-    ],
-    "featured": false
-  },
-  {
-    "name": "W. C. Cardinal Co",
-    "description": "Pushback, Drive-in, Drive-thru and Selective Roll Formed and Structural Pallet Racks",
-    "website": "https://www.wccardinal.com",
-    "categories": [
-      "racks"
     ],
     "featured": false
   },

@@ -234,7 +234,6 @@ export const serviceLines = [
     suppliers: [
       ["Ridg-U-Rak", "Pallet rack and bulk storage rack"],
       ["Wireway/Husky", "Pallet rack and wire partitions"],
-      ["W. C. Cardinal Company", "Pallet rack and wire partitions"],
       ["Konstant", "Pallet rack, cantilever rack and mezzanines"],
       ["Penco Products", "Pallet rack, shelving, lockers, cabinets"],
     ],
@@ -274,7 +273,7 @@ export const serviceLines = [
       "We sell and install custom engineered mezzanines that can increase your floor space at a cost per square foot that is much less than new construction.",
     ],
     suppliers: [
-      ["Cubic Design", "Mezzanines and industrial guards"],
+      ["Specialized Storage Solutions", "Storage mezzanines (formerly Cubic Designs)"],
       ["Cogan", "Mezzanines and wire partitioning"],
     ],
     category: "lifting-equipment",
@@ -311,14 +310,14 @@ export const supplierUrls: Record<string, string> = {
   Magline: "https://www.magliner.com",
   "Ridg-U-Rak": "https://www.ridgurak.com",
   "Wireway/Husky": "https://www.wirewayhusky.com",
-  "W. C. Cardinal Company": "https://www.wccardinal.com",
   Konstant: "https://www.konstant.com",
   "Penco Products": "https://www.pencoproducts.com",
   Southworth: "https://www.southworthproducts.com",
   Cogan: "https://www.cogan.com",
-  "Cubic Design": "https://www.cubicdesign.com",
+  "Specialized Storage Solutions":
+    "https://www.specializedstorage.com/solutions/mezzanines/storage-mezzanines",
   LiftRite: "https://www.liftrite.com",
-  BT: "https://www.toyota-forklifts.eu",
+  BT: "https://toyota-forklifts.rs/guides/hand-pallet-truck-guide/",
 };
 
 /** Jobsite photos from the original Photos page (thumbnails — originals are no longer online). */
@@ -367,7 +366,7 @@ export const projects = [
   },
   {
     title: "Wedge-shaped mezzanine",
-    body: "Custom wedge-shaped mezzanine by Cubic Design — before and after.",
+    body: "Custom wedge-shaped mezzanine by Cubic Designs (now Specialized Storage Solutions) — before and after.",
     tags: ["Mezzanines"],
     photos: ["ticonderoga-mezzanine-1", "ticonderoga-mezzanine-after"],
   },

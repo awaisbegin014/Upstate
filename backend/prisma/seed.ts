@@ -46,17 +46,46 @@ async function main() {
   }
   console.log(`✓ ${categories.length} categories`);
 
-  // Brands (suppliers)
+  // Brands (suppliers) — drop suppliers the client has retired (out of
+  // business, dead links or no longer represented) along with their products.
   await prisma.brand.deleteMany({
     where: {
-      slug: { in: ['pentalift-equipment-corp', 'wildeck', 'interlake', 'pentalift'] },
+      slug: {
+        in: [
+          'pentalift-equipment-corp',
+          'wildeck',
+          'interlake',
+          'pentalift',
+          'w-c-cardinal-co',
+          'beech-engineering-and-mfg',
+          'fairbanks-casters',
+          'fairbanks-company',
+          'h-wilson-company',
+          'interthor',
+          'pramac-industries',
+          'rehrig-international',
+          'valley-craft-inc',
+        ],
+      },
     },
   });
   await prisma.product.deleteMany({
     where: {
-      sku: { in: ['WILDECK-VRC', 'WILDECK-MEZZ'] },
+      sku: { in: ['WILDECK-VRC', 'WILDECK-MEZZ', 'VC-DRUMLIFT'] },
     },
   });
+  // Cubic Designs now operates as Specialized Storage Solutions: rename the
+  // existing row in place so its category links and URL slug history move with it.
+  const renamed = await prisma.brand.findUnique({
+    where: { slug: 'specialized-storage-solutions' },
+    select: { id: true },
+  });
+  if (!renamed) {
+    await prisma.brand.updateMany({
+      where: { slug: 'cubic-design' },
+      data: { name: 'Specialized Storage Solutions', slug: 'specialized-storage-solutions' },
+    });
+  }
 
   const brands = JSON.parse(
     readFileSync(join(here, 'data', 'brands.json'), 'utf-8'),

@@ -354,7 +354,7 @@ export default async function HomePage() {
         reverse
         eyebrow="Featured · Mezzanines"
         title="Add floor space without adding square footage."
-        body="Need more floor space? Have a high-ceiling area sitting idle? We sell and install custom engineered mezzanines from Cogan and Cubic Design — at a cost per square foot far below new construction."
+        body="Need more floor space? Have a high-ceiling area sitting idle? We sell and install custom engineered mezzanines from Cogan and Specialized Storage Solutions — at a cost per square foot far below new construction."
         points={[
           "Custom engineered work platforms and industrial guards",
           "Vertical reciprocating conveyors (VRCs) available",

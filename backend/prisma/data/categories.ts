@@ -9,7 +9,7 @@ export const categories = [
     icon: 'disc-3',
     tagline: 'Heavy-duty industrial casters and wheels for every load rating.',
     description:
-      'Swivel and rigid plate casters, stem casters and replacement wheels in polyurethane, rubber, phenolic and steel — sourced from Albion, Colson, Fairbanks, Faultless, Payson and more. Tell us the load, floor and environment and we will match the caster.',
+      'Swivel and rigid plate casters, stem casters and replacement wheels in polyurethane, rubber, phenolic and steel — sourced from Albion, Colson, Faultless, Payson and more. Tell us the load, floor and environment and we will match the caster.',
     imageUrl: '/projects/custom-ball-transfer-cart.jpg',
   },
   {
@@ -36,7 +36,7 @@ export const categories = [
     icon: 'cylinder',
     tagline: 'Handlers, dollies, racks and dispensers for drums and totes.',
     description:
-      'Drum trucks, drum handlers and lifters, drum dollies and cradles, pumps, spill containment pallets and poly or steel drums from Morse, Valley Craft, Vestil, Enpac, BASCO and more.',
+      'Drum trucks, drum handlers and lifters, drum dollies and cradles, pumps, spill containment pallets and poly or steel drums from Morse, Vestil, Enpac, BASCO and more.',
     imageUrl: '/projects/surpass-chemical-2.jpg',
   },
   {

@@ -59,7 +59,7 @@ function SettingsForm({ data, cardOn }: { data: Settings; cardOn: boolean }) {
         <Field label="Sales tax rate (%)" hint="Applied to goods and shipping. Schenectady County is 8%.">
           <Input inputMode="decimal" value={form.tax} onChange={(e) => setForm({ ...form, tax: e.target.value })} />
         </Field>
-        <Field label="Flat shipping ($)" hint="Charged on shipped orders below the free-shipping threshold.">
+        <Field label="Flat shipping ($)" hint="Set to 0 to quote freight per order (nothing is charged for shipping at checkout).">
           <Input inputMode="decimal" value={form.flat} onChange={(e) => setForm({ ...form, flat: e.target.value })} />
         </Field>
         <Field label="Free shipping over ($)" hint="Set to 0 to turn free shipping off.">
