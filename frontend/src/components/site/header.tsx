@@ -227,7 +227,7 @@ export function Header({
             <div className="font-cooper text-xl sm:text-2xl font-bold tracking-tight text-primary transition-colors leading-tight group-hover:text-white">
               Upstate Equipment <span className="font-normal">Co., Inc.</span>
             </div>
-            <span className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60 whitespace-nowrap">
+            <span className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.08em] min-[420px]:tracking-[0.18em] text-white/60 whitespace-nowrap">
               Schenectady, NY · Material Handling Since 1990
             </span>
           </div>
