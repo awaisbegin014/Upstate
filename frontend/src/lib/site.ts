@@ -320,7 +320,24 @@ export const supplierUrls: Record<string, string> = {
   BT: "https://toyota-forklifts.rs/guides/hand-pallet-truck-guide/",
 };
 
-/** Jobsite photos from the original Photos page (thumbnails — originals are no longer online). */
+/**
+ * URL of a jobsite photo in `public/projects/`. Every project photo on the
+ * site, cards and the enlarge-on-click viewer alike, goes through here.
+ */
+export function projectPhotoSrc(name: string) {
+  return `/projects/${name}.jpg`;
+}
+
+/**
+ * Jobsite photos for the Projects page, newest additions first or last as you
+ * like. The first entries come from the original site's Photos page.
+ *
+ * To add a project: save its photos as `public/projects/<name>.jpg`
+ * (lowercase-with-dashes names, about 1600px on the long side and under
+ * ~300 KB each), then add an entry with a title, a short description, one or
+ * more tags (they become the filter buttons) and the photo names in order.
+ * The first photo is the one shown largest on single-photo cards.
+ */
 export const projects = [
   {
     title: "Dock lift where there was no dock",

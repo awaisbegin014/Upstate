@@ -144,6 +144,25 @@
   animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Project photo viewer (<dialog class="lightbox">): fade in, photo eases up. */
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lightbox-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+.lightbox[open] {
+  animation: lightbox-in 0.2s ease-out;
+}
+.lightbox-photo {
+  animation: lightbox-photo-in 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Scroll reveal: <Reveal> adds .reveal-visible when the element enters view. */
 .reveal {
   opacity: 0;
@@ -170,7 +189,9 @@
     transition: none;
   }
   .animate-marquee,
-  .animate-cue {
+  .animate-cue,
+  .lightbox[open],
+  .lightbox-photo {
     animation: none;
   }
 }
