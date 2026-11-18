@@ -321,22 +321,29 @@ export const supplierUrls: Record<string, string> = {
 };
 
 /**
- * URL of a jobsite photo in `public/projects/`. Every project photo on the
- * site, cards and the enlarge-on-click viewer alike, goes through here.
+ * URL of a jobsite photo. Every project photo on the site goes through here.
+ *
+ * - "card": `public/projects/<name>.jpg`, about 960px wide, used on cards.
+ * - "full": `public/projects/full/<name>.jpg`, about 1,300-1,600px, loaded
+ *   only in the enlarge-on-click viewer (which falls back to the card image
+ *   if a full version is missing).
  */
-export function projectPhotoSrc(name: string) {
-  return `/projects/${name}.jpg`;
+export function projectPhotoSrc(name: string, size: "card" | "full" = "card") {
+  return size === "full" ? `/projects/full/${name}.jpg` : `/projects/${name}.jpg`;
 }
 
 /**
  * Jobsite photos for the Projects page, newest additions first or last as you
  * like. The first entries come from the original site's Photos page.
  *
- * To add a project: save its photos as `public/projects/<name>.jpg`
- * (lowercase-with-dashes names, about 1600px on the long side and under
- * ~300 KB each), then add an entry with a title, a short description, one or
- * more tags (they become the filter buttons) and the photo names in order.
- * The first photo is the one shown largest on single-photo cards.
+ * To add a project: save each photo twice with the same lowercase-with-dashes
+ * name: `public/projects/<name>.jpg` about 960px wide (under ~150 KB) and
+ * `public/projects/full/<name>.jpg` about 1,600px on the long side (under
+ * ~350 KB). Then add an entry with a title, a short description, one or more
+ * tags (they become the filter buttons) and the photo names in order.
+ *
+ * The original site's photos were only ~330 x 250 px; they were upscaled 4x
+ * with Real-ESRGAN (realesrgan-x4plus) to produce both sizes.
  */
 export const projects = [
   {

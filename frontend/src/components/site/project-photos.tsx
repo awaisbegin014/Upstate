@@ -6,11 +6,10 @@ import { projectPhotoSrc } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Old-site jobsite photos are small (about 330 x 250 px). The viewer enlarges
- * a photo up to this many times its real size so it reads clearly without
- * turning into a blur; sharper originals simply fill more of the screen.
+ * Cap on how far the viewer stretches a photo beyond its real pixel size, so
+ * a small image never turns into a blur on a large screen.
  */
-const MAX_UPSCALE = 2.5;
+const MAX_UPSCALE = 1.5;
 
 /** Horizontal swipe distance (px) that moves to the next or previous photo. */
 const SWIPE_THRESHOLD = 50;
@@ -112,9 +111,12 @@ function PhotoViewer({
   /** Set after a swipe so the click the browser fires next does not close the viewer. */
   const swiped = useRef(false);
   const [natural, setNatural] = useState<{ src: string; width: number } | null>(null);
+  /** Photos with no full-size file; the viewer shows the card image instead. */
+  const [noFull, setNoFull] = useState<ReadonlySet<string>>(() => new Set());
   const count = photos.length;
   const many = count > 1;
-  const src = projectPhotoSrc(photos[index]);
+  const photo = photos[index];
+  const src = projectPhotoSrc(photo, noFull.has(photo) ? "card" : "full");
 
   const go = useCallback(
     (step: number) => onIndexChange((index + step + count) % count),
@@ -152,7 +154,7 @@ function PhotoViewer({
     if (!many) return;
     for (const step of [1, -1]) {
       const img = new Image();
-      img.src = projectPhotoSrc(photos[(index + step + count) % count]);
+      img.src = projectPhotoSrc(photos[(index + step + count) % count], "full");
     }
   }, [index, count, many, photos]);
 
@@ -225,6 +227,9 @@ function PhotoViewer({
             src={src}
             alt={`${title} — photo ${index + 1} of ${count}`}
             onLoad={(e) => setNatural({ src, width: e.currentTarget.naturalWidth })}
+            onError={() => {
+              if (!noFull.has(photo)) setNoFull((prev) => new Set(prev).add(photo));
+            }}
             draggable={false}
             style={width ? { width } : undefined}
             // No border/shadow: with object-contain the element box can be wider
