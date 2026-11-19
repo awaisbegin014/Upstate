@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Upstate Equipment Co.",
   },
   description:
-    "Since 1990, Upstate Equipment Co. has designed, supplied, installed and serviced material handling equipment for Upstate NY businesses: pallet rack, shelving, conveyors, dock equipment, casters, mezzanines and Magliner hand trucks. Shop online or request a quote.",
+    "Since 1990, Upstate Equipment Co. has designed, supplied, installed and serviced Material Handling Equipment for Upstate NY businesses: pallet rack, shelving, conveyors, dock equipment, casters, mezzanines and Magliner hand trucks. Shop online or request a quote.",
   openGraph: {
     title: "Upstate Equipment Co. | Material Handling Equipment — Schenectady, NY",
     description:

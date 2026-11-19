@@ -24,13 +24,13 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
     <>
       <PageHero
         eyebrow="Contact us"
-        title="Talk to a material handling pro today."
+        title="Talk to a Material Handling pro today."
         intro="Tell us what's moving — or what's stuck — and we'll take it from there. Call, email or send the form below."
         image="/images/hero-warehouse.jpg"
         highlights={[
           `${site.address.street}, ${site.address.city}, ${site.address.state}`,
           `Phone ${site.phone.display}`,
-          `Fax ${site.fax}`,
+          `Email ${site.contacts[0].email}`,
         ]}
       >
         <HeroActions>

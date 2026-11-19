@@ -38,7 +38,7 @@ export default async function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Upstate Equipment for all your material handling needs."
+        title="Upstate Equipment for all your Material Handling needs."
         intro="Much more than a sales organization — we help you design, lay out, source, install and service everything from dock equipment and pallet rack to conveyor systems and ergonomics."
         image="/images/loading-dock.jpg"
         highlights={[
@@ -180,7 +180,7 @@ export default async function ServicesPage() {
               dark
               eyebrow="What we supply"
               title="Distributor, designer and installer."
-              intro="A stocking distributor of material handling, storage and dock equipment — with design and installation service for all of it."
+              intro="A stocking distributor of Material Handling, storage and dock equipment — with design and installation service for all of it."
             />
           </Reveal>
           <Reveal delay={120}>

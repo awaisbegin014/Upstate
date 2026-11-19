@@ -7,7 +7,7 @@ export const site = {
   shortName: "Upstate Equipment",
   founded: "June 1990",
   description:
-    "Material handling equipment — designed, sourced, installed and serviced for Upstate New York businesses since 1990.",
+    "Material Handling Equipment — designed, sourced, installed and serviced for Upstate New York businesses since 1990.",
   address: {
     street: "1417 Crane Street",
     city: "Schenectady",
@@ -44,7 +44,7 @@ export const stats = [
 ];
 
 export const aboutPoints = [
-  "Serving the material handling needs of Upstate NY businesses since 1990",
+  "Serving the Material Handling needs of Upstate NY businesses since 1990",
   "Much more than a sales organization — we design, layout, source, install and service",
   "From dock equipment and pallet rack to conveyor systems and ergonomics",
 ];
@@ -186,12 +186,12 @@ export const milestones = [
   {
     label: "June 1990",
     title: "Founded in Schenectady",
-    body: "Upstate Equipment Company opens on Crane Street to serve the material handling needs of Upstate New York businesses.",
+    body: "Upstate Equipment Company opens on Crane Street to serve the Material Handling needs of Upstate New York businesses.",
   },
   {
     label: "Magliner",
     title: "Hand truck specialists",
-    body: "We build the largest inventory of Magliner hand trucks and parts north of New York City — with same-day assembly and delivery.",
+    body: "We stock the largest inventory of Magliner Hand Trucks and parts north of New York City — with same-day assembly and delivery.",
   },
   {
     label: "Catalog",

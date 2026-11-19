@@ -516,7 +516,7 @@ export default async function HomePage() {
             <SectionHeading
               dark
               eyebrow="Get a quote"
-              title="Talk to a material handling pro today."
+              title="Talk to a Material Handling pro today."
               intro="Tell us what's moving — or what's stuck — and we'll take it from there. Prefer to browse first? The online store is always open."
             />
           </Reveal>

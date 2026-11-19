@@ -13,7 +13,7 @@ import type { Brand, Category } from "@/lib/types";
 export const metadata: Metadata = {
   title: "Brands We Carry",
   description:
-    "An alphabetical directory of the 200+ material handling manufacturers Upstate Equipment Co. sources from — Magline, Southworth, Ridg-U-Rak, McGuire, Cogan and more.",
+    "An alphabetical directory of the 200+ Material Handling manufacturers Upstate Equipment Co. sources from — Magline, Southworth, Ridg-U-Rak, McGuire, Cogan and more.",
 };
 
 function FeaturedPartners({ brands }: { brands: Brand[] }) {

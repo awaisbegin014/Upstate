@@ -47,7 +47,7 @@ export const defaultSiteContent: SiteContent = {
   heroEyebrow: "Schenectady, NY · Since 1990",
   heroHeading: "Everything that moves your facility.",
   heroBody:
-    "Pallet rack, shelving, conveyors, dock equipment and more — designed, sourced, installed and serviced by Upstate New York's material handling specialists. Now with online ordering for stocked equipment.",
+    "Pallet rack, shelving, conveyors, dock equipment and more — designed, sourced, installed and serviced by Upstate New York's Material Handling specialists. Now with online ordering for stocked equipment.",
   turnkeyBadge: "Turnkey Engineering vs. Catalog Orders",
   turnkeyHeading:
     "Beyond the Catalog: Complete Layout, Construction & Installation",
@@ -56,7 +56,7 @@ export const defaultSiteContent: SiteContent = {
   aboutEyebrow: "Who we are",
   aboutHeading: "More than a sales organization.",
   aboutBody:
-    "Upstate Equipment Company has been serving the material handling equipment needs of Upstate New York businesses since its founding in June of 1990. We don't just sell equipment — we help you plan your space, choose the right solution, and keep it working for years.",
+    "Upstate Equipment Company has been serving the Material Handling Equipment needs of Upstate New York businesses since its founding in June of 1990. We don't just sell equipment — we help you plan your space, choose the right solution, and keep it working for years.",
   aboutPoint1: aboutPoints[0],
   aboutPoint2: aboutPoints[1],
   aboutPoint3: aboutPoints[2],

@@ -5,7 +5,7 @@ import {
   CircleCheck,
   MapPin,
   Phone,
-  Printer,
+  Mail,
   Receipt,
   Store,
   Truck,
@@ -761,13 +761,21 @@ export function ContactCards({ className }: { className?: string }) {
       ],
     },
     {
-      icon: Printer,
-      title: "Fax",
-      lines: [
-        <div key="f" className="text-white/70">
-          {site.fax}
-        </div>,
-      ],
+      icon: Mail,
+      title: "Email us",
+      lines: site.contacts.map((c) => (
+        <div key={c.email} className="pb-1.5 last:pb-0">
+          <div className="text-xs font-semibold uppercase tracking-wider text-white/50">
+            {c.name}
+          </div>
+          <a
+            href={`mailto:${c.email}`}
+            className="block break-all font-bold text-white transition-colors hover:text-primary"
+          >
+            {c.email}
+          </a>
+        </div>
+      )),
     },
     {
       icon: MapPin,

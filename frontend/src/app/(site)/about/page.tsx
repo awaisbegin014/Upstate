@@ -11,7 +11,7 @@ import { aboutPoints, milestones, serviceAreas, site, stats, whyUpstate } from "
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Upstate Equipment Company has served the material handling equipment needs of Upstate New York businesses since June 1990 — family-run, based in Schenectady.",
+    "Upstate Equipment Company has served the Material Handling Equipment needs of Upstate New York businesses since June 1990 — family-run, based in Schenectady.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About us"
         title="Keeping Upstate New York moving since 1990."
-        intro="Upstate Equipment Company has been serving the material handling equipment needs of Upstate New York businesses since its founding in June of 1990."
+        intro="Upstate Equipment Company has been serving the Material Handling Equipment needs of Upstate New York businesses since its founding in June of 1990."
         image="/images/hero-warehouse.jpg"
         highlights={["Family-run since 1990", "Based on Crane Street, Schenectady", "Design · Install · Service"]}
       >
@@ -55,7 +55,7 @@ export default function AboutPage() {
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p>
                 Much more than a sales organization, we will help you design, lay out, source, install
-                and service all your material handling needs — from dock equipment, pallet rack and
+                and service all your Material Handling needs — from dock equipment, pallet rack and
                 shelving systems to conveyor systems, ergonomics and much more.
               </p>
               <p>
