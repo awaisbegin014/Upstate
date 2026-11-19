@@ -16,9 +16,10 @@ export const site = {
   },
   phone: { display: "518.370.7000", href: "tel:+15183707000" },
   fax: "518.370.7002",
+  /** First entry is the main contact (shown alone in the footer and headers). Tom is in the office 8–5. */
   contacts: [
-    { name: "Jim Reinhardt", email: "jimr@upstateeq.com" },
     { name: "Tom Newell", email: "tomn@upstateeq.com" },
+    { name: "Jim Reinhardt", email: "jimr@upstateeq.com" },
   ],
   catalogUrl: "http://theonlinecatalog.com/upstateeq",
   mapUrl:
