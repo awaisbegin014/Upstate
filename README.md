@@ -32,6 +32,8 @@ npm run dev
 
 Sign in at `/login` with `ADMIN_EMAIL` / `ADMIN_PASSWORD` from `backend/.env` to reach the admin panel at `/admin`.
 
+To give someone their own admin login, run `npm run admin:create -- --email <email> --first <first> --last <last>` in `backend/` (interactive terminal; the password is typed at a hidden prompt and only its hash is stored). An existing account with that email is promoted to admin.
+
 The browser only talks to the Next.js server: `/api/*` and `/uploads/*` are rewritten to the NestJS API, so the session and cart cookies are first-party.
 
 ## Features

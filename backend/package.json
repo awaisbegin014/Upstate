@@ -24,7 +24,8 @@
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:reset": "prisma migrate reset --force",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "admin:create": "tsx prisma/create-admin.ts"
   },
   "dependencies": {
     "@nestjs/cli": "^12.0.12",
