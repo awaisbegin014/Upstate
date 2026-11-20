@@ -14,24 +14,25 @@ const MAX_UPSCALE = 1.5;
 /** Horizontal swipe distance (px) that moves to the next or previous photo. */
 const SWIPE_THRESHOLD = 50;
 
-/** Columns for a strip of `count` photos, chosen so rows fill evenly where possible. */
-function tileGrid(count: number) {
-  if (count === 2) return "grid-cols-2";
-  if (count === 3 || count === 6 || count === 9) return "grid-cols-3";
-  if (count === 4) return "grid-cols-2 sm:grid-cols-4";
-  if (count === 5) return "grid-cols-3 sm:grid-cols-5";
-  return "grid-cols-4";
-}
-
-const LEAD_SPAN: Record<number, string> = { 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
-
 /**
- * In the 4-column layout (7, 8, 10+ photos), widen the first photo to fill
- * what would otherwise be empty cells at the end of the last row.
+ * Mosaic for `count` photos inside the fixed 16:10 frame. Every card's photo
+ * area is the same size whatever the photo count, and the first photo grows
+ * to fill any cells the others leave, so the frame never has a gap.
+ *
+ *   1: one photo   2: side by side   3: tall lead + 2 stacked   4: 2 x 2
+ *   5: 3 x 2, wide lead   6: 3 x 2   7: 4 x 2, wide lead   8: 4 x 2   9+: 3-4 per row
  */
-function leadSpan(count: number) {
-  if (tileGrid(count) !== "grid-cols-4") return undefined;
-  return LEAD_SPAN[1 + ((4 - (count % 4)) % 4)];
+function mosaic(count: number) {
+  const rows = count <= 2 ? 1 : count <= 8 ? 2 : Math.ceil(count / 4);
+  const cols = Math.ceil(count / rows);
+  const spare = cols * rows - count;
+  const grid = {
+    gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+    gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+  };
+  // Three photos read best as one tall photo beside two stacked ones.
+  if (count === 3) return { grid, lead: { gridRow: "span 2 / span 2" } };
+  return { grid, lead: spare > 0 ? { gridColumn: `span ${spare + 1} / span ${spare + 1}` } : undefined };
 }
 
 /**
@@ -48,11 +49,11 @@ export function ProjectPhotos({
   const [open, setOpen] = useState<number | null>(null);
   const count = photos.length;
   const single = count === 1;
-  const lead = leadSpan(count);
+  const { grid, lead } = mosaic(count);
 
   return (
     <>
-      <div className={cn(single ? "bg-steel-950" : ["grid gap-1 bg-steel-950 p-1", tileGrid(count)])}>
+      <div className={cn("grid aspect-[16/10] bg-steel-950", !single && "gap-1 p-1")} style={grid}>
         {photos.map((photo, i) => (
           <button
             key={photo}
@@ -60,11 +61,10 @@ export function ProjectPhotos({
             onClick={() => setOpen(i)}
             aria-label={`Enlarge photo ${i + 1} of ${count}: ${title}`}
             aria-haspopup="dialog"
+            style={i === 0 ? lead : undefined}
             className={cn(
-              "group/photo relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-steel-950",
-              single ? "aspect-[16/9]" : ["rounded-sm", count === 2 ? "aspect-[16/10]" : "aspect-[4/3]"],
-              // The widened lead photo takes its height from the row instead of its own aspect ratio.
-              i === 0 && lead && [lead, "aspect-auto"],
+              "group/photo relative block h-full w-full cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-steel-950",
+              !single && "rounded-sm",
             )}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
