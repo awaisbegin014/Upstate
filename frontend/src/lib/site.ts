@@ -334,19 +334,60 @@ export function projectPhotoSrc(name: string, size: "card" | "full" = "card") {
 }
 
 /**
- * Jobsite photos for the Projects page, newest additions first or last as you
- * like. The first entries come from the original site's Photos page.
+ * Jobsite photos for the Projects page, newest work first. Entries from
+ * "Dock lift where there was no dock" down come from the original site's
+ * Photos page.
  *
  * To add a project: save each photo twice with the same lowercase-with-dashes
- * name: `public/projects/<name>.jpg` about 960px wide (under ~150 KB) and
- * `public/projects/full/<name>.jpg` about 1,600px on the long side (under
- * ~350 KB). Then add an entry with a title, a short description, one or more
- * tags (they become the filter buttons) and the photo names in order.
+ * name: `public/projects/<name>.jpg` about 960px on the long side (under
+ * ~150 KB) and `public/projects/full/<name>.jpg` about 1,600px on the long
+ * side (under ~350 KB), upright and with camera metadata (EXIF/GPS) removed.
+ * Then add an entry with a title, a short description, one or more tags (they
+ * become the filter buttons) and the photo names in order (before, then after).
  *
  * The original site's photos were only ~330 x 250 px; they were upscaled 4x
  * with Real-ESRGAN (realesrgan-x4plus) to produce both sizes.
  */
 export const projects = [
+  {
+    title: "Complete dock rehab at the NYS Education Department",
+    body: "Complete rehab of a loading dock at the NYS Education Department in Albany, NY — before and after.",
+    tags: ["Dock equipment", "Installation"],
+    photos: [
+      "nysed-dock-rehab-1-before",
+      "nysed-dock-rehab-1-after",
+      "nysed-dock-rehab-2-before",
+      "nysed-dock-rehab-2-after",
+      "nysed-dock-rehab-3-before",
+      "nysed-dock-rehab-3-after",
+    ],
+  },
+  {
+    title: "Six docks upgraded to hydraulic dock levelers",
+    body: "A Malta, NY distribution facility upgraded 6 docks to hydraulic dock levelers.",
+    tags: ["Dock equipment", "Installation"],
+    photos: [
+      "malta-hydraulic-levelers-1",
+      "malta-hydraulic-levelers-2",
+      "malta-hydraulic-levelers-3",
+      "malta-hydraulic-levelers-4",
+      "malta-hydraulic-levelers-5",
+      "malta-hydraulic-levelers-6",
+      "malta-hydraulic-levelers-7",
+    ],
+  },
+  {
+    title: "Mechanical to hydraulic dock leveler upgrade",
+    body: "An Albany business upgraded from a mechanical to a hydraulic dock leveler — before and after.",
+    tags: ["Dock equipment"],
+    photos: ["albany-hydraulic-leveler-before-1", "albany-hydraulic-leveler-before-2", "albany-hydraulic-leveler-after"],
+  },
+  {
+    title: "New docks for a Saratoga distribution center",
+    body: "A major Saratoga business added new docks to their distribution center.",
+    tags: ["Dock equipment", "Installation"],
+    photos: ["saratoga-new-docks-1", "saratoga-new-docks-2"],
+  },
   {
     title: "Dock lift where there was no dock",
     body: "Our customer did not have a dock but needed to unload drums of solvent from a tractor trailer. They were having to unload at a different location and transport the drums in a pickup truck. We formed and poured the pad on Friday and installed this Advance dock lift the following Monday morning.",
