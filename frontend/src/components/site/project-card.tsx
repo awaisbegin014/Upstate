@@ -26,15 +26,28 @@ export function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+/** Matches the teaser intro: weekend dock lift, pick-and-pack, drive-in rack. */
+const DEFAULT_PICKS = [
+  "Dock lift where there was no dock",
+  "Complete picking & packing system",
+  "36' high drive-in rack",
+];
+
 /** Three jobsite stories with a link to the full Projects page. */
 export function ProjectsTeaser({
   className,
-  picks = [0, 3, 6],
+  picks = DEFAULT_PICKS,
 }: {
   className?: string;
-  /** Indexes into `projects`. */
-  picks?: number[];
+  /** Titles of the projects to show, in order (looked up by title, so adding projects never shifts them). */
+  picks?: readonly string[];
 }) {
+  const shown = picks.map((title) => {
+    const project = projects.find((p) => p.title === title);
+    if (!project) throw new Error(`ProjectsTeaser: no project titled "${title}" in lib/site.ts`);
+    return project;
+  });
+
   return (
     <section className={className ?? "bg-background py-24"}>
       <Container>
@@ -54,9 +67,9 @@ export function ProjectsTeaser({
           </Link>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {picks.map((i, n) => (
-            <Reveal key={projects[i].title} delay={n * 100}>
-              <ProjectCard project={projects[i]} />
+          {shown.map((project, n) => (
+            <Reveal key={project.title} delay={n * 100}>
+              <ProjectCard project={project} />
             </Reveal>
           ))}
         </div>

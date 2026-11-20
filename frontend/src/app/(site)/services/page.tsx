@@ -225,7 +225,10 @@ export default async function ServicesPage() {
         </Container>
       </section>
 
-      <ProjectsTeaser className="bg-secondary py-24" picks={[3, 7, 12]} />
+      <ProjectsTeaser
+        className="bg-secondary py-24"
+        picks={["Complete picking & packing system", "Wedge-shaped mezzanine", "Selective, structural & pushback rack"]}
+      />
       <FaqSection className="bg-background" items={editableFaqs(content)} />
       <CtaBand />
     </>

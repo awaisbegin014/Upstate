@@ -14,14 +14,24 @@ const MAX_UPSCALE = 1.5;
 /** Horizontal swipe distance (px) that moves to the next or previous photo. */
 const SWIPE_THRESHOLD = 50;
 
+/** Columns for a strip of `count` photos, chosen so rows fill evenly where possible. */
 function tileGrid(count: number) {
-  return count === 2
-    ? "grid-cols-2"
-    : count === 3
-      ? "grid-cols-3"
-      : count === 4
-        ? "grid-cols-2 sm:grid-cols-4"
-        : "grid-cols-3 sm:grid-cols-5";
+  if (count === 2) return "grid-cols-2";
+  if (count === 3 || count === 6 || count === 9) return "grid-cols-3";
+  if (count === 4) return "grid-cols-2 sm:grid-cols-4";
+  if (count === 5) return "grid-cols-3 sm:grid-cols-5";
+  return "grid-cols-4";
+}
+
+const LEAD_SPAN: Record<number, string> = { 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
+
+/**
+ * In the 4-column layout (7, 8, 10+ photos), widen the first photo to fill
+ * what would otherwise be empty cells at the end of the last row.
+ */
+function leadSpan(count: number) {
+  if (tileGrid(count) !== "grid-cols-4") return undefined;
+  return LEAD_SPAN[1 + ((4 - (count % 4)) % 4)];
 }
 
 /**
@@ -38,6 +48,7 @@ export function ProjectPhotos({
   const [open, setOpen] = useState<number | null>(null);
   const count = photos.length;
   const single = count === 1;
+  const lead = leadSpan(count);
 
   return (
     <>
@@ -52,6 +63,8 @@ export function ProjectPhotos({
             className={cn(
               "group/photo relative block w-full cursor-zoom-in overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-steel-950",
               single ? "aspect-[16/9]" : ["rounded-sm", count === 2 ? "aspect-[16/10]" : "aspect-[4/3]"],
+              // The widened lead photo takes its height from the row instead of its own aspect ratio.
+              i === 0 && lead && [lead, "aspect-auto"],
             )}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -59,7 +72,7 @@ export function ProjectPhotos({
               src={projectPhotoSrc(photo)}
               alt=""
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/photo:scale-105"
             />
             <span
               aria-hidden="true"
