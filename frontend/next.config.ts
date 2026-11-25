@@ -32,14 +32,6 @@ const LEGACY_PAGES: Record<string, string> = {
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
   async redirects() {
     return Object.entries(LEGACY_PAGES).flatMap(([page, destination]) =>
       [`/${page}.html`, `/${page}.htm`].map((source) => ({ source, destination, permanent: true })),
