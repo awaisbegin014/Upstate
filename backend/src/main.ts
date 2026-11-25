@@ -18,4 +18,9 @@ async function bootstrap() {
   );
 }
 
-await bootstrap();
+// No top-level await: Hostinger's Node.js runner (LiteSpeed lsnode) loads the
+// entry file with require(), which cannot load an ES module that uses it.
+bootstrap().catch((err: unknown) => {
+  new Logger('Bootstrap').error(err instanceof Error ? (err.stack ?? err.message) : String(err));
+  process.exit(1);
+});
