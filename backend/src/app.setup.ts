@@ -3,13 +3,12 @@ import type { NestExpressApplication } from '@nestjs/platform-express';
 import cookieParser from 'cookie-parser';
 import type { RequestHandler } from 'express';
 import helmetImport from 'helmet';
-import { join } from 'node:path';
+import { serveUploads } from './admin/uploads.js';
+import { PrismaService } from './prisma/prisma.service.js';
 
 // helmet ships both ESM and CommonJS typings; normalise the default import.
 const helmet = ((helmetImport as unknown as { default?: unknown }).default ??
   helmetImport) as unknown as (options?: object) => RequestHandler;
-
-export const UPLOADS_DIR = join(process.cwd(), 'uploads');
 
 /** Global middleware, pipes and static files shared by every entry point. */
 export function configureApp(app: NestExpressApplication) {
@@ -37,11 +36,8 @@ export function configureApp(app: NestExpressApplication) {
     }),
   );
 
-  // Product images uploaded from the admin panel. The frontend rewrites
-  // /uploads/* here so they are served from the storefront's own origin.
-  app.useStaticAssets(UPLOADS_DIR, {
-    prefix: '/uploads/',
-    maxAge: '7d',
-    index: false,
-  });
+  // Product images uploaded from the admin panel, stored in the database. The
+  // frontend rewrites /uploads/* here so they are served from the storefront's
+  // own origin.
+  app.use('/uploads', serveUploads(app.get(PrismaService)));
 }

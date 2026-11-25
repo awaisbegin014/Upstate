@@ -26,6 +26,7 @@ import {
 } from '../orders/dto/orders.dto.js';
 import { OrdersModule } from '../orders/orders.module.js';
 import { OrdersService } from '../orders/orders.service.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 import { SettingsService } from '../settings/settings.service.js';
 import { AdminCatalogService } from './admin-catalog.service.js';
 import { AdminService } from './admin.service.js';
@@ -52,6 +53,7 @@ class AdminController {
     private readonly catalog: AdminCatalogService,
     private readonly orders: OrdersService,
     private readonly settings: SettingsService,
+    private readonly prisma: PrismaService,
   ) {}
 
   @Get('stats')
@@ -91,7 +93,7 @@ class AdminController {
     FileInterceptor('file', { limits: { fileSize: MAX_UPLOAD_BYTES } }),
   )
   upload(@UploadedFile() file: Express.Multer.File | undefined) {
-    return saveProductImage(file);
+    return saveProductImage(this.prisma, file);
   }
 
   // ---- categories

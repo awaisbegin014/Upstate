@@ -299,3 +299,14 @@ model Counter {
   id    String @id
   value Int
 }
+
+/// Images uploaded from the admin panel, kept in the database so they survive
+/// redeploys and restarts on any host (app disks can be replaced on deploy).
+/// Served at /uploads/<path>; the random file name makes each path immutable.
+model UploadedFile {
+  /// Relative public path, e.g. "products/lx3k2ab-1f2e3d4c5b6a.jpg".
+  path        String   @id
+  contentType String
+  data        Bytes
+  createdAt   DateTime @default(now())
+}
