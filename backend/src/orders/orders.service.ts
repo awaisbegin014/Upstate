@@ -24,6 +24,8 @@ import type {
 
 /** Card checkout sessions stay open this long before stock is released. */
 const PAYMENT_WINDOW_MS = 60 * 60 * 1000;
+/** How often abandoned card checkouts are released (see OrdersService.sweepIfDue). */
+const SWEEP_INTERVAL_MS = 10 * 60 * 1000;
 const ORDER_NUMBER_START = 100_001;
 
 const orderInclude = {
@@ -34,6 +36,7 @@ const orderInclude = {
 export class OrdersService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(OrdersService.name);
   private sweepTimer: NodeJS.Timeout | undefined;
+  private lastSweepAt = 0;
 
   constructor(
     private readonly prisma: PrismaService,
@@ -44,9 +47,12 @@ export class OrdersService implements OnModuleInit, OnModuleDestroy {
 
   onModuleInit() {
     // Releases stock held by card checkouts that were abandoned, in case the
-    // Stripe webhook is not configured (e.g. local development).
-    this.sweepTimer = setInterval(() => void this.sweepStalePayments(), 10 * 60 * 1000);
+    // Stripe webhook is not configured (e.g. local development). Managed hosts
+    // (Hostinger Node.js) stop idle apps, which pauses this timer, so the sweep
+    // also runs on startup and on demand from checkout and the admin order list.
+    this.sweepTimer = setInterval(() => this.sweepIfDue(), SWEEP_INTERVAL_MS);
     this.sweepTimer.unref();
+    this.sweepIfDue();
   }
 
   onModuleDestroy() {
@@ -56,6 +62,7 @@ export class OrdersService implements OnModuleInit, OnModuleDestroy {
   // ---------------------------------------------------------------- checkout
 
   async checkout(user: AuthUser, dto: CheckoutDto) {
+    this.sweepIfDue();
     const settings = await this.settings.get();
     if (dto.fulfillment === 'PICKUP' && !settings.pickupEnabled) {
       throw new BadRequestException('Local pickup is not available right now.');
@@ -283,6 +290,15 @@ export class OrdersService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
+  /** Runs the stale-payment sweep in the background, at most once per interval. */
+  private sweepIfDue() {
+    if (Date.now() - this.lastSweepAt < SWEEP_INTERVAL_MS) return;
+    this.lastSweepAt = Date.now();
+    this.sweepStalePayments().catch((err: unknown) =>
+      this.logger.error(`Stale payment sweep failed: ${err instanceof Error ? err.message : String(err)}`),
+    );
+  }
+
   private async sweepStalePayments() {
     const stale = await this.prisma.order.findMany({
       where: {
@@ -299,6 +315,7 @@ export class OrdersService implements OnModuleInit, OnModuleDestroy {
   // ------------------------------------------------------------------ admin
 
   async adminList(q: AdminOrderQuery) {
+    this.sweepIfDue();
     const { page, pageSize, skip, take } = paginate(q, 20);
     const term = q.q?.trim();
     const where: Prisma.OrderWhereInput = {
